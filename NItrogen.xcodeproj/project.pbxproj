@@ -7,6 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B7D1AD71C9AD18700FE68AE /* math_acosf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AB11C9AD18700FE68AE /* math_acosf.c */; };
+		9B7D1AD81C9AD18700FE68AE /* math_asinf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AB21C9AD18700FE68AE /* math_asinf.c */; };
+		9B7D1AD91C9AD18700FE68AE /* math_atan2f.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AB31C9AD18700FE68AE /* math_atan2f.c */; };
+		9B7D1ADA1C9AD18700FE68AE /* math_atanf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AB41C9AD18700FE68AE /* math_atanf.c */; };
+		9B7D1ADB1C9AD18700FE68AE /* math_ceilf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AB51C9AD18700FE68AE /* math_ceilf.c */; };
+		9B7D1ADC1C9AD18700FE68AE /* math_cosf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AB61C9AD18700FE68AE /* math_cosf.c */; };
+		9B7D1ADD1C9AD18700FE68AE /* math_coshf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AB71C9AD18700FE68AE /* math_coshf.c */; };
+		9B7D1ADE1C9AD18700FE68AE /* math_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AB81C9AD18700FE68AE /* math_debug.c */; };
+		9B7D1ADF1C9AD18700FE68AE /* math_expf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AB91C9AD18700FE68AE /* math_expf.c */; };
+		9B7D1AE11C9AD18700FE68AE /* math_floorf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1ABB1C9AD18700FE68AE /* math_floorf.c */; };
+		9B7D1AE21C9AD18700FE68AE /* math_fmodf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1ABC1C9AD18700FE68AE /* math_fmodf.c */; };
+		9B7D1AE31C9AD18700FE68AE /* math_frexpf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1ABD1C9AD18700FE68AE /* math_frexpf.c */; };
+		9B7D1AE41C9AD18700FE68AE /* math_invsqrtf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1ABE1C9AD18700FE68AE /* math_invsqrtf.c */; };
+		9B7D1AE51C9AD18700FE68AE /* math_ldexpf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1ABF1C9AD18700FE68AE /* math_ldexpf.c */; };
+		9B7D1AE61C9AD18700FE68AE /* math_log10f.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AC01C9AD18700FE68AE /* math_log10f.c */; };
+		9B7D1AE71C9AD18700FE68AE /* math_logf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AC11C9AD18700FE68AE /* math_logf.c */; };
+		9B7D1AE81C9AD18700FE68AE /* math_mat2.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AC21C9AD18700FE68AE /* math_mat2.c */; };
+		9B7D1AE91C9AD18700FE68AE /* math_mat3.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AC31C9AD18700FE68AE /* math_mat3.c */; };
+		9B7D1AEA1C9AD18700FE68AE /* math_mat4.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AC41C9AD18700FE68AE /* math_mat4.c */; };
+		9B7D1AEB1C9AD18700FE68AE /* math_modf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AC51C9AD18700FE68AE /* math_modf.c */; };
+		9B7D1AEC1C9AD18700FE68AE /* math_powf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AC71C9AD18700FE68AE /* math_powf.c */; };
+		9B7D1AED1C9AD18700FE68AE /* math_runfast.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AC81C9AD18700FE68AE /* math_runfast.c */; };
+		9B7D1AEE1C9AD18700FE68AE /* math_sincosf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AC91C9AD18700FE68AE /* math_sincosf.c */; };
+		9B7D1AEF1C9AD18700FE68AE /* math_sinf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1ACA1C9AD18700FE68AE /* math_sinf.c */; };
+		9B7D1AF01C9AD18700FE68AE /* math_sinfv.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1ACB1C9AD18700FE68AE /* math_sinfv.c */; };
+		9B7D1AF11C9AD18700FE68AE /* math_sinhf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1ACC1C9AD18700FE68AE /* math_sinhf.c */; };
+		9B7D1AF21C9AD18700FE68AE /* math_sqrtf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1ACD1C9AD18700FE68AE /* math_sqrtf.c */; };
+		9B7D1AF31C9AD18700FE68AE /* math_sqrtfv.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1ACE1C9AD18700FE68AE /* math_sqrtfv.c */; };
+		9B7D1AF41C9AD18700FE68AE /* math_tanf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1ACF1C9AD18700FE68AE /* math_tanf.c */; };
+		9B7D1AF51C9AD18700FE68AE /* math_tanhf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AD01C9AD18700FE68AE /* math_tanhf.c */; };
+		9B7D1AF61C9AD18700FE68AE /* math_vec2.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AD11C9AD18700FE68AE /* math_vec2.c */; };
+		9B7D1AF71C9AD18700FE68AE /* math_vec3.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AD21C9AD18700FE68AE /* math_vec3.c */; };
+		9B7D1AF81C9AD18700FE68AE /* math_vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AD31C9AD18700FE68AE /* math_vec4.c */; };
 		9B82589A1C9A03F4006D8F71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8258991C9A03F4006D8F71 /* AppDelegate.swift */; };
 		9B82589C1C9A03F4006D8F71 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82589B1C9A03F4006D8F71 /* ViewController.swift */; };
 		9B82589F1C9A03F4006D8F71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B82589D1C9A03F4006D8F71 /* Main.storyboard */; };
@@ -101,14 +134,55 @@
 		9B8264CA1C9A05BE006D8F71 /* xstring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B82604C1C9A05BE006D8F71 /* xstring.cpp */; };
 		9B8264CB1C9A05BE006D8F71 /* version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B82604F1C9A05BE006D8F71 /* version.cpp */; };
 		9B8264CC1C9A05BE006D8F71 /* wifi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B8260511C9A05BE006D8F71 /* wifi.cpp */; };
-		9B8273831C9A08A0006D8F71 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B8270B71C9A08A0006D8F71 /* main.cpp */; };
 		9B8273AE1C9A08A0006D8F71 /* throttle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B8270E81C9A08A0006D8F71 /* throttle.cpp */; };
 		9B8273B01C9A0B4D006D8F71 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8273AF1C9A0B4D006D8F71 /* libc++.tbd */; };
 		9B8273B21C9A0B53006D8F71 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8273B11C9A0B53006D8F71 /* libz.tbd */; };
 		9B8273B81C9A9088006D8F71 /* EmulatorCore.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9B8273B71C9A9088006D8F71 /* EmulatorCore.mm */; };
+		9B8273CD1C9A9B74006D8F71 /* OEGameAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8273C31C9A9B74006D8F71 /* OEGameAudio.m */; };
+		9B8273CE1C9A9B74006D8F71 /* OERingBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8273C51C9A9B74006D8F71 /* OERingBuffer.m */; };
+		9B8273CF1C9A9B74006D8F71 /* OESoundInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9B8273C71C9A9B74006D8F71 /* OESoundInterface.mm */; };
+		9B8273D01C9A9B74006D8F71 /* TPCircularBuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B8273C81C9A9B74006D8F71 /* TPCircularBuffer.c */; };
+		9B8273D11C9A9B74006D8F71 /* OETimingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8273CC1C9A9B74006D8F71 /* OETimingUtils.m */; };
+		9B8273D31C9A9C53006D8F71 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8273D21C9A9C53006D8F71 /* OpenGLES.framework */; };
+		9B8273D51C9A9C5B006D8F71 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8273D41C9A9C5B006D8F71 /* GLKit.framework */; };
+		9B8273D71C9AA21E006D8F71 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8273D61C9AA21E006D8F71 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B7D1AB11C9AD18700FE68AE /* math_acosf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_acosf.c; sourceTree = "<group>"; };
+		9B7D1AB21C9AD18700FE68AE /* math_asinf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_asinf.c; sourceTree = "<group>"; };
+		9B7D1AB31C9AD18700FE68AE /* math_atan2f.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_atan2f.c; sourceTree = "<group>"; };
+		9B7D1AB41C9AD18700FE68AE /* math_atanf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_atanf.c; sourceTree = "<group>"; };
+		9B7D1AB51C9AD18700FE68AE /* math_ceilf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_ceilf.c; sourceTree = "<group>"; };
+		9B7D1AB61C9AD18700FE68AE /* math_cosf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_cosf.c; sourceTree = "<group>"; };
+		9B7D1AB71C9AD18700FE68AE /* math_coshf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_coshf.c; sourceTree = "<group>"; };
+		9B7D1AB81C9AD18700FE68AE /* math_debug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_debug.c; sourceTree = "<group>"; };
+		9B7D1AB91C9AD18700FE68AE /* math_expf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_expf.c; sourceTree = "<group>"; };
+		9B7D1ABB1C9AD18700FE68AE /* math_floorf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_floorf.c; sourceTree = "<group>"; };
+		9B7D1ABC1C9AD18700FE68AE /* math_fmodf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_fmodf.c; sourceTree = "<group>"; };
+		9B7D1ABD1C9AD18700FE68AE /* math_frexpf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_frexpf.c; sourceTree = "<group>"; };
+		9B7D1ABE1C9AD18700FE68AE /* math_invsqrtf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_invsqrtf.c; sourceTree = "<group>"; };
+		9B7D1ABF1C9AD18700FE68AE /* math_ldexpf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_ldexpf.c; sourceTree = "<group>"; };
+		9B7D1AC01C9AD18700FE68AE /* math_log10f.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_log10f.c; sourceTree = "<group>"; };
+		9B7D1AC11C9AD18700FE68AE /* math_logf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_logf.c; sourceTree = "<group>"; };
+		9B7D1AC21C9AD18700FE68AE /* math_mat2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_mat2.c; sourceTree = "<group>"; };
+		9B7D1AC31C9AD18700FE68AE /* math_mat3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_mat3.c; sourceTree = "<group>"; };
+		9B7D1AC41C9AD18700FE68AE /* math_mat4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_mat4.c; sourceTree = "<group>"; };
+		9B7D1AC51C9AD18700FE68AE /* math_modf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_modf.c; sourceTree = "<group>"; };
+		9B7D1AC61C9AD18700FE68AE /* math_neon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math_neon.h; sourceTree = "<group>"; };
+		9B7D1AC71C9AD18700FE68AE /* math_powf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_powf.c; sourceTree = "<group>"; };
+		9B7D1AC81C9AD18700FE68AE /* math_runfast.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_runfast.c; sourceTree = "<group>"; };
+		9B7D1AC91C9AD18700FE68AE /* math_sincosf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_sincosf.c; sourceTree = "<group>"; };
+		9B7D1ACA1C9AD18700FE68AE /* math_sinf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_sinf.c; sourceTree = "<group>"; };
+		9B7D1ACB1C9AD18700FE68AE /* math_sinfv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_sinfv.c; sourceTree = "<group>"; };
+		9B7D1ACC1C9AD18700FE68AE /* math_sinhf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_sinhf.c; sourceTree = "<group>"; };
+		9B7D1ACD1C9AD18700FE68AE /* math_sqrtf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_sqrtf.c; sourceTree = "<group>"; };
+		9B7D1ACE1C9AD18700FE68AE /* math_sqrtfv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_sqrtfv.c; sourceTree = "<group>"; };
+		9B7D1ACF1C9AD18700FE68AE /* math_tanf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_tanf.c; sourceTree = "<group>"; };
+		9B7D1AD01C9AD18700FE68AE /* math_tanhf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_tanhf.c; sourceTree = "<group>"; };
+		9B7D1AD11C9AD18700FE68AE /* math_vec2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_vec2.c; sourceTree = "<group>"; };
+		9B7D1AD21C9AD18700FE68AE /* math_vec3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_vec3.c; sourceTree = "<group>"; };
+		9B7D1AD31C9AD18700FE68AE /* math_vec4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_vec4.c; sourceTree = "<group>"; };
 		9B8258961C9A03F4006D8F71 /* Nitrogen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nitrogen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B8258991C9A03F4006D8F71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B82589B1C9A03F4006D8F71 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -272,14 +346,26 @@
 		9B8260501C9A05BE006D8F71 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = version.h; path = Nitrogen/DeSmuME/version.h; sourceTree = SOURCE_ROOT; };
 		9B8260511C9A05BE006D8F71 /* wifi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = wifi.cpp; path = Nitrogen/DeSmuME/wifi.cpp; sourceTree = SOURCE_ROOT; };
 		9B8260521C9A05BE006D8F71 /* wifi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wifi.h; path = Nitrogen/DeSmuME/wifi.h; sourceTree = SOURCE_ROOT; };
-		9B8270B71C9A08A0006D8F71 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		9B8270B81C9A08A0006D8F71 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 		9B8270E81C9A08A0006D8F71 /* throttle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = throttle.cpp; sourceTree = "<group>"; };
 		9B8270E91C9A08A0006D8F71 /* throttle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = throttle.h; sourceTree = "<group>"; };
 		9B8273AF1C9A0B4D006D8F71 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		9B8273B11C9A0B53006D8F71 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		9B8273B61C9A9088006D8F71 /* EmulatorCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmulatorCore.h; path = Shared/Core/EmulatorCore.h; sourceTree = "<group>"; };
 		9B8273B71C9A9088006D8F71 /* EmulatorCore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = EmulatorCore.mm; path = Shared/Core/EmulatorCore.mm; sourceTree = "<group>"; };
+		9B8273C21C9A9B74006D8F71 /* OEGameAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OEGameAudio.h; sourceTree = "<group>"; };
+		9B8273C31C9A9B74006D8F71 /* OEGameAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OEGameAudio.m; sourceTree = "<group>"; };
+		9B8273C41C9A9B74006D8F71 /* OERingBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OERingBuffer.h; sourceTree = "<group>"; };
+		9B8273C51C9A9B74006D8F71 /* OERingBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OERingBuffer.m; sourceTree = "<group>"; };
+		9B8273C61C9A9B74006D8F71 /* OESoundInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OESoundInterface.h; sourceTree = "<group>"; };
+		9B8273C71C9A9B74006D8F71 /* OESoundInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OESoundInterface.mm; sourceTree = "<group>"; };
+		9B8273C81C9A9B74006D8F71 /* TPCircularBuffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TPCircularBuffer.c; sourceTree = "<group>"; };
+		9B8273C91C9A9B74006D8F71 /* TPCircularBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCircularBuffer.h; sourceTree = "<group>"; };
+		9B8273CB1C9A9B74006D8F71 /* OETimingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OETimingUtils.h; sourceTree = "<group>"; };
+		9B8273CC1C9A9B74006D8F71 /* OETimingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OETimingUtils.m; sourceTree = "<group>"; };
+		9B8273D21C9A9C53006D8F71 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		9B8273D41C9A9C5B006D8F71 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		9B8273D61C9AA21E006D8F71 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		9B8273D81C9AA224006D8F71 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +373,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B8273D71C9AA21E006D8F71 /* AudioToolbox.framework in Frameworks */,
+				9B8273D51C9A9C5B006D8F71 /* GLKit.framework in Frameworks */,
+				9B8273D31C9A9C53006D8F71 /* OpenGLES.framework in Frameworks */,
 				9B8273B21C9A0B53006D8F71 /* libz.tbd in Frameworks */,
 				9B8273B01C9A0B4D006D8F71 /* libc++.tbd in Frameworks */,
 			);
@@ -295,6 +384,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B7D1AAE1C9AD18700FE68AE /* math-neon */ = {
+			isa = PBXGroup;
+			children = (
+				9B7D1AB11C9AD18700FE68AE /* math_acosf.c */,
+				9B7D1AB21C9AD18700FE68AE /* math_asinf.c */,
+				9B7D1AB31C9AD18700FE68AE /* math_atan2f.c */,
+				9B7D1AB41C9AD18700FE68AE /* math_atanf.c */,
+				9B7D1AB51C9AD18700FE68AE /* math_ceilf.c */,
+				9B7D1AB61C9AD18700FE68AE /* math_cosf.c */,
+				9B7D1AB71C9AD18700FE68AE /* math_coshf.c */,
+				9B7D1AB81C9AD18700FE68AE /* math_debug.c */,
+				9B7D1AB91C9AD18700FE68AE /* math_expf.c */,
+				9B7D1ABB1C9AD18700FE68AE /* math_floorf.c */,
+				9B7D1ABC1C9AD18700FE68AE /* math_fmodf.c */,
+				9B7D1ABD1C9AD18700FE68AE /* math_frexpf.c */,
+				9B7D1ABE1C9AD18700FE68AE /* math_invsqrtf.c */,
+				9B7D1ABF1C9AD18700FE68AE /* math_ldexpf.c */,
+				9B7D1AC01C9AD18700FE68AE /* math_log10f.c */,
+				9B7D1AC11C9AD18700FE68AE /* math_logf.c */,
+				9B7D1AC21C9AD18700FE68AE /* math_mat2.c */,
+				9B7D1AC31C9AD18700FE68AE /* math_mat3.c */,
+				9B7D1AC41C9AD18700FE68AE /* math_mat4.c */,
+				9B7D1AC51C9AD18700FE68AE /* math_modf.c */,
+				9B7D1AC61C9AD18700FE68AE /* math_neon.h */,
+				9B7D1AC71C9AD18700FE68AE /* math_powf.c */,
+				9B7D1AC81C9AD18700FE68AE /* math_runfast.c */,
+				9B7D1AC91C9AD18700FE68AE /* math_sincosf.c */,
+				9B7D1ACA1C9AD18700FE68AE /* math_sinf.c */,
+				9B7D1ACB1C9AD18700FE68AE /* math_sinfv.c */,
+				9B7D1ACC1C9AD18700FE68AE /* math_sinhf.c */,
+				9B7D1ACD1C9AD18700FE68AE /* math_sqrtf.c */,
+				9B7D1ACE1C9AD18700FE68AE /* math_sqrtfv.c */,
+				9B7D1ACF1C9AD18700FE68AE /* math_tanf.c */,
+				9B7D1AD01C9AD18700FE68AE /* math_tanhf.c */,
+				9B7D1AD11C9AD18700FE68AE /* math_vec2.c */,
+				9B7D1AD21C9AD18700FE68AE /* math_vec3.c */,
+				9B7D1AD31C9AD18700FE68AE /* math_vec4.c */,
+			);
+			path = "math-neon";
+			sourceTree = "<group>";
+		};
 		9B82588D1C9A03F4006D8F71 = {
 			isa = PBXGroup;
 			children = (
@@ -594,8 +724,7 @@
 		9B826C3E1C9A089F006D8F71 /* android */ = {
 			isa = PBXGroup;
 			children = (
-				9B8270B71C9A08A0006D8F71 /* main.cpp */,
-				9B8270B81C9A08A0006D8F71 /* main.h */,
+				9B7D1AAE1C9AD18700FE68AE /* math-neon */,
 				9B8270E81C9A08A0006D8F71 /* throttle.cpp */,
 				9B8270E91C9A08A0006D8F71 /* throttle.h */,
 			);
@@ -606,6 +735,10 @@
 		9B8273B31C9A0B93006D8F71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9B8273D81C9AA224006D8F71 /* AudioUnit.framework */,
+				9B8273D61C9AA21E006D8F71 /* AudioToolbox.framework */,
+				9B8273D41C9A9C5B006D8F71 /* GLKit.framework */,
+				9B8273D21C9A9C53006D8F71 /* OpenGLES.framework */,
 				9B8273B11C9A0B53006D8F71 /* libz.tbd */,
 				9B8273AF1C9A0B4D006D8F71 /* libc++.tbd */,
 			);
@@ -616,6 +749,7 @@
 			isa = PBXGroup;
 			children = (
 				9B8273B51C9A9041006D8F71 /* Core */,
+				9B8273BD1C9A9B0A006D8F71 /* Utils */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -627,6 +761,41 @@
 				9B8273B71C9A9088006D8F71 /* EmulatorCore.mm */,
 			);
 			name = Core;
+			sourceTree = "<group>";
+		};
+		9B8273BD1C9A9B0A006D8F71 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9B8273C11C9A9B74006D8F71 /* Audio */,
+				9B8273CA1C9A9B74006D8F71 /* Timing */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		9B8273C11C9A9B74006D8F71 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				9B8273C21C9A9B74006D8F71 /* OEGameAudio.h */,
+				9B8273C31C9A9B74006D8F71 /* OEGameAudio.m */,
+				9B8273C41C9A9B74006D8F71 /* OERingBuffer.h */,
+				9B8273C51C9A9B74006D8F71 /* OERingBuffer.m */,
+				9B8273C61C9A9B74006D8F71 /* OESoundInterface.h */,
+				9B8273C71C9A9B74006D8F71 /* OESoundInterface.mm */,
+				9B8273C81C9A9B74006D8F71 /* TPCircularBuffer.c */,
+				9B8273C91C9A9B74006D8F71 /* TPCircularBuffer.h */,
+			);
+			name = Audio;
+			path = Shared/Utils/Audio;
+			sourceTree = "<group>";
+		};
+		9B8273CA1C9A9B74006D8F71 /* Timing */ = {
+			isa = PBXGroup;
+			children = (
+				9B8273CB1C9A9B74006D8F71 /* OETimingUtils.h */,
+				9B8273CC1C9A9B74006D8F71 /* OETimingUtils.m */,
+			);
+			name = Timing;
+			path = Shared/Utils/Timing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -707,7 +876,9 @@
 				9B82633D1C9A05BE006D8F71 /* 2xsai.cpp in Sources */,
 				9B8263931C9A05BE006D8F71 /* guid.cpp in Sources */,
 				9B82605F1C9A05BE006D8F71 /* addons.cpp in Sources */,
+				9B8273CE1C9A9B74006D8F71 /* OERingBuffer.m in Sources */,
 				9B8263521C9A05BE006D8F71 /* mc.cpp in Sources */,
+				9B7D1AE91C9AD18700FE68AE /* math_mat3.c in Sources */,
 				9B82633B1C9A05BE006D8F71 /* emufile.cpp in Sources */,
 				9B82632B1C9A05BE006D8F71 /* armcpu.cpp in Sources */,
 				9B82634D1C9A05BE006D8F71 /* JitCommon.cpp in Sources */,
@@ -719,6 +890,7 @@
 				9B8263A81C9A05BE006D8F71 /* task.cpp in Sources */,
 				9B8263A61C9A05BE006D8F71 /* md5.cpp in Sources */,
 				9B8264C81C9A05BE006D8F71 /* tinyxmlparser.cpp in Sources */,
+				9B7D1ADE1C9AD18700FE68AE /* math_debug.c in Sources */,
 				9B8263361C9A05BE006D8F71 /* debug.cpp in Sources */,
 				9B8263661C9A05BE006D8F71 /* saves.cpp in Sources */,
 				9B8263401C9A05BE006D8F71 /* hq2x.cpp in Sources */,
@@ -727,22 +899,35 @@
 				9B8264C71C9A05BE006D8F71 /* tinyxmlerror.cpp in Sources */,
 				9B8260541C9A05BE006D8F71 /* slot1_r4.cpp in Sources */,
 				9B82605E1C9A05BE006D8F71 /* slot2_rumblepak.cpp in Sources */,
+				9B8273D01C9A9B74006D8F71 /* TPCircularBuffer.c in Sources */,
+				9B7D1AD81C9AD18700FE68AE /* math_asinf.c in Sources */,
+				9B7D1AF01C9AD18700FE68AE /* math_sinfv.c in Sources */,
+				9B7D1ADC1C9AD18700FE68AE /* math_cosf.c in Sources */,
 				9B8263341C9A05BE006D8F71 /* CpuBase.cpp in Sources */,
+				9B7D1AE31C9AD18700FE68AE /* math_frexpf.c in Sources */,
+				9B7D1AF51C9AD18700FE68AE /* math_tanhf.c in Sources */,
 				9B8260551C9A05BE006D8F71 /* slot1_retail.cpp in Sources */,
 				9B8260591C9A05BE006D8F71 /* slot2_guitarGrip.cpp in Sources */,
 				9B8263981C9A05BE006D8F71 /* fatfile.cpp in Sources */,
+				9B8273CD1C9A9B74006D8F71 /* OEGameAudio.m in Sources */,
+				9B7D1AF71C9AD18700FE68AE /* math_vec3.c in Sources */,
 				9B8263301C9A05BE006D8F71 /* cheatSystem.cpp in Sources */,
 				9B8263321C9A05BE006D8F71 /* common.cpp in Sources */,
 				9B82639E1C9A05BE006D8F71 /* partition.cpp in Sources */,
 				9B82639C1C9A05BE006D8F71 /* libfat_public_api.cpp in Sources */,
 				9B82605C1C9A05BE006D8F71 /* slot2_paddle.cpp in Sources */,
+				9B7D1AEF1C9AD18700FE68AE /* math_sinf.c in Sources */,
 				9B8263591C9A05BE006D8F71 /* MMU.cpp in Sources */,
+				9B7D1AEE1C9AD18700FE68AE /* math_sincosf.c in Sources */,
 				9B8263451C9A05BE006D8F71 /* firmware.cpp in Sources */,
+				9B7D1ADD1C9AD18700FE68AE /* math_coshf.c in Sources */,
 				9B8263431C9A05BE006D8F71 /* lq2x.cpp in Sources */,
+				9B7D1AE81C9AD18700FE68AE /* math_mat2.c in Sources */,
 				9B8264CB1C9A05BE006D8F71 /* version.cpp in Sources */,
 				9B8264C51C9A05BE006D8F71 /* tinystr.cpp in Sources */,
 				9B8263631C9A05BE006D8F71 /* render3D.cpp in Sources */,
 				9B82638C1C9A05BE006D8F71 /* datetime.cpp in Sources */,
+				9B7D1AEC1C9AD18700FE68AE /* math_powf.c in Sources */,
 				9B8263A71C9A05BE006D8F71 /* MemBuffer.cpp in Sources */,
 				9B8263971C9A05BE006D8F71 /* fatdir.cpp in Sources */,
 				9B82632C1C9A05BE006D8F71 /* ArmLJit.cpp in Sources */,
@@ -752,44 +937,65 @@
 				9B8263921C9A05BE006D8F71 /* FileMap.cpp in Sources */,
 				9B8264CA1C9A05BE006D8F71 /* xstring.cpp in Sources */,
 				9B82633A1C9A05BE006D8F71 /* driver.cpp in Sources */,
+				9B7D1ADB1C9AD18700FE68AE /* math_ceilf.c in Sources */,
 				9B82632E1C9A05BE006D8F71 /* bios.cpp in Sources */,
 				9B82633C1C9A05BE006D8F71 /* FIFO.cpp in Sources */,
 				9B82633F1C9A05BE006D8F71 /* epx.cpp in Sources */,
 				9B8263951C9A05BE006D8F71 /* directory.cpp in Sources */,
+				9B7D1AE61C9AD18700FE68AE /* math_log10f.c in Sources */,
 				9B8263531C9A05BE006D8F71 /* metaspu.cpp in Sources */,
+				9B7D1AF41C9AD18700FE68AE /* math_tanf.c in Sources */,
+				9B7D1AEA1C9AD18700FE68AE /* math_mat4.c in Sources */,
+				9B7D1AE71C9AD18700FE68AE /* math_logf.c in Sources */,
+				9B7D1AF31C9AD18700FE68AE /* math_sqrtfv.c in Sources */,
 				9B8273B81C9A9088006D8F71 /* EmulatorCore.mm in Sources */,
+				9B7D1AF11C9AD18700FE68AE /* math_sinhf.c in Sources */,
 				9B8263621C9A05BE006D8F71 /* readwrite.cpp in Sources */,
+				9B7D1AEB1C9AD18700FE68AE /* math_modf.c in Sources */,
+				9B7D1AF61C9AD18700FE68AE /* math_vec2.c in Sources */,
 				9B8263991C9A05BE006D8F71 /* file_allocation_table.cpp in Sources */,
 				9B8263511C9A05BE006D8F71 /* matrix.cpp in Sources */,
 				9B82638E1C9A05BE006D8F71 /* decrypt.cpp in Sources */,
 				9B8263281C9A05BE006D8F71 /* ArmAnalyze.cpp in Sources */,
 				9B82638B1C9A05BE006D8F71 /* ConvertUTF.c in Sources */,
 				9B8263641C9A05BE006D8F71 /* ROMReader.cpp in Sources */,
+				9B7D1AE21C9AD18700FE68AE /* math_fmodf.c in Sources */,
 				9B8264CC1C9A05BE006D8F71 /* wifi.cpp in Sources */,
 				9B8263671C9A05BE006D8F71 /* slot1.cpp in Sources */,
 				9B82636B1C9A05BE006D8F71 /* thumb_instructions.cpp in Sources */,
 				9B82589C1C9A03F4006D8F71 /* ViewController.swift in Sources */,
 				9B8264C61C9A05BE006D8F71 /* tinyxml.cpp in Sources */,
 				9B8263601C9A05BE006D8F71 /* path.cpp in Sources */,
+				9B8273CF1C9A9B74006D8F71 /* OESoundInterface.mm in Sources */,
 				9B82605B1C9A05BE006D8F71 /* slot2_none.cpp in Sources */,
 				9B8260571C9A05BE006D8F71 /* slot2_expMemory.cpp in Sources */,
 				9B8263261C9A05BE006D8F71 /* arm_instructions.cpp in Sources */,
+				9B7D1ADF1C9AD18700FE68AE /* math_expf.c in Sources */,
+				9B7D1ADA1C9AD18700FE68AE /* math_atanf.c in Sources */,
 				9B8263391C9A05BE006D8F71 /* Disassembler.cpp in Sources */,
+				9B7D1AD91C9AD18700FE68AE /* math_atan2f.c in Sources */,
 				9B82639B1C9A05BE006D8F71 /* libfat.cpp in Sources */,
 				9B8273AE1C9A08A0006D8F71 /* throttle.cpp in Sources */,
 				9B82605D1C9A05BE006D8F71 /* slot2_piano.cpp in Sources */,
+				9B8273D11C9A9B74006D8F71 /* OETimingUtils.m in Sources */,
+				9B7D1AF21C9AD18700FE68AE /* math_sqrtf.c in Sources */,
 				9B8263481C9A05BE006D8F71 /* gfx3d.cpp in Sources */,
+				9B7D1AE51C9AD18700FE68AE /* math_ldexpf.c in Sources */,
 				9B8263911C9A05BE006D8F71 /* emufat.cpp in Sources */,
 				9B8263411C9A05BE006D8F71 /* hq4x.cpp in Sources */,
 				9B82636A1C9A05BE006D8F71 /* texcache.cpp in Sources */,
+				9B7D1AED1C9AD18700FE68AE /* math_runfast.c in Sources */,
 				9B82638F1C9A05BE006D8F71 /* header.cpp in Sources */,
 				9B82589A1C9A03F4006D8F71 /* AppDelegate.swift in Sources */,
+				9B7D1AE41C9AD18700FE68AE /* math_invsqrtf.c in Sources */,
 				9B8263611C9A05BE006D8F71 /* rasterize.cpp in Sources */,
-				9B8273831C9A08A0006D8F71 /* main.cpp in Sources */,
 				9B8263461C9A05BE006D8F71 /* fs-linux.cpp in Sources */,
 				9B82632D1C9A05BE006D8F71 /* ArmThreadedInterpreter.cpp in Sources */,
 				9B82634B1C9A05BE006D8F71 /* GPU_osd_stub.cpp in Sources */,
+				9B7D1AD71C9AD18700FE68AE /* math_acosf.c in Sources */,
 				9B8263691C9A05BE006D8F71 /* SPU.cpp in Sources */,
+				9B7D1AE11C9AD18700FE68AE /* math_floorf.c in Sources */,
+				9B7D1AF81C9AD18700FE68AE /* math_vec4.c in Sources */,
 				9B8263491C9A05BE006D8F71 /* GPU.cpp in Sources */,
 				9B8263331C9A05BE006D8F71 /* cp15.cpp in Sources */,
 				9B82635A1C9A05BE006D8F71 /* movie.cpp in Sources */,
@@ -937,10 +1143,10 @@
 					"-mfpu=neon",
 					"-marm",
 					"-mtune=cortex-a9",
-					"-DLIGHTNING_ARM",
-					"-DHAVE_NEON=1",
-					"-DHAVE_JIT=1",
+					"-DHAVE_NEON",
+					"-DHAVE_JIT",
 					"-DIOS",
+					"-DOBJ_C",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = io.mystical.Nitrogen;
@@ -981,10 +1187,10 @@
 					"-mfpu=neon",
 					"-marm",
 					"-mtune=cortex-a9",
-					"-DLIGHTNING_ARM",
-					"-DHAVE_NEON=1",
-					"-DHAVE_JIT=1",
+					"-DHAVE_NEON",
+					"-DHAVE_JIT",
 					"-DIOS",
+					"-DOBJ_C",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = io.mystical.Nitrogen;

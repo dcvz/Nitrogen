@@ -32,6 +32,8 @@
 #ifndef __lightning_core_arm_h
 #define __lightning_core_arm_h
 
+#import "asm.h"
+
 #define JIT_R_NUM			4
 static const jit_gpr_t
 jit_r_order[JIT_R_NUM] = {

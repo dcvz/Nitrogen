@@ -393,7 +393,7 @@ void JitLutDeInit();
 
 void JitLutReset();
 
-void FlushIcacheSection(u8 *begin, u8 *end);
+void FlushIcacheSection(void *begin, size_t length);
 
 //extern CACHE_ALIGN u8 g_RecompileCounts[(1<<26)/16];
 
