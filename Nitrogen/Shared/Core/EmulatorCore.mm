@@ -368,12 +368,12 @@ bool nds4droid_loadrom(const char* path) {
         SPU_SetSynchMode(1, 2);
         SPU_SetVolume(100);
 
-        static const char* nickname = "mystical";
+        static const char* nickname = "dcvz";
         fw_config.nickname_len = strlen(nickname);
         for(int i = 0 ; i < fw_config.nickname_len ; ++i)
             fw_config.nickname[i] = nickname[i];
 
-        static const char* message = "what sinks your battleship?";
+        static const char* message = "let there be light";
         fw_config.message_len = strlen(message);
         for(int i = 0 ; i < fw_config.message_len ; ++i)
             fw_config.message[i] = message[i];
@@ -592,7 +592,6 @@ bool nds4droid_loadrom(const char* path) {
 - (void)loadSettings {
     CommonSettings.num_cores = sysconf( _SC_NPROCESSORS_ONLN );
     NSLog(@"%i cores detected", CommonSettings.num_cores);
-    CommonSettings.advanced_timing = true;
     CommonSettings.cheatsDisable = false;
     CommonSettings.autodetectBackupMethod = 0;
     //enableMicrophone = false;
