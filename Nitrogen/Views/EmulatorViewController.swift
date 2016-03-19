@@ -15,6 +15,7 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
     // MARK: - Attributes (View)
 
     private let mainView: GLKView = GLKView.newAutoLayoutView()
+    private let titleLabel: UILabel = UILabel.newAutoLayoutView()
     private let touchView: GLKView = GLKView.newAutoLayoutView()
 
 
@@ -44,7 +45,7 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
     // MARK: - Private Methods
 
     private func setupView() {
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = .whiteColor()
 
         mainView.tag = 44
         mainView.delegate = self
@@ -53,15 +54,25 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
         mainView.autoPinEdgeToSuperviewEdge(.Left)
         mainView.autoPinEdgeToSuperviewEdge(.Top)
         mainView.autoPinEdgeToSuperviewEdge(.Right)
+        mainView.autoMatchDimension(.Height, toDimension: .Width, ofView: mainView, withMultiplier: (emulator.screenRect().height / emulator.screenRect().width))
 
         touchView.delegate = self
         touchView.enableSetNeedsDisplay = false
         view.addSubview(touchView)
-        touchView.autoPinEdgeToSuperviewEdge(.Left, withInset: 8)
-        touchView.autoPinEdge(.Top, toEdge: .Bottom, ofView: mainView, withOffset: 8)
-        touchView.autoPinEdgeToSuperviewEdge(.Right, withInset: 8)
-        touchView.autoMatchDimension(.Height, toDimension: .Height, ofView: mainView, withMultiplier: 0.8)
-        touchView.autoPinEdgeToSuperviewEdge(.Bottom, withInset: 150)
+        touchView.autoPinEdgeToSuperviewEdge(.Left, withInset: 0)
+        touchView.autoPinEdgeToSuperviewEdge(.Right, withInset: 0)
+        touchView.autoMatchDimension(.Height, toDimension: .Width, ofView: touchView, withMultiplier: (emulator.screenRect().height / emulator.screenRect().width))
+
+        titleLabel.backgroundColor = .blackColor()
+        titleLabel.text = ""
+        titleLabel.textAlignment = .Center
+        titleLabel.textColor = .whiteColor()
+        view.addSubview(titleLabel)
+        titleLabel.autoPinEdgeToSuperviewEdge(.Left)
+        titleLabel.autoPinEdgeToSuperviewEdge(.Right)
+        titleLabel.autoSetDimension(.Height, toSize: 30)
+        titleLabel.autoPinEdge(.Top, toEdge: .Bottom, ofView: mainView)
+        titleLabel.autoPinEdge(.Bottom, toEdge: .Top, ofView: touchView)
     }
 
     private func setupGL() {
@@ -87,7 +98,7 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
         let documentsDirectoryURL: NSURL! =  try! NSFileManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
         let romName: String! = documentsDirectoryURL.lastPathComponent?.componentsSeparatedByString(".")[0]
         let batterySavesDirectoryPath: NSURL! = documentsDirectoryURL.URLByAppendingPathComponent("Battery States").URLByAppendingPathComponent(romName)
-        let ndsFile: NSURL! = documentsDirectoryURL.URLByAppendingPathComponent("game.nds")
+        let ndsFile: NSURL! = documentsDirectoryURL.URLByAppendingPathComponent("zelda.nds")
 
         do {
             try NSFileManager.defaultManager().createDirectoryAtURL(batterySavesDirectoryPath, withIntermediateDirectories: true, attributes: nil)
@@ -179,5 +190,42 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
         }
 
         glDisableVertexAttribArray(GLuint(GLKVertexAttrib.Position.rawValue))
+    }
+
+
+    // MARK: - UIView Methods
+
+    private func transmitTouch(touch: UITouch) {
+        let touchLocation = touch.locationInView(touchView)
+        if touchLocation.y < 0 || touchLocation.y > touchView.bounds.height { return }
+        let mappedTouchLocation = CGPointApplyAffineTransform(
+            touchLocation,
+            CGAffineTransformMakeScale(emulator.screenRect().width / touchView.bounds.width, emulator.screenRect().height / touchView.bounds.height)
+        )
+        emulator.touchScreenAtPoint(mappedTouchLocation)
+    }
+
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if let touch = touches.first {
+            transmitTouch(touch)
+        }
+    }
+
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if let touch = touches.first {
+            transmitTouch(touch)
+        }
+    }
+
+    override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+        emulator.touchesEnded()
+    }
+
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        emulator.touchesEnded()
+    }
+
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
 }

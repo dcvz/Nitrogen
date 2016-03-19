@@ -28,9 +28,14 @@
 - (void)pauseEmulation;
 - (void)stop;
 
+#pragma mark - Controller Properties
+- (void)touchScreenAtPoint:(CGPoint)point;
+- (void)touchesEnded;
+
 #pragma mark - Emulation Properties
 - (const void *)videoBuffer;
 - (CGRect)screenRect;
+- (CGSize)aspectSize;
 - (CGSize)bufferSize;
 - (GLenum)pixelFormat;
 - (GLenum)pixelType;

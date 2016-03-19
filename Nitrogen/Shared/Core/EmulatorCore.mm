@@ -33,9 +33,14 @@
 
 #define GPU_DISPLAY_WIDTH							256
 #define GPU_DISPLAY_HEIGHT							192
-#define SPU_SAMPLE_SIZE								8
+#define GPU_SCREEN_SIZE_BYTES						(GPU_DISPLAY_WIDTH * GPU_DISPLAY_HEIGHT * GPU_DISPLAY_COLOR_DEPTH)
+
 #define DS_FRAMES_PER_SECOND						59.8261
+
+#define SPU_SAMPLE_SIZE								8
 #define SPU_SAMPLE_RATE								44100.0
+#define SPU_NUMBER_CHANNELS							2
+#define SPU_SAMPLE_RESOLUTION						16
 #define SPU_BUFFER_BYTES							((SPU_SAMPLE_RATE / DS_FRAMES_PER_SECOND) * SPU_SAMPLE_SIZE)
 
 
@@ -302,7 +307,6 @@ bool nds4droid_loadrom(const char* path) {
         [self loadSettings];
 
         Desmume_InitOnce();
-        //gpu_SetRotateScreen(video.rotation);
         NDS_FillDefaultFirmwareConfigData(&fw_config);
 
         INFO("Init NDS");
@@ -464,19 +468,33 @@ bool nds4droid_loadrom(const char* path) {
     }
 }
 
+#pragma mark - Controller Methods
+
+- (void)touchScreenAtPoint:(CGPoint)point {
+    NDS_setTouchPos(point.x, point.y);
+}
+
+- (void)touchesEnded {
+    NDS_releaseTouch();
+}
+
 
 #pragma mark - Emulation Properties
 
 - (const void *)videoBuffer {
-    return video.buffer;
+    return video.finalBuffer();
 }
 
 - (CGRect)screenRect {
-    return CGRectMake(0, 0, GPU_DISPLAY_WIDTH, GPU_DISPLAY_HEIGHT);
+    return CGRectMake(0, 0, video.width, video.height / 2);
+}
+
+- (CGSize)aspectSize {
+    return CGSizeMake(2, 3);
 }
 
 - (CGSize)bufferSize {
-    return CGSizeMake(GPU_DISPLAY_WIDTH, GPU_DISPLAY_HEIGHT);
+    return CGSizeMake(video.width, video.height);
 }
 
 - (GLenum)pixelFormat {
@@ -501,7 +519,7 @@ bool nds4droid_loadrom(const char* path) {
 }
 
 - (NSUInteger)channelCount {
-    return 2;
+    return SPU_NUMBER_CHANNELS;
 }
 
 - (double)audioSampleRate {
@@ -525,7 +543,7 @@ bool nds4droid_loadrom(const char* path) {
 }
 
 - (NSUInteger)audioBitDepth {
-    return 16;
+    return SPU_SAMPLE_RESOLUTION;
 }
 
 - (OERingBuffer *)ringBufferAtIndex:(NSUInteger)index {
@@ -573,7 +591,7 @@ bool nds4droid_loadrom(const char* path) {
 - (void)loadSettings {
     CommonSettings.num_cores = sysconf( _SC_NPROCESSORS_ONLN );
     NSLog(@"%i cores detected", CommonSettings.num_cores);
-    CommonSettings.advanced_timing = false;
+    CommonSettings.advanced_timing = true;
     CommonSettings.cheatsDisable = false;
     CommonSettings.autodetectBackupMethod = 0;
     //enableMicrophone = false;
@@ -590,7 +608,7 @@ bool nds4droid_loadrom(const char* path) {
     CommonSettings.hud.ShowLagFrameCounter = false;
     CommonSettings.hud.ShowMicrophone = false;
     CommonSettings.hud.ShowRTC = false;
-    video.screengap = 0;
+    video.screengap = 256*192*4;
     CommonSettings.showGpu.main = 1;
     CommonSettings.showGpu.sub = 1;
     frameskiprate = 1;
@@ -598,8 +616,8 @@ bool nds4droid_loadrom(const char* path) {
     CommonSettings.micMode = (TCommonSettings::MicMode)1;
 
     CommonSettings.advanced_timing = false;
-    CommonSettings.CpuMode = 0;
-    CommonSettings.jit_max_block_size = 10;
+    CommonSettings.CpuMode = 1;
+    CommonSettings.jit_max_block_size = 12;
 
     CommonSettings.GFX3D_Zelda_Shadow_Depth_Hack = 0;
     CommonSettings.GFX3D_HighResolutionInterpolateColor = 0;
