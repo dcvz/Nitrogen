@@ -32,11 +32,6 @@ class ViewController: UIViewController {
         audioCore.startAudio()
         emulator.loadROM(ndsFile.path)
         emulator.startEmulation()
-
-        //NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        //NSString *documentsDirectory = [paths objectAtIndex:0];
-        //NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"txtFile.txt"];
-        //NSString *content = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
     }
 
     override func didReceiveMemoryWarning() {

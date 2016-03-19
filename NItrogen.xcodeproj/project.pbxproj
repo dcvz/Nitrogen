@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08F6B8DEC7426725A9A7F8BE /* Pods_Nitrogen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A76DA064F4E6E284CA90F69 /* Pods_Nitrogen.framework */; };
 		9B7D1AD71C9AD18700FE68AE /* math_acosf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AB11C9AD18700FE68AE /* math_acosf.c */; };
 		9B7D1AD81C9AD18700FE68AE /* math_asinf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AB21C9AD18700FE68AE /* math_asinf.c */; };
 		9B7D1AD91C9AD18700FE68AE /* math_atan2f.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AB31C9AD18700FE68AE /* math_atan2f.c */; };
@@ -161,6 +162,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C8F1370AB946C7B8CB02CA4 /* Pods-Nitrogen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nitrogen.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nitrogen/Pods-Nitrogen.release.xcconfig"; sourceTree = "<group>"; };
+		3873115AC48EE23F7E7A3C1F /* Pods-Nitrogen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nitrogen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Nitrogen/Pods-Nitrogen.debug.xcconfig"; sourceTree = "<group>"; };
+		8A76DA064F4E6E284CA90F69 /* Pods_Nitrogen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nitrogen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B7D1AB11C9AD18700FE68AE /* math_acosf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_acosf.c; sourceTree = "<group>"; };
 		9B7D1AB21C9AD18700FE68AE /* math_asinf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_asinf.c; sourceTree = "<group>"; };
 		9B7D1AB31C9AD18700FE68AE /* math_atan2f.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_atan2f.c; sourceTree = "<group>"; };
@@ -415,6 +419,7 @@
 				9B8273D31C9A9C53006D8F71 /* OpenGLES.framework in Frameworks */,
 				9B8273B21C9A0B53006D8F71 /* libz.tbd in Frameworks */,
 				9B8273B01C9A0B4D006D8F71 /* libc++.tbd in Frameworks */,
+				08F6B8DEC7426725A9A7F8BE /* Pods_Nitrogen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +473,7 @@
 				9B8258981C9A03F4006D8F71 /* Nitrogen */,
 				9B8273B31C9A0B93006D8F71 /* Frameworks */,
 				9B8258971C9A03F4006D8F71 /* Products */,
+				D31147BA573068CB091FA49E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -783,6 +789,7 @@
 				9B8273D21C9A9C53006D8F71 /* OpenGLES.framework */,
 				9B8273B11C9A0B53006D8F71 /* libz.tbd */,
 				9B8273AF1C9A0B4D006D8F71 /* libc++.tbd */,
+				8A76DA064F4E6E284CA90F69 /* Pods_Nitrogen.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -868,6 +875,15 @@
 			path = SoundTouch;
 			sourceTree = "<group>";
 		};
+		D31147BA573068CB091FA49E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3873115AC48EE23F7E7A3C1F /* Pods-Nitrogen.debug.xcconfig */,
+				1C8F1370AB946C7B8CB02CA4 /* Pods-Nitrogen.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -875,9 +891,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B8258A81C9A03F4006D8F71 /* Build configuration list for PBXNativeTarget "Nitrogen" */;
 			buildPhases = (
+				D62CB560C81610226F818B2F /* Check Pods Manifest.lock */,
 				9B8258921C9A03F4006D8F71 /* Sources */,
 				9B8258931C9A03F4006D8F71 /* Frameworks */,
 				9B8258941C9A03F4006D8F71 /* Resources */,
+				996A64FEE6EAC82155F7C751 /* Embed Pods Frameworks */,
+				64E4EDEC8DCC8B574ECF14AE /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -933,6 +952,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		64E4EDEC8DCC8B574ECF14AE /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Nitrogen/Pods-Nitrogen-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		996A64FEE6EAC82155F7C751 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Nitrogen/Pods-Nitrogen-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D62CB560C81610226F818B2F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9B8258921C9A03F4006D8F71 /* Sources */ = {
@@ -1194,6 +1261,7 @@
 		};
 		9B8258A91C9A03F4006D8F71 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3873115AC48EE23F7E7A3C1F /* Pods-Nitrogen.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1216,20 +1284,17 @@
 					"$(SRCROOT)/Nitrogen/DeSmuME/metaspu/SoundTouch",
 				);
 				INFOPLIST_FILE = "Nitrogen/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NDS_FLAGS = "-DANDROID -DHAVE_LIBZ -mfloat-abi=softfp -mfpu=neon -marm -mtune=cortex-a9 -DHAVE_NEON -DHAVE_JIT -DDESMUME_IOS -DOBJ_C";
 				OTHER_CFLAGS = (
-					"-DANDROID",
-					"-DHAVE_LIBZ",
-					"-mfloat-abi=softfp",
-					"-mfpu=neon",
-					"-marm",
-					"-mtune=cortex-a9",
-					"-DHAVE_NEON",
-					"-DHAVE_JIT",
-					"-DDESMUME_IOS",
-					"-DOBJ_C",
+					"$(inherited)",
+					"${NDS_FLAGS}",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.mystical.Nitrogen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Nitrogen/Supporting Files/Nitrogen-Bridging-Header.h";
@@ -1238,6 +1303,7 @@
 		};
 		9B8258AA1C9A03F4006D8F71 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C8F1370AB946C7B8CB02CA4 /* Pods-Nitrogen.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1260,20 +1326,17 @@
 					"$(SRCROOT)/Nitrogen/DeSmuME/metaspu/SoundTouch",
 				);
 				INFOPLIST_FILE = "Nitrogen/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NDS_FLAGS = "-DANDROID -DHAVE_LIBZ -mfloat-abi=softfp -mfpu=neon -marm -mtune=cortex-a9 -DHAVE_NEON -DHAVE_JIT -DDESMUME_IOS -DOBJ_C";
 				OTHER_CFLAGS = (
-					"-DANDROID",
-					"-DHAVE_LIBZ",
-					"-mfloat-abi=softfp",
-					"-mfpu=neon",
-					"-marm",
-					"-mtune=cortex-a9",
-					"-DHAVE_NEON",
-					"-DHAVE_JIT",
-					"-DDESMUME_IOS",
-					"-DOBJ_C",
+					"$(inherited)",
+					"${NDS_FLAGS}",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.mystical.Nitrogen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Nitrogen/Supporting Files/Nitrogen-Bridging-Header.h";
