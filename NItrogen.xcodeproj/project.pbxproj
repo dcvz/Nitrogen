@@ -159,6 +159,7 @@
 		9BF3E5161C9D425F007B1565 /* sse_optimized.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3E5001C9D425F007B1565 /* sse_optimized.cpp */; };
 		9BF3E5171C9D425F007B1565 /* TDStretch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3E5021C9D425F007B1565 /* TDStretch.cpp */; };
 		9BF3E5181C9D425F007B1565 /* WavFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3E5041C9D425F007B1565 /* WavFile.cpp */; };
+		9BF3E51C1C9D56C9007B1565 /* EmulatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3E51B1C9D56C9007B1565 /* EmulatorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -407,6 +408,8 @@
 		9BF3E5031C9D425F007B1565 /* TDStretch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDStretch.h; sourceTree = "<group>"; };
 		9BF3E5041C9D425F007B1565 /* WavFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WavFile.cpp; sourceTree = "<group>"; };
 		9BF3E5051C9D425F007B1565 /* WavFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WavFile.h; sourceTree = "<group>"; };
+		9BF3E51B1C9D56C9007B1565 /* EmulatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmulatorViewController.swift; sourceTree = "<group>"; };
+		9BF3E51D1C9D7273007B1565 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -520,6 +523,7 @@
 			children = (
 				9B8258AE1C9A041C006D8F71 /* Storyboards */,
 				9B82589B1C9A03F4006D8F71 /* ViewController.swift */,
+				9BF3E51B1C9D56C9007B1565 /* EmulatorViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -783,6 +787,7 @@
 		9B8273B31C9A0B93006D8F71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9BF3E51D1C9D7273007B1565 /* QuartzCore.framework */,
 				9B8273D81C9AA224006D8F71 /* AudioUnit.framework */,
 				9B8273D61C9AA21E006D8F71 /* AudioToolbox.framework */,
 				9B8273D41C9A9C5B006D8F71 /* GLKit.framework */,
@@ -1117,6 +1122,7 @@
 				9B82605B1C9A05BE006D8F71 /* slot2_none.cpp in Sources */,
 				9B8260571C9A05BE006D8F71 /* slot2_expMemory.cpp in Sources */,
 				9B8263261C9A05BE006D8F71 /* arm_instructions.cpp in Sources */,
+				9BF3E51C1C9D56C9007B1565 /* EmulatorViewController.swift in Sources */,
 				9B7D1ADF1C9AD18700FE68AE /* math_expf.c in Sources */,
 				9B7D1ADA1C9AD18700FE68AE /* math_atanf.c in Sources */,
 				9B8263391C9A05BE006D8F71 /* Disassembler.cpp in Sources */,
@@ -1182,7 +1188,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -1227,7 +1232,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -1267,7 +1271,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CLANG_ENABLE_MODULES = NO;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
 				GCC_NO_COMMON_BLOCKS = NO;
@@ -1309,7 +1312,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CLANG_ENABLE_MODULES = NO;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
 				GCC_NO_COMMON_BLOCKS = NO;

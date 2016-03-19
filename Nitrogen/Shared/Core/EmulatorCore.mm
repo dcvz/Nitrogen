@@ -457,7 +457,7 @@ bool nds4droid_loadrom(const char* path) {
         @autoreleasepool {
             if (self.running) {
                 [self executeFrame];
-                //[self.parent updateDisplays];
+                self.updateFrameBlock();
             }
         }
 
@@ -469,7 +469,7 @@ bool nds4droid_loadrom(const char* path) {
 #pragma mark - Emulation Properties
 
 - (const void *)videoBuffer {
-    return video.filteredbuffer;
+    return video.buffer;
 }
 
 - (CGRect)screenRect {

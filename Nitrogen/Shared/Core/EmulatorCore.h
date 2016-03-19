@@ -17,6 +17,8 @@
     double _sampleRate;
 }
 
+
+@property (nonatomic, copy) void (^updateFrameBlock)();
 @property (strong, nonatomic) NSString *batterySavesPath;
 
 #pragma mark - Emulation Setup Methods
