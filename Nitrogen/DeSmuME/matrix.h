@@ -35,7 +35,7 @@
 
 #ifdef HAVE_NEON
 extern "C" {
-#include "android/math-neon/math_neon.h"
+#include "ios/math-neon/math_neon.h"
 }
 #endif
 

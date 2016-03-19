@@ -75,7 +75,6 @@ bool FrameLimit = true;
 //static int snd_synchmode=0;
 //static int snd_synchmethod=0;
 const char* IniName = NULL;
-char androidTempPath[1024];
 bool useMmapForRomLoading;
 bool enableMicrophone = false;
 

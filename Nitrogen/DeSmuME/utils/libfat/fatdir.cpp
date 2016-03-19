@@ -34,7 +34,7 @@
 
 #ifndef _MSC_VER
 #include <unistd.h>
-#ifndef ANDROID
+#ifndef DESMUME_IOS
 #include <sys/dir.h>
 #endif
 #endif

@@ -46,10 +46,6 @@
 #include "NDSSystem.h"
 #include "utils/task.h"
 
-#ifdef ANDROID
-//#include <android/log.h>
-#endif
-
 //#undef FORCEINLINE
 //#define FORCEINLINE
 //#undef INLINE

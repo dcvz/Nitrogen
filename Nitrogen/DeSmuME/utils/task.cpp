@@ -24,7 +24,6 @@
 #else
 #include <pthread.h>
 #include <sched.h>
-//#include <android/log.h>
 #include <unistd.h>
 #endif
 
@@ -190,9 +189,8 @@ public:
 static void* taskProc(void *arg)
 {
 	Task::Impl *ctx = (Task::Impl *)arg;
-	//if(ctx->spinlock)
-	//	__android_log_print(ANDROID_LOG_INFO,"nds4droid","Started spinlock task");
-	do {
+
+    do {
 		
 		//wait for a chunk of work
 		if(ctx->spinlock) 
@@ -200,7 +198,6 @@ static void* taskProc(void *arg)
 			while(!ctx->bIncomingWork) usleep(0);
 			ctx->bIncomingWork = false;
 			if (ctx->work != NULL) {
-				//__android_log_print(ANDROID_LOG_INFO,"nds4droid","Got spinlock work");
 				ctx->ret = ctx->work(ctx->param);
 				ctx->bWorkDone = true;
 			} else {

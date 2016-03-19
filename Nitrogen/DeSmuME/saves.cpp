@@ -48,8 +48,6 @@
 
 #ifdef _WINDOWS
 #include "windows/main.h"
-#elif defined(ANDROID)
-#include "android/main.h"
 #endif
 
 int lastSaveState = 0;		//Keeps track of last savestate used for quick save/load functions

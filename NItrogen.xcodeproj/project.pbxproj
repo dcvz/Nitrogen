@@ -552,7 +552,7 @@
 				9B825DFE1C9A05BD006D8F71 /* utils */,
 				9B825DC71C9A05BD006D8F71 /* metaspu */,
 				9B825D9F1C9A05BD006D8F71 /* filter */,
-				9B826C3E1C9A089F006D8F71 /* android */,
+				9B826C3E1C9A089F006D8F71 /* ios */,
 				9B8258BE1C9A05BC006D8F71 /* addons.cpp */,
 				9B8258BF1C9A05BC006D8F71 /* addons.h */,
 				9B825D711C9A05BD006D8F71 /* arm_instructions.cpp */,
@@ -773,15 +773,15 @@
 			path = tinyxml;
 			sourceTree = "<group>";
 		};
-		9B826C3E1C9A089F006D8F71 /* android */ = {
+		9B826C3E1C9A089F006D8F71 /* ios */ = {
 			isa = PBXGroup;
 			children = (
 				9B7D1AAE1C9AD18700FE68AE /* math-neon */,
 				9B8270E81C9A08A0006D8F71 /* throttle.cpp */,
 				9B8270E91C9A08A0006D8F71 /* throttle.h */,
 			);
-			name = android;
-			path = Nitrogen/DeSmuME/android;
+			name = ios;
+			path = Nitrogen/DeSmuME/ios;
 			sourceTree = SOURCE_ROOT;
 		};
 		9B8273B31C9A0B93006D8F71 /* Frameworks */ = {
@@ -1279,17 +1279,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/Nitrogen/DeSmuME",
-					"$(SRCROOT)/Nitrogen/DeSmuME/android/",
-					"$(SRCROOT)/Nitrogen/DeSmuME/android/7z/CPP",
-					"$(SRCROOT)/Nitrogen/DeSmuME/android/7z/CPP/include_windows",
-					"$(SRCROOT)/Nitrogen/DeSmuME/android/7z/CPP/myWindows",
+					"$(SRCROOT)/Nitrogen/DeSmuME/ios/",
 					"$(SRCROOT)/Nitrogen/DeSmuME/utils/lightning/include",
 					"$(SRCROOT)/Nitrogen/DeSmuME/metaspu/SoundTouch",
 				);
 				INFOPLIST_FILE = "Nitrogen/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				NDS_FLAGS = "-DANDROID -DHAVE_LIBZ -mfloat-abi=softfp -mfpu=neon -marm -mtune=cortex-a9 -DHAVE_NEON -DHAVE_JIT -DDESMUME_IOS -DOBJ_C";
+				NDS_FLAGS = "-DHAVE_LIBZ -mfloat-abi=softfp -mfpu=neon -marm -mtune=cortex-a9 -DHAVE_NEON -DHAVE_JIT -DDESMUME_IOS -DOBJ_C";
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"${NDS_FLAGS}",
@@ -1320,17 +1317,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/Nitrogen/DeSmuME",
-					"$(SRCROOT)/Nitrogen/DeSmuME/android/",
-					"$(SRCROOT)/Nitrogen/DeSmuME/android/7z/CPP",
-					"$(SRCROOT)/Nitrogen/DeSmuME/android/7z/CPP/include_windows",
-					"$(SRCROOT)/Nitrogen/DeSmuME/android/7z/CPP/myWindows",
+					"$(SRCROOT)/Nitrogen/DeSmuME/ios/",
 					"$(SRCROOT)/Nitrogen/DeSmuME/utils/lightning/include",
 					"$(SRCROOT)/Nitrogen/DeSmuME/metaspu/SoundTouch",
 				);
 				INFOPLIST_FILE = "Nitrogen/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				NDS_FLAGS = "-DANDROID -DHAVE_LIBZ -mfloat-abi=softfp -mfpu=neon -marm -mtune=cortex-a9 -DHAVE_NEON -DHAVE_JIT -DDESMUME_IOS -DOBJ_C";
+				NDS_FLAGS = "-DHAVE_LIBZ -mfloat-abi=softfp -mfpu=neon -marm -mtune=cortex-a9 -DHAVE_NEON -DHAVE_JIT -DDESMUME_IOS -DOBJ_C";
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"${NDS_FLAGS}",

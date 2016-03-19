@@ -427,7 +427,7 @@ void GameInfo::populate()
 
 }
 
-#if defined(_WINDOWS) || defined(ANDROID)
+#if defined(_WINDOWS) || defined(DESMUME_IOS)
 
 static std::vector<char> buffer;
 static std::vector<char> v;

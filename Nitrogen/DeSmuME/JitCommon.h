@@ -26,7 +26,7 @@
 
 #if defined(_WINDOWS) || defined(DESMUME_COCOA)
 #define MAPPED_JIT_FUNCS
-#elif defined(ANDROID)
+#elif defined(DESMUME_IOS)
 #define MAPPED_JIT_FUNCS
 #endif
 

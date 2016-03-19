@@ -8541,12 +8541,7 @@ static void cpuReserve()
     extern unsigned long long RawGetTickPerSecond();
 
     unsigned long long tps = RawGetTickPerSecond();
-#ifdef ANDROID
-    dump_log = fopen("/sdcard/desmume_dump.log", "w");
-#else
     dump_log = fopen("./desmume_dump.log", "w");
-#endif
-
     fprintf(dump_log, "RawGetTickPerSecond : %llu\n", tps);
     fprintf(dump_log, "\n");
 

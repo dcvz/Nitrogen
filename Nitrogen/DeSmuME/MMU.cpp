@@ -49,7 +49,7 @@
 #define FLOATING_SQRT
 
 #ifdef HAVE_NEON
-#include "android/math-neon/math_neon.h"
+#include "ios/math-neon/math_neon.h"
 #endif
 
 //http://home.utah.edu/~nahaj/factoring/isqrt.c.html
