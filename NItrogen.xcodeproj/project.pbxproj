@@ -146,6 +146,18 @@
 		9B8273D31C9A9C53006D8F71 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8273D21C9A9C53006D8F71 /* OpenGLES.framework */; };
 		9B8273D51C9A9C5B006D8F71 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8273D41C9A9C5B006D8F71 /* GLKit.framework */; };
 		9B8273D71C9AA21E006D8F71 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8273D61C9AA21E006D8F71 /* AudioToolbox.framework */; };
+		9BF3E4E51C9D4239007B1565 /* SndOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3E4E21C9D4239007B1565 /* SndOut.cpp */; };
+		9BF3E4E61C9D4239007B1565 /* Timestretcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3E4E41C9D4239007B1565 /* Timestretcher.cpp */; };
+		9BF3E5071C9D425F007B1565 /* AAFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3E4E91C9D425F007B1565 /* AAFilter.cpp */; };
+		9BF3E50A1C9D425F007B1565 /* cpu_detect_x86_gcc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3E4EF1C9D425F007B1565 /* cpu_detect_x86_gcc.cpp */; };
+		9BF3E50D1C9D425F007B1565 /* FIFOSampleBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3E4F21C9D425F007B1565 /* FIFOSampleBuffer.cpp */; };
+		9BF3E50E1C9D425F007B1565 /* FIRFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3E4F51C9D425F007B1565 /* FIRFilter.cpp */; };
+		9BF3E5121C9D425F007B1565 /* mmx_optimized.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3E4FA1C9D425F007B1565 /* mmx_optimized.cpp */; };
+		9BF3E5131C9D425F007B1565 /* RateTransposer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3E4FB1C9D425F007B1565 /* RateTransposer.cpp */; };
+		9BF3E5151C9D425F007B1565 /* SoundTouch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3E4FE1C9D425F007B1565 /* SoundTouch.cpp */; };
+		9BF3E5161C9D425F007B1565 /* sse_optimized.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3E5001C9D425F007B1565 /* sse_optimized.cpp */; };
+		9BF3E5171C9D425F007B1565 /* TDStretch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3E5021C9D425F007B1565 /* TDStretch.cpp */; };
+		9BF3E5181C9D425F007B1565 /* WavFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3E5041C9D425F007B1565 /* WavFile.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -366,6 +378,31 @@
 		9B8273D41C9A9C5B006D8F71 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		9B8273D61C9AA21E006D8F71 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		9B8273D81C9AA224006D8F71 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		9BF3E4E11C9D35A6007B1565 /* Nitrogen-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Nitrogen-Bridging-Header.h"; sourceTree = "<group>"; };
+		9BF3E4E21C9D4239007B1565 /* SndOut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SndOut.cpp; sourceTree = "<group>"; };
+		9BF3E4E31C9D4239007B1565 /* SndOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SndOut.h; sourceTree = "<group>"; };
+		9BF3E4E41C9D4239007B1565 /* Timestretcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timestretcher.cpp; sourceTree = "<group>"; };
+		9BF3E4E91C9D425F007B1565 /* AAFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AAFilter.cpp; sourceTree = "<group>"; };
+		9BF3E4EA1C9D425F007B1565 /* AAFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAFilter.h; sourceTree = "<group>"; };
+		9BF3E4EB1C9D425F007B1565 /* BPMDetect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPMDetect.h; sourceTree = "<group>"; };
+		9BF3E4EE1C9D425F007B1565 /* cpu_detect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpu_detect.h; sourceTree = "<group>"; };
+		9BF3E4EF1C9D425F007B1565 /* cpu_detect_x86_gcc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cpu_detect_x86_gcc.cpp; sourceTree = "<group>"; };
+		9BF3E4F21C9D425F007B1565 /* FIFOSampleBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FIFOSampleBuffer.cpp; sourceTree = "<group>"; };
+		9BF3E4F31C9D425F007B1565 /* FIFOSampleBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FIFOSampleBuffer.h; sourceTree = "<group>"; };
+		9BF3E4F41C9D425F007B1565 /* FIFOSamplePipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FIFOSamplePipe.h; sourceTree = "<group>"; };
+		9BF3E4F51C9D425F007B1565 /* FIRFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FIRFilter.cpp; sourceTree = "<group>"; };
+		9BF3E4F61C9D425F007B1565 /* FIRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FIRFilter.h; sourceTree = "<group>"; };
+		9BF3E4FA1C9D425F007B1565 /* mmx_optimized.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mmx_optimized.cpp; sourceTree = "<group>"; };
+		9BF3E4FB1C9D425F007B1565 /* RateTransposer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RateTransposer.cpp; sourceTree = "<group>"; };
+		9BF3E4FC1C9D425F007B1565 /* RateTransposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateTransposer.h; sourceTree = "<group>"; };
+		9BF3E4FE1C9D425F007B1565 /* SoundTouch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundTouch.cpp; sourceTree = "<group>"; };
+		9BF3E4FF1C9D425F007B1565 /* SoundTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundTouch.h; sourceTree = "<group>"; };
+		9BF3E5001C9D425F007B1565 /* sse_optimized.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sse_optimized.cpp; sourceTree = "<group>"; };
+		9BF3E5011C9D425F007B1565 /* STTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTypes.h; sourceTree = "<group>"; };
+		9BF3E5021C9D425F007B1565 /* TDStretch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TDStretch.cpp; sourceTree = "<group>"; };
+		9BF3E5031C9D425F007B1565 /* TDStretch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDStretch.h; sourceTree = "<group>"; };
+		9BF3E5041C9D425F007B1565 /* WavFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WavFile.cpp; sourceTree = "<group>"; };
+		9BF3E5051C9D425F007B1565 /* WavFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WavFile.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -459,6 +496,7 @@
 			isa = PBXGroup;
 			children = (
 				9B8258A51C9A03F4006D8F71 /* Info.plist */,
+				9BF3E4E11C9D35A6007B1565 /* Nitrogen-Bridging-Header.h */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -628,8 +666,12 @@
 		9B825DC71C9A05BD006D8F71 /* metaspu */ = {
 			isa = PBXGroup;
 			children = (
+				9BF3E4E71C9D425F007B1565 /* SoundTouch */,
 				9B825DC81C9A05BD006D8F71 /* metaspu.cpp */,
 				9B825DC91C9A05BD006D8F71 /* metaspu.h */,
+				9BF3E4E21C9D4239007B1565 /* SndOut.cpp */,
+				9BF3E4E31C9D4239007B1565 /* SndOut.h */,
+				9BF3E4E41C9D4239007B1565 /* Timestretcher.cpp */,
 			);
 			name = metaspu;
 			path = Nitrogen/DeSmuME/metaspu;
@@ -798,6 +840,34 @@
 			path = Shared/Utils/Timing;
 			sourceTree = "<group>";
 		};
+		9BF3E4E71C9D425F007B1565 /* SoundTouch */ = {
+			isa = PBXGroup;
+			children = (
+				9BF3E4E91C9D425F007B1565 /* AAFilter.cpp */,
+				9BF3E4EA1C9D425F007B1565 /* AAFilter.h */,
+				9BF3E4EB1C9D425F007B1565 /* BPMDetect.h */,
+				9BF3E4EE1C9D425F007B1565 /* cpu_detect.h */,
+				9BF3E4EF1C9D425F007B1565 /* cpu_detect_x86_gcc.cpp */,
+				9BF3E4F21C9D425F007B1565 /* FIFOSampleBuffer.cpp */,
+				9BF3E4F31C9D425F007B1565 /* FIFOSampleBuffer.h */,
+				9BF3E4F41C9D425F007B1565 /* FIFOSamplePipe.h */,
+				9BF3E4F51C9D425F007B1565 /* FIRFilter.cpp */,
+				9BF3E4F61C9D425F007B1565 /* FIRFilter.h */,
+				9BF3E4FA1C9D425F007B1565 /* mmx_optimized.cpp */,
+				9BF3E4FB1C9D425F007B1565 /* RateTransposer.cpp */,
+				9BF3E4FC1C9D425F007B1565 /* RateTransposer.h */,
+				9BF3E4FE1C9D425F007B1565 /* SoundTouch.cpp */,
+				9BF3E4FF1C9D425F007B1565 /* SoundTouch.h */,
+				9BF3E5001C9D425F007B1565 /* sse_optimized.cpp */,
+				9BF3E5011C9D425F007B1565 /* STTypes.h */,
+				9BF3E5021C9D425F007B1565 /* TDStretch.cpp */,
+				9BF3E5031C9D425F007B1565 /* TDStretch.h */,
+				9BF3E5041C9D425F007B1565 /* WavFile.cpp */,
+				9BF3E5051C9D425F007B1565 /* WavFile.h */,
+			);
+			path = SoundTouch;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -882,6 +952,7 @@
 				9B82633B1C9A05BE006D8F71 /* emufile.cpp in Sources */,
 				9B82632B1C9A05BE006D8F71 /* armcpu.cpp in Sources */,
 				9B82634D1C9A05BE006D8F71 /* JitCommon.cpp in Sources */,
+				9BF3E50D1C9D425F007B1565 /* FIFOSampleBuffer.cpp in Sources */,
 				9B8263441C9A05BE006D8F71 /* scanline.cpp in Sources */,
 				9B82633E1C9A05BE006D8F71 /* bilinear.cpp in Sources */,
 				9B82635C1C9A05BE006D8F71 /* NDSSystem.cpp in Sources */,
@@ -911,14 +982,18 @@
 				9B8263981C9A05BE006D8F71 /* fatfile.cpp in Sources */,
 				9B8273CD1C9A9B74006D8F71 /* OEGameAudio.m in Sources */,
 				9B7D1AF71C9AD18700FE68AE /* math_vec3.c in Sources */,
+				9BF3E5071C9D425F007B1565 /* AAFilter.cpp in Sources */,
 				9B8263301C9A05BE006D8F71 /* cheatSystem.cpp in Sources */,
 				9B8263321C9A05BE006D8F71 /* common.cpp in Sources */,
 				9B82639E1C9A05BE006D8F71 /* partition.cpp in Sources */,
 				9B82639C1C9A05BE006D8F71 /* libfat_public_api.cpp in Sources */,
+				9BF3E5161C9D425F007B1565 /* sse_optimized.cpp in Sources */,
+				9BF3E5181C9D425F007B1565 /* WavFile.cpp in Sources */,
 				9B82605C1C9A05BE006D8F71 /* slot2_paddle.cpp in Sources */,
 				9B7D1AEF1C9AD18700FE68AE /* math_sinf.c in Sources */,
 				9B8263591C9A05BE006D8F71 /* MMU.cpp in Sources */,
 				9B7D1AEE1C9AD18700FE68AE /* math_sincosf.c in Sources */,
+				9BF3E5151C9D425F007B1565 /* SoundTouch.cpp in Sources */,
 				9B8263451C9A05BE006D8F71 /* firmware.cpp in Sources */,
 				9B7D1ADD1C9AD18700FE68AE /* math_coshf.c in Sources */,
 				9B8263431C9A05BE006D8F71 /* lq2x.cpp in Sources */,
@@ -938,6 +1013,7 @@
 				9B8264CA1C9A05BE006D8F71 /* xstring.cpp in Sources */,
 				9B82633A1C9A05BE006D8F71 /* driver.cpp in Sources */,
 				9B7D1ADB1C9AD18700FE68AE /* math_ceilf.c in Sources */,
+				9BF3E5131C9D425F007B1565 /* RateTransposer.cpp in Sources */,
 				9B82632E1C9A05BE006D8F71 /* bios.cpp in Sources */,
 				9B82633C1C9A05BE006D8F71 /* FIFO.cpp in Sources */,
 				9B82633F1C9A05BE006D8F71 /* epx.cpp in Sources */,
@@ -945,6 +1021,7 @@
 				9B7D1AE61C9AD18700FE68AE /* math_log10f.c in Sources */,
 				9B8263531C9A05BE006D8F71 /* metaspu.cpp in Sources */,
 				9B7D1AF41C9AD18700FE68AE /* math_tanf.c in Sources */,
+				9BF3E5121C9D425F007B1565 /* mmx_optimized.cpp in Sources */,
 				9B7D1AEA1C9AD18700FE68AE /* math_mat4.c in Sources */,
 				9B7D1AE71C9AD18700FE68AE /* math_logf.c in Sources */,
 				9B7D1AF31C9AD18700FE68AE /* math_sqrtfv.c in Sources */,
@@ -955,8 +1032,11 @@
 				9B7D1AF61C9AD18700FE68AE /* math_vec2.c in Sources */,
 				9B8263991C9A05BE006D8F71 /* file_allocation_table.cpp in Sources */,
 				9B8263511C9A05BE006D8F71 /* matrix.cpp in Sources */,
+				9BF3E50A1C9D425F007B1565 /* cpu_detect_x86_gcc.cpp in Sources */,
 				9B82638E1C9A05BE006D8F71 /* decrypt.cpp in Sources */,
 				9B8263281C9A05BE006D8F71 /* ArmAnalyze.cpp in Sources */,
+				9BF3E4E61C9D4239007B1565 /* Timestretcher.cpp in Sources */,
+				9BF3E4E51C9D4239007B1565 /* SndOut.cpp in Sources */,
 				9B82638B1C9A05BE006D8F71 /* ConvertUTF.c in Sources */,
 				9B8263641C9A05BE006D8F71 /* ROMReader.cpp in Sources */,
 				9B7D1AE21C9AD18700FE68AE /* math_fmodf.c in Sources */,
@@ -978,6 +1058,7 @@
 				9B8273AE1C9A08A0006D8F71 /* throttle.cpp in Sources */,
 				9B82605D1C9A05BE006D8F71 /* slot2_piano.cpp in Sources */,
 				9B8273D11C9A9B74006D8F71 /* OETimingUtils.m in Sources */,
+				9BF3E50E1C9D425F007B1565 /* FIRFilter.cpp in Sources */,
 				9B7D1AF21C9AD18700FE68AE /* math_sqrtf.c in Sources */,
 				9B8263481C9A05BE006D8F71 /* gfx3d.cpp in Sources */,
 				9B7D1AE51C9AD18700FE68AE /* math_ldexpf.c in Sources */,
@@ -988,6 +1069,7 @@
 				9B82638F1C9A05BE006D8F71 /* header.cpp in Sources */,
 				9B82589A1C9A03F4006D8F71 /* AppDelegate.swift in Sources */,
 				9B7D1AE41C9AD18700FE68AE /* math_invsqrtf.c in Sources */,
+				9BF3E5171C9D425F007B1565 /* TDStretch.cpp in Sources */,
 				9B8263611C9A05BE006D8F71 /* rasterize.cpp in Sources */,
 				9B8263461C9A05BE006D8F71 /* fs-linux.cpp in Sources */,
 				9B82632D1C9A05BE006D8F71 /* ArmThreadedInterpreter.cpp in Sources */,
@@ -1131,26 +1213,26 @@
 					"$(SRCROOT)/Nitrogen/DeSmuME/android/7z/CPP/include_windows",
 					"$(SRCROOT)/Nitrogen/DeSmuME/android/7z/CPP/myWindows",
 					"$(SRCROOT)/Nitrogen/DeSmuME/utils/lightning/include",
+					"$(SRCROOT)/Nitrogen/DeSmuME/metaspu/SoundTouch",
 				);
 				INFOPLIST_FILE = "Nitrogen/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CFLAGS = (
 					"-DANDROID",
 					"-DHAVE_LIBZ",
-					"-DNO_MEMDEBUG",
-					"-DNO_GPUDEBUG",
 					"-mfloat-abi=softfp",
 					"-mfpu=neon",
 					"-marm",
 					"-mtune=cortex-a9",
 					"-DHAVE_NEON",
 					"-DHAVE_JIT",
-					"-DIOS",
+					"-DDESMUME_IOS",
 					"-DOBJ_C",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = io.mystical.Nitrogen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Nitrogen/Supporting Files/Nitrogen-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -1175,26 +1257,26 @@
 					"$(SRCROOT)/Nitrogen/DeSmuME/android/7z/CPP/include_windows",
 					"$(SRCROOT)/Nitrogen/DeSmuME/android/7z/CPP/myWindows",
 					"$(SRCROOT)/Nitrogen/DeSmuME/utils/lightning/include",
+					"$(SRCROOT)/Nitrogen/DeSmuME/metaspu/SoundTouch",
 				);
 				INFOPLIST_FILE = "Nitrogen/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CFLAGS = (
 					"-DANDROID",
 					"-DHAVE_LIBZ",
-					"-DNO_MEMDEBUG",
-					"-DNO_GPUDEBUG",
 					"-mfloat-abi=softfp",
 					"-mfpu=neon",
 					"-marm",
 					"-mtune=cortex-a9",
 					"-DHAVE_NEON",
 					"-DHAVE_JIT",
-					"-DIOS",
+					"-DDESMUME_IOS",
 					"-DOBJ_C",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = io.mystical.Nitrogen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Nitrogen/Supporting Files/Nitrogen-Bridging-Header.h";
 			};
 			name = Release;
 		};

@@ -71,7 +71,7 @@ bool continuousframeAdvancing = false;
 bool staterewindingenabled = false;
 struct NDS_fw_config_data fw_config;
 bool FrameLimit = true;
-int sndcoretype, sndbuffersize;
+//int sndcoretype, sndbuffersize;
 //static int snd_synchmode=0;
 //static int snd_synchmethod=0;
 const char* IniName = NULL;
@@ -300,7 +300,7 @@ bool nds4droid_loadrom(const char* path) {
             video.layout = video.layout_old = 0;
         }
 
-        //[self loadSettings];
+        [self loadSettings];
 
         Desmume_InitOnce();
         //gpu_SetRotateScreen(video.rotation);
@@ -597,9 +597,6 @@ bool nds4droid_loadrom(const char* path) {
     frameskiprate = 1;
 
     CommonSettings.micMode = (TCommonSettings::MicMode)1;
-
-    CommonSettings.spu_advanced = false;
-    CommonSettings.spuInterpolationMode = (SPUInterpolationMode)1;
 
     CommonSettings.advanced_timing = false;
     CommonSettings.CpuMode = 0;

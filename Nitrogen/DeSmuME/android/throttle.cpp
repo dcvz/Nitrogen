@@ -22,7 +22,7 @@
 #include "../common.h"
 #include "../types.h"
 #include "../debug.h"
-#ifdef IOS
+#ifdef DESMUME_IOS
 #include <mach/mach.h>
 #include <mach/mach_time.h>
 #endif
@@ -83,7 +83,7 @@ unsigned long long RawGetTickPerSecond()
 #else
 unsigned long long RawGetTickCount()
 {
-#ifdef IOS
+#ifdef DESMUME_IOS
     static mach_timebase_info_data_t timebase;
     uint64_t now = mach_absolute_time ();
     if (timebase.denom == 0) {
