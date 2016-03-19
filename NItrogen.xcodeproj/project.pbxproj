@@ -927,7 +927,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9B8258911C9A03F4006D8F71 /* Build configuration list for PBXProject "NItrogen" */;
+			buildConfigurationList = 9B8258911C9A03F4006D8F71 /* Build configuration list for PBXProject "Nitrogen" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1348,7 +1348,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9B8258911C9A03F4006D8F71 /* Build configuration list for PBXProject "NItrogen" */ = {
+		9B8258911C9A03F4006D8F71 /* Build configuration list for PBXProject "Nitrogen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B8258A61C9A03F4006D8F71 /* Debug */,

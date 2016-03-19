@@ -17,7 +17,7 @@
                BlueprintIdentifier = "9B8258951C9A03F4006D8F71"
                BuildableName = "Nitrogen.app"
                BlueprintName = "Nitrogen"
-               ReferencedContainer = "container:NItrogen.xcodeproj">
+               ReferencedContainer = "container:Nitrogen.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
             BlueprintIdentifier = "9B8258951C9A03F4006D8F71"
             BuildableName = "Nitrogen.app"
             BlueprintName = "Nitrogen"
-            ReferencedContainer = "container:NItrogen.xcodeproj">
+            ReferencedContainer = "container:Nitrogen.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -58,7 +58,7 @@
             BlueprintIdentifier = "9B8258951C9A03F4006D8F71"
             BuildableName = "Nitrogen.app"
             BlueprintName = "Nitrogen"
-            ReferencedContainer = "container:NItrogen.xcodeproj">
+            ReferencedContainer = "container:Nitrogen.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -77,7 +77,7 @@
             BlueprintIdentifier = "9B8258951C9A03F4006D8F71"
             BuildableName = "Nitrogen.app"
             BlueprintName = "Nitrogen"
-            ReferencedContainer = "container:NItrogen.xcodeproj">
+            ReferencedContainer = "container:Nitrogen.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
