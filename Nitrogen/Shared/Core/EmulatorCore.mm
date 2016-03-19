@@ -76,9 +76,6 @@ bool continuousframeAdvancing = false;
 bool staterewindingenabled = false;
 struct NDS_fw_config_data fw_config;
 bool FrameLimit = true;
-//int sndcoretype, sndbuffersize;
-//static int snd_synchmode=0;
-//static int snd_synchmethod=0;
 const char* IniName = NULL;
 bool useMmapForRomLoading;
 bool enableMicrophone = false;
@@ -371,12 +368,12 @@ bool nds4droid_loadrom(const char* path) {
         SPU_SetSynchMode(1, 2);
         SPU_SetVolume(100);
 
-        static const char* nickname = "emozilla";
+        static const char* nickname = "mystical";
         fw_config.nickname_len = strlen(nickname);
         for(int i = 0 ; i < fw_config.nickname_len ; ++i)
             fw_config.nickname[i] = nickname[i];
 
-        static const char* message = "desmume makes you happy!";
+        static const char* message = "what sinks your battleship?";
         fw_config.message_len = strlen(message);
         for(int i = 0 ; i < fw_config.message_len ; ++i)
             fw_config.message[i] = message[i];
@@ -419,11 +416,15 @@ bool nds4droid_loadrom(const char* path) {
 }
 
 - (void)pauseEmulation {
-    if (self.running) {
-        self.running = NO;
-    } else {
-        self.running = YES;
-    }
+    if (!self.running) { return; }
+    NDS_Pause();
+    self.running = NO;
+}
+
+- (void)resumeEmulation {
+    if (self.running) { return; }
+    NDS_UnPause();
+    self.running = YES;
 }
 
 - (void)stop {

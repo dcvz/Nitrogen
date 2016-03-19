@@ -26,6 +26,7 @@
 - (void)startEmulation;
 - (void)resetEmulation;
 - (void)pauseEmulation;
+- (void)resumeEmulation;
 - (void)stop;
 
 #pragma mark - Controller Properties

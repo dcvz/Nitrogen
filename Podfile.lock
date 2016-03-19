@@ -1,10 +1,13 @@
 PODS:
+  - LRNotificationObserver (0.1.2)
   - PureLayout (3.0.1)
 
 DEPENDENCIES:
+  - LRNotificationObserver (~> 0.1.2)
   - PureLayout (~> 3.0.0)
 
 SPEC CHECKSUMS:
+  LRNotificationObserver: 696c23f223a03c9b3279ca9a5437a03bb98d6866
   PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
 
 COCOAPODS: 0.39.0

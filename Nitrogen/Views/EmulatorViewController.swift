@@ -9,13 +9,13 @@
 import UIKit
 import GLKit
 import PureLayout
+import LRNotificationObserver
 
 class EmulatorViewController: UIViewController, GLKViewDelegate {
 
     // MARK: - Attributes (View)
 
     private let mainView: GLKView = GLKView.newAutoLayoutView()
-    private let titleLabel: UILabel = UILabel.newAutoLayoutView()
     private let touchView: GLKView = GLKView.newAutoLayoutView()
 
 
@@ -33,6 +33,7 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
 
         // Do any additional setup after loading the view.
         setupView()
+        setupNotifications()
         setupGL()
     }
 
@@ -45,7 +46,7 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
     // MARK: - Private Methods
 
     private func setupView() {
-        view.backgroundColor = .whiteColor()
+        view.backgroundColor = .blackColor()
 
         mainView.tag = 44
         mainView.delegate = self
@@ -61,18 +62,18 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
         view.addSubview(touchView)
         touchView.autoPinEdgeToSuperviewEdge(.Left, withInset: 0)
         touchView.autoPinEdgeToSuperviewEdge(.Right, withInset: 0)
+        touchView.autoPinEdge(.Top, toEdge: .Bottom, ofView: mainView, withOffset: 30)
         touchView.autoMatchDimension(.Height, toDimension: .Width, ofView: touchView, withMultiplier: (emulator.screenRect().height / emulator.screenRect().width))
+    }
 
-        titleLabel.backgroundColor = .blackColor()
-        titleLabel.text = ""
-        titleLabel.textAlignment = .Center
-        titleLabel.textColor = .whiteColor()
-        view.addSubview(titleLabel)
-        titleLabel.autoPinEdgeToSuperviewEdge(.Left)
-        titleLabel.autoPinEdgeToSuperviewEdge(.Right)
-        titleLabel.autoSetDimension(.Height, toSize: 30)
-        titleLabel.autoPinEdge(.Top, toEdge: .Bottom, ofView: mainView)
-        titleLabel.autoPinEdge(.Bottom, toEdge: .Top, ofView: touchView)
+    private func setupNotifications() {
+        LRNotificationObserver.observeName(UIApplicationWillResignActiveNotification, object: nil, owner: self) { [weak self] note in
+            self?.emulator.pauseEmulation()
+        }
+
+        LRNotificationObserver.observeName(UIApplicationDidBecomeActiveNotification, object: nil, owner: self) { [weak self] note in
+            self?.emulator.resumeEmulation()
+        }
     }
 
     private func setupGL() {
