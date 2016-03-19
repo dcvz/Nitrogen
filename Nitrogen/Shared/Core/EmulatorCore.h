@@ -10,13 +10,30 @@
 #import <GLKit/GLKit.h>
 #import "OERingBuffer.h"
 
+typedef NS_ENUM(NSUInteger, NDSButton)
+{
+    NDSButtonRight,
+    NDSButtonLeft,
+    NDSButtonDown,
+    NDSButtonUp,
+    NDSButtonSelect,
+    NDSButtonStart,
+    NDSButtonB,
+    NDSButtonA,
+    NDSButtonY,
+    NDSButtonX,
+    NDSButtonL,
+    NDSButtonR,
+    NDSButtonCount
+};
+
+
 @interface EmulatorCore : NSObject {
     NSTimeInterval gameInterval;
 
     OERingBuffer __strong **ringBuffers;
     double _sampleRate;
 }
-
 
 @property (nonatomic, copy) void (^updateFrameBlock)();
 @property (strong, nonatomic) NSString *batterySavesPath;
@@ -27,9 +44,11 @@
 - (void)resetEmulation;
 - (void)pauseEmulation;
 - (void)resumeEmulation;
-- (void)stop;
+- (void)stopEmulation;
 
 #pragma mark - Controller Properties
+- (void)pressedButton:(NDSButton)button;
+- (void)releasedButton:(NDSButton)button;
 - (void)touchScreenAtPoint:(CGPoint)point;
 - (void)touchesEnded;
 

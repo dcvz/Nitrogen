@@ -1,12 +1,29 @@
 PODS:
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
   - LRNotificationObserver (0.1.2)
   - PureLayout (3.0.1)
 
 DEPENDENCIES:
+  - BlocksKit (~> 2.2.5)
   - LRNotificationObserver (~> 0.1.2)
   - PureLayout (~> 3.0.0)
 
 SPEC CHECKSUMS:
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   LRNotificationObserver: 696c23f223a03c9b3279ca9a5437a03bb98d6866
   PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
 
