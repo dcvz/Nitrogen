@@ -1,5 +1,5 @@
 # Nitrogen [![Build Status](https://travis-ci.org/dcvz/Nitrogen.svg?branch=develop)](https://travis-ci.org/dcvz/Nitrogen)
-Nitrogen is a modern Nintendo DS Emulator for iOS. It is based of DeSmuME. 
+Nitrogen is a modern Nintendo DS Emulator for iOS based of DeSmuME. 
 
 ## Status
 Currently you can launch a game by modifying `"game.nds"` in `EmulatorViewController`. iTunes transfer is already enabled so you may transfer a ROM through there. Future updates will add proper game handling and selection methods :)
