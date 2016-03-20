@@ -274,6 +274,7 @@ bool nds4droid_loadrom(const char* path) {
 }
 
 
+
 // MARK: - Emulator Core
 
 @interface EmulatorCore()
@@ -417,17 +418,17 @@ bool nds4droid_loadrom(const char* path) {
 
 - (void)pauseEmulation {
     if (!self.running) { return; }
-    NDS_Pause();
+    //NDS_Pause();
     self.running = NO;
 }
 
 - (void)resumeEmulation {
     if (self.running) { return; }
-    NDS_UnPause();
+    //NDS_UnPause();
     self.running = YES;
 }
 
-- (void)stop {
+- (void)stopEmulation {
     self.shouldStop = YES;
     self.running = NO;
 
@@ -471,6 +472,19 @@ bool nds4droid_loadrom(const char* path) {
 
 #pragma mark - Controller Methods
 
+static BOOL _b[] = {0,0,0,0,0,0,0,0,0,0,0,0,0};
+#define all_button _b[0], _b[1], _b[2], _b[3], _b[4], _b[5], _b[6], _b[7], _b[8], _b[9], _b[10], _b[11]
+
+- (void)pressedButton:(NDSButton)button {
+    _b[button] = true;
+    NDS_setPad(all_button, false, false);
+}
+
+- (void)releasedButton:(NDSButton)button {
+    _b[(int)button] = false;
+    NDS_setPad(all_button, false, false);
+}
+
 - (void)touchScreenAtPoint:(CGPoint)point {
     NDS_setTouchPos(point.x, point.y);
 }
@@ -487,7 +501,7 @@ bool nds4droid_loadrom(const char* path) {
 }
 
 - (CGRect)screenRect {
-    return CGRectMake(0, 0, video.width, video.height / 2);
+    return CGRectMake(0, 0, video.width, video.height);
 }
 
 - (CGSize)aspectSize {
@@ -625,7 +639,7 @@ bool nds4droid_loadrom(const char* path) {
     CommonSettings.GFX3D_Fog = 1;
     CommonSettings.GFX3D_Texture = 1;
     CommonSettings.GFX3D_LineHack = 0;
-    useMmapForRomLoading = true;
+    useMmapForRomLoading = false;
     fw_config.language = 1;
 
     CommonSettings.wifi.mode = 0;

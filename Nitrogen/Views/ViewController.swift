@@ -20,14 +20,15 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-
-        let vc = EmulatorViewController()
-        presentViewController(vc, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-}
 
+    @IBAction func startEmulation(sender: AnyObject) {
+        let vc = EmulatorViewController()
+        presentViewController(vc, animated: true, completion: nil)
+    }
+}
