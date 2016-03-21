@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1Cg-rP-bcD">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Library-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Nitrogen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LibraryViewController" customModule="Nitrogen" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -17,23 +17,96 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13z-6Y-NNT">
-                                <rect key="frame" x="283" y="285" width="34" height="30"/>
-                                <state key="normal" title="Start"/>
-                                <connections>
-                                    <action selector="startEmulation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SCH-5q-rqm"/>
-                                </connections>
-                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gwi-ki-cbi">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jqd-Uk-bVc">
+                                    <size key="itemSize" width="100" height="146"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="gameCell" id="AC6-E3-sLt" customClass="LibraryCell" customModule="Nitrogen" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="84" width="100" height="146"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="146"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zn2-LM-HNl">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="91"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="91" id="132-3C-Glv"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Pokemon: Black Version" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nh6-d7-riA">
+                                                    <rect key="frame" x="0.0" y="91" width="100" height="55"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="Zn2-LM-HNl" firstAttribute="leading" secondItem="AC6-E3-sLt" secondAttribute="leading" id="TB4-96-XK4"/>
+                                            <constraint firstItem="Zn2-LM-HNl" firstAttribute="top" secondItem="AC6-E3-sLt" secondAttribute="top" id="UmW-Kk-Qeb"/>
+                                            <constraint firstAttribute="trailing" secondItem="Zn2-LM-HNl" secondAttribute="trailing" id="WlH-hh-iI3"/>
+                                            <constraint firstAttribute="trailing" secondItem="nh6-d7-riA" secondAttribute="trailing" id="cHx-xB-Sk3"/>
+                                            <constraint firstItem="nh6-d7-riA" firstAttribute="top" secondItem="Zn2-LM-HNl" secondAttribute="bottom" id="d4i-Wx-2D9"/>
+                                            <constraint firstItem="nh6-d7-riA" firstAttribute="leading" secondItem="AC6-E3-sLt" secondAttribute="leading" id="u0E-rp-Pmo"/>
+                                            <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="nh6-d7-riA" secondAttribute="bottom" id="uIv-iT-MUt"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="artworkImageView" destination="Zn2-LM-HNl" id="csu-7Y-yVH"/>
+                                            <outlet property="titleLabel" destination="nh6-d7-riA" id="UGQ-bn-Ycn"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="13z-6Y-NNT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3fX-La-GDZ"/>
-                            <constraint firstItem="13z-6Y-NNT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LVX-Dm-g21"/>
+                            <constraint firstItem="Gwi-ki-cbi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="7bi-LP-7ok"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Gwi-ki-cbi" secondAttribute="bottom" id="GVx-M0-xu0"/>
+                            <constraint firstItem="Gwi-ki-cbi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MVj-5r-p8N"/>
+                            <constraint firstItem="Gwi-ki-cbi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Nb7-2o-OfO"/>
+                            <constraint firstAttribute="trailing" secondItem="Gwi-ki-cbi" secondAttribute="trailing" id="d7t-nO-TmO"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="7bi-LP-7ok"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Library" id="ZLB-zf-PTy"/>
+                    <connections>
+                        <outlet property="collectionView" destination="Gwi-ki-cbi" id="0fl-Zx-s9f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="2150" y="-240"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hrv-Ma-qqK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Cg-rP-bcD" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="guM-28-Oye">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="pZ3-oY-FRf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="II6-pr-2bN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1373" y="-240"/>
         </scene>
     </scenes>
 </document>

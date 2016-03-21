@@ -8,3 +8,4 @@
 
 #import "EmulatorCore.h"
 #import "OEGameAudio.h"
+#import "OESQLiteDatabase.h"
