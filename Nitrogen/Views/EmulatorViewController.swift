@@ -10,7 +10,7 @@ import UIKit
 import GLKit
 import PureLayout
 import LRNotificationObserver
-import BlocksKit
+import RxSwift
 
 class EmulatorViewController: UIViewController, GLKViewDelegate {
 
@@ -40,6 +40,12 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
     private let effect: GLKBaseEffect = GLKBaseEffect()
     private var texture: GLuint = 0
 
+
+    // MARK: - Attributes (Reactive)
+
+    let hankeyBag: DisposeBag = DisposeBag()
+
+
     // MARK: - View Lifecycle
 
     override func viewDidLoad() {
@@ -51,9 +57,23 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
         setupGL()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+    // MARK: - Public Interface
+
+    func startEmulator(game: Game) {
+        let documentsDirectoryURL: NSURL! =  try! NSFileManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
+        let ndsFile: NSURL! = documentsDirectoryURL.URLByAppendingPathComponent(game.path)
+
+        audioCore = OEGameAudio(core: emulator)
+        audioCore.volume = 1.0
+        audioCore.outputDeviceID = 0
+        audioCore.startAudio()
+
+        emulator.loadROM(ndsFile.path)
+        emulator.startEmulation()
+        emulator.updateFrameBlock = { [weak self] in
+            self?.mainView.display()
+        }
     }
 
 
@@ -81,90 +101,90 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
 
         // Buttons
         startButton.setBackgroundImage(UIImage(named: "start-button"), forState: .Normal)
-        startButton.bk_addEventHandler({ [weak self] _ in
+        startButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.Start)
-        }, forControlEvents: .TouchDown)
-        startButton.bk_addEventHandler({ [weak self] _ in
+        }.addDisposableTo(hankeyBag)
+        startButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.Start)
-        }, forControlEvents: [.TouchUpInside, .TouchDragExit, .TouchUpOutside])
+        }.addDisposableTo(hankeyBag)
         view.addSubview(startButton)
         startButton.autoPinEdgeToSuperviewEdge(.Bottom, withInset: 4)
         startButton.autoPinEdgeToSuperviewEdge(.Right, withInset: 12)
 
         aButton.setBackgroundImage(UIImage(named: "a-button"), forState: .Normal)
-        aButton.bk_addEventHandler({ [weak self] _ in
+        aButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.A)
-        }, forControlEvents: .TouchDown)
-        aButton.bk_addEventHandler({ [weak self] _ in
+        }.addDisposableTo(hankeyBag)
+        aButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.A)
-        }, forControlEvents: [.TouchUpInside, .TouchDragExit, .TouchUpOutside])
+        }.addDisposableTo(hankeyBag)
         view.addSubview(aButton)
         aButton.autoSetDimensionsToSize(CGSize(width: 48, height: 48))
         aButton.autoPinEdgeToSuperviewEdge(.Right, withInset: 6)
         aButton.autoPinEdge(.Bottom, toEdge: .Top, ofView: startButton, withOffset: -8)
 
         bButton.setBackgroundImage(UIImage(named: "b-button"), forState: .Normal)
-        bButton.bk_addEventHandler({ [weak self] _ in
+        bButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.B)
-        }, forControlEvents: .TouchDown)
-        bButton.bk_addEventHandler({ [weak self] _ in
+        }.addDisposableTo(hankeyBag)
+        bButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.B)
-        }, forControlEvents: [.TouchUpInside, .TouchDragExit, .TouchUpOutside])
+        }.addDisposableTo(hankeyBag)
         view.addSubview(bButton)
         bButton.autoSetDimensionsToSize(CGSize(width: 48, height: 48))
         bButton.autoPinEdge(.Right, toEdge: .Left, ofView: aButton, withOffset: -7)
         bButton.autoAlignAxis(.Horizontal, toSameAxisOfView: aButton)
 
         xButton.setBackgroundImage(UIImage(named: "x-button"), forState: .Normal)
-        xButton.bk_addEventHandler({ [weak self] _ in
+        xButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.X)
-        }, forControlEvents: .TouchDown)
-        xButton.bk_addEventHandler({ [weak self] _ in
+        }.addDisposableTo(hankeyBag)
+        xButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.X)
-        }, forControlEvents: [.TouchUpInside, .TouchDragExit, .TouchUpOutside])
+        }.addDisposableTo(hankeyBag)
         view.addSubview(xButton)
         xButton.autoSetDimensionsToSize(CGSize(width: 48, height: 48))
         xButton.autoPinEdge(.Right, toEdge: .Left, ofView: bButton, withOffset: -7)
         xButton.autoAlignAxis(.Horizontal, toSameAxisOfView: aButton)
 
         yButton.setBackgroundImage(UIImage(named: "y-button"), forState: .Normal)
-        yButton.bk_addEventHandler({ [weak self] _ in
+        yButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.Y)
-        }, forControlEvents: .TouchDown)
-        yButton.bk_addEventHandler({ [weak self] _ in
+        }.addDisposableTo(hankeyBag)
+        yButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.Y)
-        }, forControlEvents: [.TouchUpInside, .TouchDragExit, .TouchUpOutside])
+        }.addDisposableTo(hankeyBag)
         view.addSubview(yButton)
         yButton.autoSetDimensionsToSize(CGSize(width: 48, height: 48))
         yButton.autoAlignAxis(.Vertical, toSameAxisOfView: bButton)
         yButton.autoPinEdge(.Bottom, toEdge: .Top, ofView: bButton, withOffset: -7)
 
         lButton.setBackgroundImage(UIImage(named: "left-button"), forState: .Normal)
-        lButton.bk_addEventHandler({ [weak self] _ in
+        lButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.L)
-            }, forControlEvents: .TouchDown)
-        lButton.bk_addEventHandler({ [weak self] _ in
+        }.addDisposableTo(hankeyBag)
+        lButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.L)
-            }, forControlEvents: [.TouchUpInside, .TouchDragExit, .TouchUpOutside])
+        }.addDisposableTo(hankeyBag)
         view.addSubview(lButton)
         lButton.autoSetDimensionsToSize(CGSize(width: 37, height: 34))
         lButton.autoAlignAxis(.Horizontal, toSameAxisOfView: yButton)
         lButton.autoPinEdge(.Right, toEdge: .Left, ofView: yButton, withOffset: -2)
 
         rButton.setBackgroundImage(UIImage(named: "right-button"), forState: .Normal)
-        rButton.bk_addEventHandler({ [weak self] _ in
+        rButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.R)
-            }, forControlEvents: .TouchDown)
-        rButton.bk_addEventHandler({ [weak self] _ in
+        }.addDisposableTo(hankeyBag)
+        rButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.R)
-            }, forControlEvents: [.TouchUpInside, .TouchDragExit, .TouchUpOutside])
+        }.addDisposableTo(hankeyBag)
         view.addSubview(rButton)
         rButton.autoSetDimensionsToSize(CGSize(width: 37, height: 34))
         rButton.autoAlignAxis(.Horizontal, toSameAxisOfView: yButton)
         rButton.autoPinEdge(.Left, toEdge: .Right, ofView: yButton, withOffset: 2)
 
         menuButton.setBackgroundImage(UIImage(named: "menu-button"), forState: .Normal)
-        menuButton.bk_addEventHandler({ [weak self] _ in
+        menuButton.rx_touchdown.subscribeNext() { [weak self] in
             let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
             let closeAction = UIAlertAction(title: "Close ROM", style: .Destructive) { [weak self] action in
                 self?.emulator.stopEmulation()
@@ -176,65 +196,65 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
             sheet.addAction(closeAction)
             sheet.addAction(cancelAction)
             self?.presentViewController(sheet, animated: true, completion: nil)
-        }, forControlEvents: .TouchDown)
+        }.addDisposableTo(hankeyBag)
         view.addSubview(menuButton)
         menuButton.autoPinEdgeToSuperviewEdge(.Bottom, withInset: 4)
         menuButton.autoAlignAxisToSuperviewAxis(.Vertical)
 
         selectButton.setBackgroundImage(UIImage(named: "select-button"), forState: .Normal)
-        selectButton.bk_addEventHandler({ [weak self] _ in
+        selectButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.Select)
-        }, forControlEvents: .TouchDown)
-        selectButton.bk_addEventHandler({ [weak self] _ in
+        }.addDisposableTo(hankeyBag)
+        selectButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.Select)
-        }, forControlEvents: [.TouchUpInside, .TouchDragExit, .TouchUpOutside])
+        }.addDisposableTo(hankeyBag)
         view.addSubview(selectButton)
         selectButton.autoPinEdgeToSuperviewEdge(.Bottom, withInset: 4)
         selectButton.autoPinEdgeToSuperviewEdge(.Left, withInset: 12)
 
         leftButton.setBackgroundImage(UIImage(named: "side-button"), forState: .Normal)
-        leftButton.bk_addEventHandler({ [weak self] _ in
+        leftButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.Left)
-        }, forControlEvents: [.TouchDown])
-        leftButton.bk_addEventHandler({ [weak self] _ in
+            }.addDisposableTo(hankeyBag)
+        leftButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.Left)
-        }, forControlEvents: [.TouchUpInside, .TouchDragExit, .TouchUpOutside])
+            }.addDisposableTo(hankeyBag)
         view.addSubview(leftButton)
         leftButton.autoSetDimensionsToSize(CGSize(width: 48, height: 44))
         leftButton.autoPinEdgeToSuperviewEdge(.Left, withInset: 12)
         leftButton.autoPinEdge(.Bottom, toEdge: .Top, ofView: selectButton, withOffset: -8)
 
         downButton.setBackgroundImage(UIImage(named: "down-button"), forState: .Normal)
-        downButton.bk_addEventHandler({ [weak self] _ in
+        downButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.Down)
-        }, forControlEvents: [.TouchDown])
-        downButton.bk_addEventHandler({ [weak self] _ in
+            }.addDisposableTo(hankeyBag)
+        downButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.Down)
-        }, forControlEvents: [.TouchUpInside, .TouchDragExit, .TouchUpOutside])
+            }.addDisposableTo(hankeyBag)
         view.addSubview(downButton)
         downButton.autoSetDimensionsToSize(CGSize(width: 48, height: 44))
         downButton.autoAlignAxis(.Horizontal, toSameAxisOfView: leftButton)
         downButton.autoPinEdge(.Left, toEdge: .Right, ofView: leftButton, withOffset: 7)
 
         rightButton.setBackgroundImage(UIImage(named: "side-button"), forState: .Normal)
-        rightButton.bk_addEventHandler({ [weak self] _ in
+        rightButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.Right)
-        }, forControlEvents: [.TouchDown])
-        rightButton.bk_addEventHandler({ [weak self] _ in
+            }.addDisposableTo(hankeyBag)
+        rightButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.Right)
-        }, forControlEvents: [.TouchUpInside, .TouchDragExit, .TouchUpOutside])
+            }.addDisposableTo(hankeyBag)
         view.addSubview(rightButton)
         rightButton.autoSetDimensionsToSize(CGSize(width: 48, height: 44))
         rightButton.autoPinEdge(.Left, toEdge: .Right, ofView: downButton, withOffset: 7)
         rightButton.autoAlignAxis(.Horizontal, toSameAxisOfView: leftButton)
 
         upButton.setBackgroundImage(UIImage(named: "up-button"), forState: .Normal)
-        upButton.bk_addEventHandler({ [weak self] _ in
+        upButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.Up)
-        }, forControlEvents: [.TouchDown])
-        upButton.bk_addEventHandler({ [weak self] _ in
+            }.addDisposableTo(hankeyBag)
+        upButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.Up)
-        }, forControlEvents: [.TouchUpInside, .TouchDragExit, .TouchUpOutside])
+            }.addDisposableTo(hankeyBag)
         view.addSubview(upButton)
         upButton.autoSetDimensionsToSize(CGSize(width: 48, height: 44))
         upButton.autoPinEdge(.Bottom, toEdge: .Top, ofView: downButton, withOffset: -10)
@@ -252,11 +272,10 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
     }
 
     private func setupGL() {
-        let glContext = EAGLContext(API: .OpenGLES2)
+        let glContext: EAGLContext = EAGLContext(API: .OpenGLES2)
         EAGLContext.setCurrentContext(glContext)
         mainView.context = glContext
         setupTexture()
-        setupEmulator()
     }
 
     private func setupTexture() {
@@ -267,22 +286,6 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
         glTexParameterf(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_MIN_FILTER), GLfloat(GL_NEAREST))
         glTexParameterf(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_WRAP_S), GLfloat(GL_CLAMP_TO_EDGE))
         glTexParameterf(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_WRAP_T), GLfloat(GL_CLAMP_TO_EDGE))
-    }
-
-    private func setupEmulator() {
-        let documentsDirectoryURL: NSURL! =  try! NSFileManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
-        let ndsFile: NSURL! = documentsDirectoryURL.URLByAppendingPathComponent("pokemon.nds")
-
-        audioCore = OEGameAudio(core: emulator)
-        audioCore.volume = 1.0
-        audioCore.outputDeviceID = 0
-        audioCore.startAudio()
-
-        emulator.loadROM(ndsFile.path)
-        emulator.startEmulation()
-        emulator.updateFrameBlock = { [weak self] in
-            self?.mainView.display()
-        }
     }
 
 
@@ -310,7 +313,7 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
         textureCoordinates[2] = GLKVector2(v: (texWidth, 0.0)) // Right top
         textureCoordinates[3] = GLKVector2(v: (0.0, 0.0)) // Left top
 
-        let vertexIndices = [
+        let vertexIndices: [Int] = [
             0, 1, 2,
             0, 2, 3
         ]
@@ -323,12 +326,7 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
         }
 
         glBindTexture(GLenum(GL_TEXTURE_2D), texture)
-
-        if view.tag == 44 {
-            glTexSubImage2D(GLenum(GL_TEXTURE_2D), 0, 0, 0, GLsizei(emulator.bufferSize().width), GLsizei(emulator.bufferSize().height), emulator.pixelFormat(), emulator.pixelType(), emulator.videoBuffer())
-        } else {
-            glTexSubImage2D(GLenum(GL_TEXTURE_2D), 0, 0, 0, GLsizei(emulator.bufferSize().width), GLsizei(emulator.bufferSize().height), emulator.pixelFormat(), emulator.pixelType(), emulator.videoBuffer() + 256*192*4)
-        }
+        glTexSubImage2D(GLenum(GL_TEXTURE_2D), 0, 0, 0, GLsizei(emulator.bufferSize().width), GLsizei(emulator.bufferSize().height), emulator.pixelFormat(), emulator.pixelType(), emulator.videoBuffer())
 
         if texture > 0 {
             effect.texture2d0.envMode = .Replace
@@ -364,10 +362,10 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
     // MARK: - UIView Methods
 
     private func transmitTouch(touch: UITouch) {
-        let touchLocation = touch.locationInView(mainView)
+        let touchLocation: CGPoint = touch.locationInView(mainView)
         if touchLocation.y < (mainView.bounds.height / 2) || touchLocation.y > mainView.bounds.height { return }
-        let adjustedTouchLocation = CGPoint(x: touchLocation.x, y: touchLocation.y - (mainView.bounds.height / 2))
-        let mappedTouchLocation = CGPointApplyAffineTransform(
+        let adjustedTouchLocation: CGPoint = CGPoint(x: touchLocation.x, y: touchLocation.y - (mainView.bounds.height / 2))
+        let mappedTouchLocation: CGPoint = CGPointApplyAffineTransform(
             adjustedTouchLocation,
             CGAffineTransformMakeScale(emulator.screenRect().width / mainView.bounds.width, (emulator.screenRect().height / 2) / (mainView.bounds.height / 2))
         )
