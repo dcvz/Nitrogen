@@ -24,6 +24,7 @@ class LibraryViewController: UIViewController {
     private var openVGDB: OESQLiteDatabase = try! OESQLiteDatabase(URL: NSBundle.mainBundle().URLForResource("openvgdb", withExtension: "sqlite"))
     private var gamesUpdateToken: NotificationToken = NotificationToken()
     private var games: Variable<[Game]> = Variable([])
+    private var listener: DirectoryWatcher!
 
 
     // MARK: - Attributes (Reactive)
@@ -37,7 +38,22 @@ class LibraryViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        processROMS()
+        let realm: Realm = try! Realm()
+        gamesUpdateToken = realm.objects(Game).addNotificationBlock() { [weak self] results, error in
+            if let results = results {
+                self?.games.value = Array(results)
+            }
+        }
+
+        updateStore()
+        processRootDirectory()
+
+        let documentsDirectoryURL: NSURL! = try! NSFileManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
+        listener = DirectoryWatcher(pathToWatch: documentsDirectoryURL) { [weak self] in
+            self?.updateStore()
+            self?.processRootDirectory()
+        }
+        listener.startWatching()
 
         games
             .asObservable()
@@ -46,35 +62,46 @@ class LibraryViewController: UIViewController {
                     cell.artworkImageView.kf_setImageWithURL(NSURL(string: artworkURL)!)
                 }
 
-                print(element.path)
                 cell.titleLabel.text = element.title
             }.addDisposableTo(hankeyBag)
 
-        collectionView.rx_itemSelected.subscribeNext() { index in
-            let game = self.games.value[index.item]
+        collectionView.rx_itemSelected
+            .subscribeNext() { index in
+                let game = self.games.value[index.item]
 
-            let vc = EmulatorViewController()
-            vc.startEmulator(game)
-            self.presentViewController(vc, animated: true, completion: nil)
-            
-        }.addDisposableTo(hankeyBag)
+                let vc = EmulatorViewController()
+                vc.startEmulator(game)
+                self.presentViewController(vc, animated: true, completion: nil)
+            }.addDisposableTo(hankeyBag)
     }
 
 
     // MARK: - Private Methods
 
-    private func processROMS() {
+    private func updateStore() {
         let realm: Realm = try! Realm()
-        let documentsDirectoryURL: NSURL! =  try! NSFileManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
-        let fileManager: NSFileManager = NSFileManager.defaultManager()
-        let files: [NSURL] = try! fileManager.contentsOfDirectoryAtURL(documentsDirectoryURL, includingPropertiesForKeys: nil, options: [])
+        let store: [Game] = Array(realm.objects(Game))
+        let fm: NSFileManager = NSFileManager.defaultManager()
 
-        games.value = Array(realm.objects(Game))
-        gamesUpdateToken = realm.objects(Game).addNotificationBlock() { [weak self] results, error in
-            if let results = results {
-                self?.games.value = Array(results)
+        for game in store {
+            let documentsDirectoryURL: NSURL! = try! NSFileManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
+            let ndsFile: NSURL! = documentsDirectoryURL.URLByAppendingPathComponent(game.path)
+
+            if !fm.fileExistsAtPath(ndsFile.path!) {
+                try! realm.write() {
+                    realm.delete(game)
+                }
             }
         }
+
+        games.value = Array(realm.objects(Game))
+    }
+
+    private func processRootDirectory() {
+        let realm: Realm = try! Realm()
+        let documentsDirectoryURL: NSURL! = try! NSFileManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
+        let fileManager: NSFileManager = NSFileManager.defaultManager()
+        let files: [NSURL] = try! fileManager.contentsOfDirectoryAtURL(documentsDirectoryURL, includingPropertiesForKeys: nil, options: [])
 
         for file in files {
             let fileExtension: String = file.pathExtension!
