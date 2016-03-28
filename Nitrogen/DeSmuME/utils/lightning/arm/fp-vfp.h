@@ -832,14 +832,14 @@ vfp_bltgtr_d(jit_state_t _jit, jit_insn *i0, jit_fpr_t r0, jit_fpr_t r1)
 __jit_inline void
 vfp_ldi_f(jit_state_t _jit, jit_fpr_t r0, void *i0)
 {
-    jit_movi_i(JIT_FTMP, (int)i0);
+    jit_movi_i(JIT_FTMP, (uintptr_t)i0);
     _VLDR_F32(r0, JIT_FTMP, 0);
 }
 
 __jit_inline void
 vfp_ldi_d(jit_state_t _jit, jit_fpr_t r0, void *i0)
 {
-    jit_movi_i(JIT_FTMP, (int)i0);
+    jit_movi_i(JIT_FTMP, (uintptr_t)i0);
     _VLDR_F64(r0, JIT_FTMP, 0);
 }
 
@@ -915,14 +915,14 @@ vfp_ldxi_d(jit_state_t _jit, jit_fpr_t r0, jit_gpr_t r1, int i0)
 __jit_inline void
 vfp_sti_f(jit_state_t _jit, void *i0, jit_fpr_t r0)
 {
-    jit_movi_i(JIT_FTMP, (int)i0);
+    jit_movi_i(JIT_FTMP, (uintptr_t)i0);
     _VSTR_F32(r0, JIT_FTMP, 0);
 }
 
 __jit_inline void
 vfp_sti_d(jit_state_t _jit, void *i0, jit_fpr_t r0)
 {
-    jit_movi_i(JIT_FTMP, (int)i0);
+    jit_movi_i(JIT_FTMP, (uintptr_t)i0);
     _VSTR_F64(r0, JIT_FTMP, 0);
 }
 

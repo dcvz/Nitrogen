@@ -24,7 +24,7 @@
 
 #ifdef HAVE_JIT
 
-#if defined(_WINDOWS) || defined(DESMUME_COCOA)
+#if defined(_WINDOWS) || defined(DESMUME_IOS)
 #define MAPPED_JIT_FUNCS
 #elif defined(DESMUME_IOS)
 #define MAPPED_JIT_FUNCS
@@ -393,7 +393,7 @@ void JitLutDeInit();
 
 void JitLutReset();
 
-void FlushIcacheSection(void *begin, size_t length);
+void FlushIcacheSection(u8 *begin, u8 *end);
 
 //extern CACHE_ALIGN u8 g_RecompileCounts[(1<<26)/16];
 

@@ -64,7 +64,7 @@ void MatrixMultVec3x3_fixed(const s32 *matrix, s32 *vecPtr)
 #ifdef HAVE_NEON
 //-------------------------
 //switched NEON functions: implementations for NEON
-void MatrixMultVec3x3 (const float *matrix, float *vecPtr)
+/*void MatrixMultVec3x3 (const float *matrix, float *vecPtr)
 {
 	float x = vecPtr[0];
 	float y = vecPtr[1];
@@ -99,7 +99,7 @@ void MatrixScale (float *matrix, const float *ptr)
 	matrix[9] *= ptr[2];
 	matrix[10] *= ptr[2];
 	matrix[11] *= ptr[2];
-}
+}*/
 
 #elif !defined(ENABLE_SSE)
 //-------------------------

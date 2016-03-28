@@ -714,7 +714,7 @@ static BOOL _b[] = {0,0,0,0,0,0,0,0,0,0,0,0,0};
     CommonSettings.GFX3D_LineHack = 0;
     useMmapForRomLoading = false;
     fw_config.language = 1;
-    
+
     CommonSettings.wifi.mode = 0;
     CommonSettings.wifi.infraBridgeAdapter = 0;
 }

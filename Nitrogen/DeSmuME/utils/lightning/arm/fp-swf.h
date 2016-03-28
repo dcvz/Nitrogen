@@ -70,9 +70,9 @@ extern int	__aeabi_dcmpun(double, double);
 	int	d;							\
 	if (!jit_exchange_p()) {					\
 	    if (jit_thumb_p())						\
-		d = (((int)function - (int)_jit->x.pc) >> 1) - 2;	\
+		d = (((uintptr_t)function - (uintptr_t)_jit->x.pc) >> 1) - 2;	\
 	    else							\
-		d = (((int)function - (int)_jit->x.pc) >> 2) - 2;	\
+		d = (((uintptr_t)function - (uintptr_t)_jit->x.pc) >> 2) - 2;	\
 	    if (_s24P(d)) {						\
 		if (jit_thumb_p())					\
 		    T2_BLI(encode_thumb_jump(d));			\
@@ -84,7 +84,7 @@ extern int	__aeabi_dcmpun(double, double);
 	}								\
 	else {								\
 	label:								\
-	    jit_movi_i(JIT_FTMP, (int)function);			\
+	    jit_movi_i(JIT_FTMP, (uintptr_t)function);			\
 	    if (jit_thumb_p())						\
 		T1_BLX(JIT_FTMP);					\
 	    else							\
@@ -723,7 +723,7 @@ swf_bff(jit_state_t _jit, int (*i0)(float, float), int cc,
 	T1_CMPI(_R0, 0);
 	swf_pop(0xf);
 	l = _jit->x.pc;
-	d = (((int)i1 - (int)l) >> 1) - 2;
+	d = (((uintptr_t)i1 - (uintptr_t)l) >> 1) - 2;
 	assert(_s20P(d));
 	T2_CC_B(cc, encode_thumb_cc_jump(d));
     }
@@ -731,7 +731,7 @@ swf_bff(jit_state_t _jit, int (*i0)(float, float), int cc,
 	_CMPI(_R0, 0);
 	swf_pop(0xf);
 	l = _jit->x.pc;
-	d = (((int)i1 - (int)l) >> 2) - 2;
+	d = (((uintptr_t)i1 - (uintptr_t)l) >> 2) - 2;
 	assert(_s24P(d));
 	_CC_B(cc, d & 0x00ffffff);
     }
@@ -761,7 +761,7 @@ swf_bdd(jit_state_t _jit, int (*i0)(double, double), int cc,
 	T1_CMPI(_R0, 0);
 	swf_pop(0xf);
 	l = _jit->x.pc;
-	d = (((int)i1 - (int)l) >> 1) - 2;
+	d = (((uintptr_t)i1 - (uintptr_t)l) >> 1) - 2;
 	assert(_s20P(d));
 	T2_CC_B(cc, encode_thumb_cc_jump(d));
     }
@@ -769,7 +769,7 @@ swf_bdd(jit_state_t _jit, int (*i0)(double, double), int cc,
 	_CMPI(_R0, 0);
 	swf_pop(0xf);
 	l = _jit->x.pc;
-	d = (((int)i1 - (int)l) >> 2) - 2;
+	d = (((uintptr_t)i1 - (uintptr_t)l) >> 2) - 2;
 	assert(_s24P(d));
 	_CC_B(cc, d & 0x00ffffff);
     }
@@ -830,7 +830,7 @@ swf_bunff(jit_state_t _jit, int eq, void *i1, jit_fpr_t r1, jit_fpr_t r2)
 	    T2_CC_B(ARM_CC_NE, 0);
 	swf_pop(0xf);
 	l = _jit->x.pc;
-	d = (((int)i1 - (int)l) >> 1) - 2;
+	d = (((uintptr_t)i1 - (uintptr_t)l) >> 1) - 2;
 	assert(_s24P(d));
 	T2_B(encode_thumb_jump(d));
     }
@@ -845,7 +845,7 @@ swf_bunff(jit_state_t _jit, int eq, void *i1, jit_fpr_t r1, jit_fpr_t r2)
 	    _CC_B(ARM_CC_NE, 0);
 	swf_pop(0xf);
 	l = _jit->x.pc;
-	d = (((int)i1 - (int)l) >> 2) - 2;
+	d = (((uintptr_t)i1 - (uintptr_t)l) >> 2) - 2;
 	assert(_s24P(d));
 	_B(d & 0x00ffffff);
     }
@@ -909,7 +909,7 @@ swf_bundd(jit_state_t _jit, int eq, void *i1, jit_fpr_t r1, jit_fpr_t r2)
 	    T2_CC_B(ARM_CC_NE, 0);
 	swf_pop(0xf);
 	l = _jit->x.pc;
-	d = (((int)i1 - (int)l) >> 1) - 2;
+	d = (((uintptr_t)i1 - (uintptr_t)l) >> 1) - 2;
 	assert(_s24P(d));
 	T2_B(encode_thumb_jump(d));
     }
@@ -924,7 +924,7 @@ swf_bundd(jit_state_t _jit, int eq, void *i1, jit_fpr_t r1, jit_fpr_t r2)
 	    _CC_B(ARM_CC_NE, 0);
 	swf_pop(0xf);
 	l = _jit->x.pc;
-	d = (((int)i1 - (int)l) >> 2) - 2;
+	d = (((uintptr_t)i1 - (uintptr_t)l) >> 2) - 2;
 	assert(_s24P(d));
 	_B(d & 0x00ffffff);
     }
@@ -980,7 +980,7 @@ swf_ldi_f(jit_state_t _jit, jit_fpr_t r0, void *i0)
 __jit_inline void
 swf_ldi_d(jit_state_t _jit, jit_fpr_t r0, void *i0)
 {
-    jit_movi_i(JIT_TMP, (int)i0);
+    jit_movi_i(JIT_TMP, (uintptr_t)i0);
     if (!jit_thumb_p() && jit_armv5e_p()) {
 	_LDRDI(JIT_TMP, JIT_TMP, 0);
 	_STRDIN(JIT_TMP, JIT_FP, swf_off(r0) + 8);
@@ -1085,7 +1085,7 @@ swf_str_d(jit_state_t _jit, jit_gpr_t r0, jit_fpr_t r1)
 __jit_inline void
 swf_sti_f(jit_state_t _jit, void *i0, jit_fpr_t r0)
 {
-    jit_movi_i(JIT_TMP, (int)i0);
+    jit_movi_i(JIT_TMP, (uintptr_t)i0);
     swf_ldrin(JIT_FTMP, JIT_FP, swf_off(r0) + 8);
     jit_stxi_i(0, JIT_TMP, JIT_FTMP);
 }
@@ -1093,7 +1093,7 @@ swf_sti_f(jit_state_t _jit, void *i0, jit_fpr_t r0)
 __jit_inline void
 swf_sti_d(jit_state_t _jit, void *i0, jit_fpr_t r0)
 {
-    jit_movi_i(JIT_TMP, (int)i0);
+    jit_movi_i(JIT_TMP, (uintptr_t)i0);
     swf_ldrin(JIT_FTMP, JIT_FP, swf_off(r0) + 8);
    jit_stxi_i(0, JIT_TMP, JIT_FTMP);
     swf_ldrin(JIT_FTMP, JIT_FP, swf_off(r0) + 4);

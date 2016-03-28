@@ -144,7 +144,7 @@ u8* MemBuffer::Reserve(u32 size)
 	m_ReservedSize = m_ReservedPages * s_PageSize;
 	m_CommittedSize = 0;
 
-	m_Baseptr = (u8*)mmap(NULL, m_ReservedSize, PROT_NONE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+	m_Baseptr = (u8*)mmap(NULL, m_ReservedSize, PROT_NONE, MAP_PRIVATE | MAP_ANON, -1, 0);
 	if (m_Baseptr == MAP_FAILED || !Commit(m_DefSize))
 		Release();
 

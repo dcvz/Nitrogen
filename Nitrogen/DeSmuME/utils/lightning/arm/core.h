@@ -32,8 +32,6 @@
 #ifndef __lightning_core_arm_h
 #define __lightning_core_arm_h
 
-#import "asm.h"
-
 #define JIT_R_NUM			4
 static const jit_gpr_t
 jit_r_order[JIT_R_NUM] = {
@@ -168,16 +166,19 @@ __jit_inline jit_insn *
 arm_movi_p(jit_state_t _jit, jit_gpr_t r0, void *i0)
 {
     jit_insn	*l;
-    int		 im, q0, q1, q2, q3;
-    im = (int)i0; 		l = _jit->x.pc;
+    //int		 im, q0, q1, q2, q3;
+    //im = (int)i0; 		l = _jit->x.pc;
+    uintptr_t im;
+    int		 q0, q1, q2, q3;
+    im = (uintptr_t)i0; 		l = _jit->x.pc;
     if (jit_thumb_p()) {
-	T2_MOVWI(r0, _jit_US((int)i0));
-	T2_MOVTI(r0, _jit_US((int)i0 >> 16));
+	T2_MOVWI(r0, _jit_US((uintptr_t)i0));
+	T2_MOVTI(r0, _jit_US((uintptr_t)i0 >> 16));
     }
     else {
 	if (jit_armv6_p()) {
-	    _MOVWI(r0, _jit_US((unsigned)i0));
-	    _MOVTI(r0, _jit_US((unsigned)i0 >> 16));
+	    _MOVWI(r0, _jit_US((uintptr_t)i0));
+	    _MOVTI(r0, _jit_US((uintptr_t)i0 >> 16));
 	}
 	else {
 	    q0 = im & 0x000000ff;	q1 = im & 0x0000ff00;
@@ -201,9 +202,9 @@ arm_patch_movi(jit_state_t _jit, jit_insn *i0, void *i1)
 	void		*v;
     } u;
     jit_thumb_t		 thumb;
-    unsigned int	 im;
+    uintptr_t	 im;
     int			 q0, q1, q2, q3;
-    im = (unsigned int)i1;		u.v = i0;
+    im = (uintptr_t)i1;		u.v = i0;
     if (jit_thumb_p()) {
 	q0 = (im & 0xf000) << 4;
 	q1 = (im & 0x0800) << 15;
@@ -854,9 +855,9 @@ arm_divmod(jit_state_t _jit, int div, int sign,
     else		p = (void*)__aeabi_uidivmod;
     if (!jit_exchange_p()) {
 	if (jit_thumb_p())
-	    d = (((int)p - (int)_jit->x.pc) >> 1) - 2;
+	    d = (((uintptr_t)p - (uintptr_t)_jit->x.pc) >> 1) - 2;
 	else
-	    d = (((int)p - (int)_jit->x.pc) >> 2) - 2;
+	    d = (((uintptr_t)p - (uintptr_t)_jit->x.pc) >> 2) - 2;
 	if (_s24P(d)) {
 	    if (jit_thumb_p())
 		T2_BLI(encode_thumb_jump(d));
@@ -868,7 +869,7 @@ arm_divmod(jit_state_t _jit, int div, int sign,
     }
     else {
     fallback:
-	jit_movi_i(JIT_FTMP, (int)p);
+	jit_movi_i(JIT_FTMP, (uintptr_t)p);
 	if (jit_thumb_p())
 	    T1_BLX(JIT_FTMP);
 	else
@@ -1649,7 +1650,7 @@ arm_ldr_c(jit_state_t _jit, jit_gpr_t r0, jit_gpr_t r1)
 __jit_inline void
 arm_ldi_c(jit_state_t _jit, jit_gpr_t r0, void *i0)
 {
-    jit_movi_i(JIT_TMP, (int)i0);
+    jit_movi_i(JIT_TMP, (uintptr_t)i0);
     if (jit_thumb_p())
 	T2_LDRSBI(r0, JIT_TMP, 0);
     else
@@ -1718,7 +1719,7 @@ arm_ldr_uc(jit_state_t _jit, jit_gpr_t r0, jit_gpr_t r1)
 __jit_inline void
 arm_ldi_uc(jit_state_t _jit, jit_gpr_t r0, void *i0)
 {
-    jit_movi_i(JIT_TMP, (int)i0);
+    jit_movi_i(JIT_TMP, (uintptr_t)i0);
     if (jit_thumb_p())
 	T2_LDRBI(r0, JIT_TMP, 0);
     else
@@ -1789,7 +1790,7 @@ arm_ldr_s(jit_state_t _jit, jit_gpr_t r0, jit_gpr_t r1)
 __jit_inline void
 arm_ldi_s(jit_state_t _jit, jit_gpr_t r0, void *i0)
 {
-    jit_movi_i(JIT_TMP, (int)i0);
+    jit_movi_i(JIT_TMP, (uintptr_t)i0);
     if (jit_thumb_p())
 	T2_LDRSHI(r0, JIT_TMP, 0);
     else
@@ -1858,7 +1859,7 @@ arm_ldr_us(jit_state_t _jit, jit_gpr_t r0, jit_gpr_t r1)
 __jit_inline void
 arm_ldi_us(jit_state_t _jit, jit_gpr_t r0, void *i0)
 {
-    jit_movi_i(JIT_TMP, (int)i0);
+    jit_movi_i(JIT_TMP, (uintptr_t)i0);
     if (jit_thumb_p())
 	T2_LDRHI(r0, JIT_TMP, 0);
     else
@@ -1929,7 +1930,7 @@ arm_ldr_i(jit_state_t _jit, jit_gpr_t r0, jit_gpr_t r1)
 __jit_inline void
 arm_ldi_i(jit_state_t _jit, jit_gpr_t r0, void *i0)
 {
-    jit_movi_i(JIT_TMP, (int)i0);
+    jit_movi_i(JIT_TMP, (uintptr_t)i0);
     if (jit_thumb_p())
 	T2_LDRI(r0, JIT_TMP, 0);
     else
@@ -2003,7 +2004,7 @@ arm_str_c(jit_state_t _jit, jit_gpr_t r0, jit_gpr_t r1)
 __jit_inline void
 arm_sti_c(jit_state_t _jit, void *i0, jit_gpr_t r0)
 {
-    jit_movi_i(JIT_TMP, (int)i0);
+    jit_movi_i(JIT_TMP, (uintptr_t)i0);
     if (jit_thumb_p())
 	T2_STRBI(r0, JIT_TMP, 0);
     else
@@ -2071,7 +2072,7 @@ arm_str_s(jit_state_t _jit, jit_gpr_t r0, jit_gpr_t r1)
 __jit_inline void
 arm_sti_s(jit_state_t _jit, void *i0, jit_gpr_t r0)
 {
-    jit_movi_i(JIT_TMP, (int)i0);
+    jit_movi_i(JIT_TMP, (uintptr_t)i0);
     if (jit_thumb_p())
 	T2_STRHI(r0, JIT_TMP, 0);
     else
@@ -2139,7 +2140,7 @@ arm_str_i(jit_state_t _jit, jit_gpr_t r0, jit_gpr_t r1)
 __jit_inline void
 arm_sti_i(jit_state_t _jit, void *i0, jit_gpr_t r0)
 {
-    jit_movi_i(JIT_TMP, (int)i0);
+    jit_movi_i(JIT_TMP, (uintptr_t)i0);
     if (jit_thumb_p())
 	T2_STRI(r0, JIT_TMP, 0);
     else
@@ -2791,7 +2792,7 @@ arm_ret(jit_state_t _jit)
 	     (1<<_R4)|(1<<_R5)|(1<<_R6)|(1<<_R7)|(1<<_R8)|(1<<_R9)|
 	     /* previous fp and return address */
 	     (1<<JIT_FP)|(1<<JIT_PC));
-    if (jit_thumb_p() && ((int)_jit->x.pc & 2))
+    if (jit_thumb_p() && ((uintptr_t)_jit->x.pc & 2))
 	T1_NOP();
 }
 

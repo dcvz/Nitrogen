@@ -21,8 +21,9 @@
 #include "SndOut.h"
 //#include "SoundTouch/WavFile.h"
 
+
 #ifdef HAVE_LIBSOUNDTOUCH
-#include <SoundTouch.h>
+//#include <SoundTouch/SoundTouch.h"
 #else
 #include "SoundTouch/SoundTouch.h"
 #endif
