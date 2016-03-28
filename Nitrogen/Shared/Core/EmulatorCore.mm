@@ -11,7 +11,6 @@
 #endif
 
 #import "EmulatorCore.h"
-#import "Cheat.h"
 #import "OETimingUtils.h"
 #import "OESoundInterface.h"
 
@@ -557,6 +556,10 @@ static BOOL _b[] = {0,0,0,0,0,0,0,0,0,0,0,0,0};
 
 - (const void *)videoBuffer {
     return video.finalBuffer();
+}
+
+- (NSInteger)fps {
+    return mainLoopData.fps;
 }
 
 - (CGRect)screenRect {

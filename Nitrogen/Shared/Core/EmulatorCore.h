@@ -66,6 +66,7 @@ typedef NS_ENUM(NSUInteger, NDSButton)
 
 #pragma mark - Emulation Properties
 - (const void *)videoBuffer;
+- (NSInteger)fps;
 - (CGRect)screenRect;
 - (CGSize)aspectSize;
 - (CGSize)bufferSize;

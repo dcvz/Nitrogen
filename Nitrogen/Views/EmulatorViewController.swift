@@ -16,6 +16,7 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
 
     // MARK: - IBOutlets
 
+    @IBOutlet weak var fpsLabel: UILabel!
     @IBOutlet weak var mainView: GLKView!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var menuButton: UIButton!
@@ -74,7 +75,14 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
         emulator.loadROM(ndsFile.path)
         emulator.startEmulation()
         emulator.updateFrameBlock = { [weak self] in
-            self?.mainView.display()
+            if let s = self {
+                let fps = s.emulator.fps()
+
+                dispatch_async(dispatch_get_main_queue()) {
+                    s.fpsLabel.text = "\(fps) FPS"
+                    s.mainView.display()
+                }
+            }
         }
     }
 
@@ -135,15 +143,26 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
             if let s = self {
                 let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
 
+                let toggleFPS = UIAlertAction(title: "Toggle FPS", style: .Default) { _ in
+                    dispatch_async(dispatch_get_main_queue()) {
+                        if let s = self {
+                            s.fpsLabel.hidden = !s.fpsLabel.hidden
+                        }
+                    }
+                }
+
                 let cheatAction = UIAlertAction(title: "Cheats (\(s.emulator.numberOfCheats()))", style: .Default) { action in
                     self?.performSegueWithIdentifier("showCheats", sender: self)
                 }
+
                 let closeAction = UIAlertAction(title: "Close ROM", style: .Destructive) { action in
                     self?.emulator.stopEmulation()
                     self?.dismissViewControllerAnimated(true, completion: nil)
                 }
+
                 let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
 
+                sheet.addAction(toggleFPS)
                 sheet.addAction(cheatAction)
                 sheet.addAction(closeAction)
                 sheet.addAction(cancelAction)
