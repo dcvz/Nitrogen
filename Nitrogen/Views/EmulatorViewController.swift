@@ -14,29 +14,29 @@ import RxSwift
 
 class EmulatorViewController: UIViewController, GLKViewDelegate {
 
-    // MARK: - Attributes (View)
+    // MARK: - IBOutlets
 
-    private let mainView: GLKView = GLKView.newAutoLayoutView()
-    private let promoLabel: UILabel = UILabel.newAutoLayoutView()
-    private let startButton: UIButton = UIButton.newAutoLayoutView()
-    private let menuButton: UIButton = UIButton.newAutoLayoutView()
-    private let selectButton: UIButton = UIButton.newAutoLayoutView()
-    private let aButton: UIButton = UIButton.newAutoLayoutView()
-    private let bButton: UIButton = UIButton.newAutoLayoutView()
-    private let xButton: UIButton = UIButton.newAutoLayoutView()
-    private let yButton: UIButton = UIButton.newAutoLayoutView()
-    private let lButton: UIButton = UIButton.newAutoLayoutView()
-    private let rButton: UIButton = UIButton.newAutoLayoutView()
-    private let leftButton: UIButton = UIButton.newAutoLayoutView()
-    private let downButton: UIButton = UIButton.newAutoLayoutView()
-    private let upButton: UIButton = UIButton.newAutoLayoutView()
-    private let rightButton: UIButton = UIButton.newAutoLayoutView()
+    @IBOutlet weak var mainView: GLKView!
+    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var selectButton: UIButton!
+    @IBOutlet weak var aButton: UIButton!
+    @IBOutlet weak var bButton: UIButton!
+    @IBOutlet weak var xButton: UIButton!
+    @IBOutlet weak var yButton: UIButton!
+    @IBOutlet weak var lButton: UIButton!
+    @IBOutlet weak var rButton: UIButton!
+    @IBOutlet weak var leftButton: UIButton!
+    @IBOutlet weak var downButton: UIButton!
+    @IBOutlet weak var upButton: UIButton!
+    @IBOutlet weak var rightButton: UIButton!
 
 
     // MARK: - Attributes (Instance)
 
-    var emulator: EmulatorCore = EmulatorCore()
-    var audioCore: OEGameAudio!
+    private var emulator: EmulatorCore = EmulatorCore()
+    private var currentGame: Game!
+    private var audioCore: OEGameAudio!
     private let effect: GLKBaseEffect = GLKBaseEffect()
     private var texture: GLuint = 0
 
@@ -64,6 +64,8 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
         let documentsDirectoryURL: NSURL! =  try! NSFileManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
         let ndsFile: NSURL! = documentsDirectoryURL.URLByAppendingPathComponent(game.path)
 
+        currentGame = game
+
         audioCore = OEGameAudio(core: emulator)
         audioCore.volume = 1.0
         audioCore.outputDeviceID = 0
@@ -80,185 +82,109 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
     // MARK: - Private Methods
 
     private func setupView() {
-        view.backgroundColor = .blackColor()
-
-        // Screens
-        mainView.tag = 44
-        mainView.delegate = self
-        mainView.enableSetNeedsDisplay = false
-        view.addSubview(mainView)
-        mainView.autoPinEdgeToSuperviewEdge(.Left)
-        mainView.autoPinEdgeToSuperviewEdge(.Top)
-        mainView.autoPinEdgeToSuperviewEdge(.Right)
-        let inset = view.bounds.height - ((view.bounds.width * emulator.aspectSize().height) / emulator.aspectSize().width)
-        mainView.autoPinEdgeToSuperviewEdge(.Bottom, withInset: inset)
-
-        promoLabel.text = "#NitrogenEmu"
-        promoLabel.textColor = UIColor(white: 1, alpha: 0.5)
-        view.addSubview(promoLabel)
-        promoLabel.autoPinEdgeToSuperviewEdge(.Right, withInset: 8)
-        promoLabel.autoPinEdgeToSuperviewEdge(.Top, withInset: 8)
-
-        // Buttons
-        startButton.setBackgroundImage(UIImage(named: "start-button"), forState: .Normal)
         startButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.Start)
         }.addDisposableTo(hankeyBag)
         startButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.Start)
         }.addDisposableTo(hankeyBag)
-        view.addSubview(startButton)
-        startButton.autoPinEdgeToSuperviewEdge(.Bottom, withInset: 4)
-        startButton.autoPinEdgeToSuperviewEdge(.Right, withInset: 12)
 
-        aButton.setBackgroundImage(UIImage(named: "a-button"), forState: .Normal)
         aButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.A)
         }.addDisposableTo(hankeyBag)
         aButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.A)
         }.addDisposableTo(hankeyBag)
-        view.addSubview(aButton)
-        aButton.autoSetDimensionsToSize(CGSize(width: 48, height: 48))
-        aButton.autoPinEdgeToSuperviewEdge(.Right, withInset: 6)
-        aButton.autoPinEdge(.Bottom, toEdge: .Top, ofView: startButton, withOffset: -8)
 
-        bButton.setBackgroundImage(UIImage(named: "b-button"), forState: .Normal)
         bButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.B)
         }.addDisposableTo(hankeyBag)
         bButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.B)
         }.addDisposableTo(hankeyBag)
-        view.addSubview(bButton)
-        bButton.autoSetDimensionsToSize(CGSize(width: 48, height: 48))
-        bButton.autoPinEdge(.Right, toEdge: .Left, ofView: aButton, withOffset: -7)
-        bButton.autoAlignAxis(.Horizontal, toSameAxisOfView: aButton)
 
-        xButton.setBackgroundImage(UIImage(named: "x-button"), forState: .Normal)
         xButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.X)
         }.addDisposableTo(hankeyBag)
         xButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.X)
         }.addDisposableTo(hankeyBag)
-        view.addSubview(xButton)
-        xButton.autoSetDimensionsToSize(CGSize(width: 48, height: 48))
-        xButton.autoPinEdge(.Right, toEdge: .Left, ofView: bButton, withOffset: -7)
-        xButton.autoAlignAxis(.Horizontal, toSameAxisOfView: aButton)
 
-        yButton.setBackgroundImage(UIImage(named: "y-button"), forState: .Normal)
         yButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.Y)
         }.addDisposableTo(hankeyBag)
         yButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.Y)
         }.addDisposableTo(hankeyBag)
-        view.addSubview(yButton)
-        yButton.autoSetDimensionsToSize(CGSize(width: 48, height: 48))
-        yButton.autoAlignAxis(.Vertical, toSameAxisOfView: bButton)
-        yButton.autoPinEdge(.Bottom, toEdge: .Top, ofView: bButton, withOffset: -7)
 
-        lButton.setBackgroundImage(UIImage(named: "left-button"), forState: .Normal)
         lButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.L)
         }.addDisposableTo(hankeyBag)
         lButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.L)
         }.addDisposableTo(hankeyBag)
-        view.addSubview(lButton)
-        lButton.autoSetDimensionsToSize(CGSize(width: 37, height: 34))
-        lButton.autoAlignAxis(.Horizontal, toSameAxisOfView: yButton)
-        lButton.autoPinEdge(.Right, toEdge: .Left, ofView: yButton, withOffset: -2)
 
-        rButton.setBackgroundImage(UIImage(named: "right-button"), forState: .Normal)
         rButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.R)
         }.addDisposableTo(hankeyBag)
         rButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.R)
         }.addDisposableTo(hankeyBag)
-        view.addSubview(rButton)
-        rButton.autoSetDimensionsToSize(CGSize(width: 37, height: 34))
-        rButton.autoAlignAxis(.Horizontal, toSameAxisOfView: yButton)
-        rButton.autoPinEdge(.Left, toEdge: .Right, ofView: yButton, withOffset: 2)
 
-        menuButton.setBackgroundImage(UIImage(named: "menu-button"), forState: .Normal)
         menuButton.rx_touchdown.subscribeNext() { [weak self] in
-            let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-            let closeAction = UIAlertAction(title: "Close ROM", style: .Destructive) { [weak self] action in
-                self?.emulator.stopEmulation()
-                self?.dismissViewControllerAnimated(true, completion: nil)
+            if let s = self {
+                let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+
+                let cheatAction = UIAlertAction(title: "Cheats (\(s.emulator.numberOfCheats()))", style: .Default) { action in
+                    self?.performSegueWithIdentifier("showCheats", sender: self)
+                }
+                let closeAction = UIAlertAction(title: "Close ROM", style: .Destructive) { action in
+                    self?.emulator.stopEmulation()
+                    self?.dismissViewControllerAnimated(true, completion: nil)
+                }
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+
+                sheet.addAction(cheatAction)
+                sheet.addAction(closeAction)
+                sheet.addAction(cancelAction)
+                self?.presentViewController(sheet, animated: true, completion: nil)
             }
-
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-
-            sheet.addAction(closeAction)
-            sheet.addAction(cancelAction)
-            self?.presentViewController(sheet, animated: true, completion: nil)
         }.addDisposableTo(hankeyBag)
-        view.addSubview(menuButton)
-        menuButton.autoPinEdgeToSuperviewEdge(.Bottom, withInset: 4)
-        menuButton.autoAlignAxisToSuperviewAxis(.Vertical)
 
-        selectButton.setBackgroundImage(UIImage(named: "select-button"), forState: .Normal)
         selectButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.Select)
         }.addDisposableTo(hankeyBag)
         selectButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.Select)
         }.addDisposableTo(hankeyBag)
-        view.addSubview(selectButton)
-        selectButton.autoPinEdgeToSuperviewEdge(.Bottom, withInset: 4)
-        selectButton.autoPinEdgeToSuperviewEdge(.Left, withInset: 12)
 
-        leftButton.setBackgroundImage(UIImage(named: "side-button"), forState: .Normal)
         leftButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.Left)
-            }.addDisposableTo(hankeyBag)
+        }.addDisposableTo(hankeyBag)
         leftButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.Left)
-            }.addDisposableTo(hankeyBag)
-        view.addSubview(leftButton)
-        leftButton.autoSetDimensionsToSize(CGSize(width: 48, height: 44))
-        leftButton.autoPinEdgeToSuperviewEdge(.Left, withInset: 12)
-        leftButton.autoPinEdge(.Bottom, toEdge: .Top, ofView: selectButton, withOffset: -8)
+        }.addDisposableTo(hankeyBag)
 
-        downButton.setBackgroundImage(UIImage(named: "down-button"), forState: .Normal)
         downButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.Down)
-            }.addDisposableTo(hankeyBag)
+        }.addDisposableTo(hankeyBag)
         downButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.Down)
-            }.addDisposableTo(hankeyBag)
-        view.addSubview(downButton)
-        downButton.autoSetDimensionsToSize(CGSize(width: 48, height: 44))
-        downButton.autoAlignAxis(.Horizontal, toSameAxisOfView: leftButton)
-        downButton.autoPinEdge(.Left, toEdge: .Right, ofView: leftButton, withOffset: 7)
+        }.addDisposableTo(hankeyBag)
 
-        rightButton.setBackgroundImage(UIImage(named: "side-button"), forState: .Normal)
         rightButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.Right)
-            }.addDisposableTo(hankeyBag)
+        }.addDisposableTo(hankeyBag)
         rightButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.Right)
-            }.addDisposableTo(hankeyBag)
-        view.addSubview(rightButton)
-        rightButton.autoSetDimensionsToSize(CGSize(width: 48, height: 44))
-        rightButton.autoPinEdge(.Left, toEdge: .Right, ofView: downButton, withOffset: 7)
-        rightButton.autoAlignAxis(.Horizontal, toSameAxisOfView: leftButton)
+        }.addDisposableTo(hankeyBag)
 
-        upButton.setBackgroundImage(UIImage(named: "up-button"), forState: .Normal)
         upButton.rx_touchdown.subscribeNext() { [weak self] in
             self?.emulator.pressedButton(.Up)
-            }.addDisposableTo(hankeyBag)
+        }.addDisposableTo(hankeyBag)
         upButton.rx_untap.subscribeNext() { [weak self] in
             self?.emulator.releasedButton(.Up)
-            }.addDisposableTo(hankeyBag)
-        view.addSubview(upButton)
-        upButton.autoSetDimensionsToSize(CGSize(width: 48, height: 44))
-        upButton.autoPinEdge(.Bottom, toEdge: .Top, ofView: downButton, withOffset: -10)
-        upButton.autoAlignAxis(.Vertical, toSameAxisOfView: downButton)
+        }.addDisposableTo(hankeyBag)
     }
 
     private func setupNotifications() {
@@ -356,6 +282,15 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
         }
 
         glDisableVertexAttribArray(GLuint(GLKVertexAttrib.Position.rawValue))
+    }
+
+
+    // MARK: - Navigation
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let vc = segue.destinationViewController as! CheatsViewController
+        vc.emulator = emulator
+        vc.gameTitle = currentGame.title
     }
 
 

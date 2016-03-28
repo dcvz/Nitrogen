@@ -10,6 +10,7 @@
 		08F6B8DEC7426725A9A7F8BE /* Pods_Nitrogen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A76DA064F4E6E284CA90F69 /* Pods_Nitrogen.framework */; };
 		9B73FAAF1CA53E6900D46908 /* UIButton+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B73FAAE1CA53E6900D46908 /* UIButton+Rx.swift */; };
 		9B73FAB21CA5448100D46908 /* DirectoryWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B73FAB11CA5448100D46908 /* DirectoryWatcher.swift */; };
+		9B73FABD1CA5962F00D46908 /* CheatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B73FABC1CA5962F00D46908 /* CheatsViewController.swift */; };
 		9B7D1AD71C9AD18700FE68AE /* math_acosf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AB11C9AD18700FE68AE /* math_acosf.c */; };
 		9B7D1AD81C9AD18700FE68AE /* math_asinf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AB21C9AD18700FE68AE /* math_asinf.c */; };
 		9B7D1AD91C9AD18700FE68AE /* math_atan2f.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AB31C9AD18700FE68AE /* math_atan2f.c */; };
@@ -176,6 +177,7 @@
 		8A76DA064F4E6E284CA90F69 /* Pods_Nitrogen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nitrogen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B73FAAE1CA53E6900D46908 /* UIButton+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIButton+Rx.swift"; path = "Shared/Extensions/UIButton+Rx.swift"; sourceTree = "<group>"; };
 		9B73FAB11CA5448100D46908 /* DirectoryWatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectoryWatcher.swift; path = Shared/Utils/Directory/DirectoryWatcher.swift; sourceTree = "<group>"; };
+		9B73FABC1CA5962F00D46908 /* CheatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheatsViewController.swift; sourceTree = "<group>"; };
 		9B7D1AB11C9AD18700FE68AE /* math_acosf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_acosf.c; sourceTree = "<group>"; };
 		9B7D1AB21C9AD18700FE68AE /* math_asinf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_asinf.c; sourceTree = "<group>"; };
 		9B7D1AB31C9AD18700FE68AE /* math_atan2f.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_atan2f.c; sourceTree = "<group>"; };
@@ -559,6 +561,7 @@
 				9B8258AE1C9A041C006D8F71 /* Storyboards */,
 				9BD201751C9F36770059CEC3 /* LibraryViewController.swift */,
 				9BF3E51B1C9D56C9007B1565 /* EmulatorViewController.swift */,
+				9B73FABC1CA5962F00D46908 /* CheatsViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1202,6 +1205,7 @@
 				9B8263391C9A05BE006D8F71 /* Disassembler.cpp in Sources */,
 				9B7D1AD91C9AD18700FE68AE /* math_atan2f.c in Sources */,
 				9B82639B1C9A05BE006D8F71 /* libfat.cpp in Sources */,
+				9B73FABD1CA5962F00D46908 /* CheatsViewController.swift in Sources */,
 				9B8273AE1C9A08A0006D8F71 /* throttle.cpp in Sources */,
 				9B82605D1C9A05BE006D8F71 /* slot2_piano.cpp in Sources */,
 				9BECED411CA0CD2B007E8D38 /* Cells.swift in Sources */,

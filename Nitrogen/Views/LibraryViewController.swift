@@ -64,15 +64,6 @@ class LibraryViewController: UIViewController {
 
                 cell.titleLabel.text = element.title
             }.addDisposableTo(hankeyBag)
-
-        collectionView.rx_itemSelected
-            .subscribeNext() { index in
-                let game = self.games.value[index.item]
-
-                let vc = EmulatorViewController()
-                vc.startEmulator(game)
-                self.presentViewController(vc, animated: true, completion: nil)
-            }.addDisposableTo(hankeyBag)
     }
 
 
@@ -152,5 +143,15 @@ class LibraryViewController: UIViewController {
         }
 
         return nil
+    }
+
+
+    // MARK: - Navigation
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let index: NSIndexPath! = collectionView.indexPathsForSelectedItems()?.first
+        let game: Game = self.games.value[index.item]
+        let vc: EmulatorViewController = segue.destinationViewController as! EmulatorViewController
+        vc.startEmulator(game)
     }
 }

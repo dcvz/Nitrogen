@@ -46,6 +46,18 @@ typedef NS_ENUM(NSUInteger, NDSButton)
 - (void)resumeEmulation;
 - (void)stopEmulation;
 
+#pragma mark - Cheats
+- (NSUInteger)numberOfCheats;
+- (NSString *)cheatNameAtPosition:(NSUInteger)position;
+- (BOOL)cheatEnabledAtPosition:(NSUInteger)position;
+- (NSString *)cheatCodeAtPosition:(NSUInteger)position;
+- (NSUInteger)cheatTypeAtPosition:(NSUInteger)position;
+- (void)addCheatWithDescription:(NSString *)description code:(NSString *)code;
+- (void)updateCheatWithDescription:(NSString *)description code:(NSString *)code atPosition:(NSUInteger)position;
+- (void)saveCheats;
+- (void)setCheatEnabled:(BOOL)enabled atPosition:(NSUInteger)position;
+- (void)deleteCheatAtPosition:(NSUInteger)position;
+
 #pragma mark - Controller Properties
 - (void)pressedButton:(NDSButton)button;
 - (void)releasedButton:(NDSButton)button;

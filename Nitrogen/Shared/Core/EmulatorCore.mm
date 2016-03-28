@@ -11,6 +11,7 @@
 #endif
 
 #import "EmulatorCore.h"
+#import "Cheat.h"
 #import "OETimingUtils.h"
 #import "OESoundInterface.h"
 
@@ -30,6 +31,7 @@
 #include "slot1.h"
 #include "version.h"
 #include "metaspu.h"
+#undef BOOL
 
 #define GPU_DISPLAY_WIDTH							256
 #define GPU_DISPLAY_HEIGHT							192
@@ -470,6 +472,63 @@ bool nds4droid_loadrom(const char* path) {
     }
 }
 
+
+#pragma mark - Cheats
+
+- (NSUInteger)numberOfCheats {
+    return (cheats != NULL) ? cheats->getSize() : 0;
+}
+
+- (NSString *)cheatNameAtPosition:(NSUInteger)position {
+    if (cheats == NULL || position >= cheats->getSize()) return nil;
+    return [NSString stringWithCString:cheats->getItemByIndex(position)->description encoding:NSUTF8StringEncoding];
+}
+
+- (BOOL)cheatEnabledAtPosition:(NSUInteger)position {
+    if (cheats == NULL || position >= cheats->getSize()) return NO;
+    return cheats->getItemByIndex(position)->enabled ? YES : NO;
+}
+
+- (NSString *)cheatCodeAtPosition:(NSUInteger)position {
+    if (cheats == NULL || position >= cheats->getSize()) return nil;
+    char buffer[1024] = {0};
+    cheats->getXXcodeString(*cheats->getItemByIndex(position), buffer);
+    return [NSString stringWithCString:buffer encoding:NSUTF8StringEncoding];
+}
+
+- (NSUInteger)cheatTypeAtPosition:(NSUInteger)position {
+    if (cheats == NULL || position >= cheats->getSize()) return 0;
+    return cheats->getItemByIndex(position)->type;
+}
+
+- (void)addCheatWithDescription:(NSString *)description code:(NSString *)code {
+    if (cheats == NULL) return;
+
+    NSString *cheat = [code stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    cheats->add_AR([cheat UTF8String], [description UTF8String], FALSE);
+}
+
+- (void)updateCheatWithDescription:(NSString *)description code:(NSString *)code atPosition:(NSUInteger)position {
+    if (cheats == NULL) return;
+
+    const char* descBuff = [description cStringUsingEncoding:NSUTF8StringEncoding];
+    const char* codeBuff = [code cStringUsingEncoding:NSUTF8StringEncoding];
+    cheats->update_AR(codeBuff, descBuff, TRUE, position);
+}
+
+- (void)saveCheats {
+    if (cheats) cheats->save();
+}
+
+- (void)setCheatEnabled:(BOOL)enabled atPosition:(NSUInteger)position {
+    if (cheats) cheats->getItemByIndex(position)->enabled = enabled;
+}
+
+- (void)deleteCheatAtPosition:(NSUInteger)position {
+    if(cheats) cheats->remove(position);
+}
+
+
 #pragma mark - Controller Methods
 
 static BOOL _b[] = {0,0,0,0,0,0,0,0,0,0,0,0,0};
@@ -641,7 +700,7 @@ static BOOL _b[] = {0,0,0,0,0,0,0,0,0,0,0,0,0};
     CommonSettings.GFX3D_LineHack = 0;
     useMmapForRomLoading = false;
     fw_config.language = 1;
-
+    
     CommonSettings.wifi.mode = 0;
     CommonSettings.wifi.infraBridgeAdapter = 0;
 }
