@@ -62,6 +62,7 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
     // MARK: - Public Interface
 
     func startEmulator(game: Game) {
+        let fm: NSFileManager = NSFileManager.defaultManager()
         let documentsDirectoryURL: NSURL! =  try! NSFileManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
         let ndsFile: NSURL! = documentsDirectoryURL.URLByAppendingPathComponent(game.path)
 
@@ -73,16 +74,38 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
         audioCore.startAudio()
 
         emulator.loadROM(ndsFile.path)
-        emulator.startEmulation()
         emulator.updateFrameBlock = { [weak self] in
             if let s = self {
                 let fps = s.emulator.fps()
 
                 dispatch_async(dispatch_get_main_queue()) {
                     s.fpsLabel.text = "\(fps) FPS"
-                    s.mainView.display()
+                }
+                
+                s.mainView.display()
+            }
+        }
+
+        let autoSaveFile: NSURL! = ndsFile.URLByDeletingPathExtension?.URLByAppendingPathExtension("ds10")
+        if fm.fileExistsAtPath(autoSaveFile.path!) {
+            let alert: UIAlertController = UIAlertController(title: "Quick Restore?", message: nil, preferredStyle: .Alert)
+
+            let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .Default) { [weak self] _ in
+                self?.emulator.restoreStateAtSlot(10)
+                delay(0.3) {
+                    self?.emulator.startEmulation()
                 }
             }
+
+            let cancelAction: UIAlertAction = UIAlertAction(title: "No", style: .Cancel) { [weak self] _ in
+                self?.emulator.startEmulation()
+            }
+
+            alert.addAction(okAction)
+            alert.addAction(cancelAction)
+            presentViewController(alert, animated: true, completion: nil)
+        } else {
+            emulator.startEmulation()
         }
     }
 
@@ -143,12 +166,8 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
             if let s = self {
                 let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
 
-                let toggleFPS = UIAlertAction(title: "Toggle FPS", style: .Default) { _ in
-                    dispatch_async(dispatch_get_main_queue()) {
-                        if let s = self {
-                            s.fpsLabel.hidden = !s.fpsLabel.hidden
-                        }
-                    }
+                let quickSave = UIAlertAction(title: "Quick Save", style: .Default) { _ in
+                    self?.emulator.saveStateAtSlot(10)
                 }
 
                 let cheatAction = UIAlertAction(title: "Cheats (\(s.emulator.numberOfCheats()))", style: .Default) { action in
@@ -162,7 +181,7 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
 
                 let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
 
-                sheet.addAction(toggleFPS)
+                sheet.addAction(quickSave)
                 sheet.addAction(cheatAction)
                 sheet.addAction(closeAction)
                 sheet.addAction(cancelAction)

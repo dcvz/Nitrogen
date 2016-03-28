@@ -472,6 +472,17 @@ bool nds4droid_loadrom(const char* path) {
 }
 
 
+#pragma mark - Save States
+
+- (void)saveStateAtSlot:(NSUInteger)slot {
+    savestate_slot(slot);
+}
+
+- (void)restoreStateAtSlot:(NSUInteger)slot {
+    loadstate_slot(slot);
+}
+
+
 #pragma mark - Cheats
 
 - (NSUInteger)numberOfCheats {

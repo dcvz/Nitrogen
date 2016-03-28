@@ -46,6 +46,10 @@ typedef NS_ENUM(NSUInteger, NDSButton)
 - (void)resumeEmulation;
 - (void)stopEmulation;
 
+#pragma mark - Save States
+- (void)saveStateAtSlot:(NSUInteger)slot;
+- (void)restoreStateAtSlot:(NSUInteger)slot;
+
 #pragma mark - Cheats
 - (NSUInteger)numberOfCheats;
 - (NSString *)cheatNameAtPosition:(NSUInteger)position;
