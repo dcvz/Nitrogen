@@ -1364,11 +1364,12 @@
 					"$(SRCROOT)/Nitrogen/DeSmuME/ios/",
 					"$(SRCROOT)/Nitrogen/DeSmuME/utils/lightning/include",
 					"$(SRCROOT)/Nitrogen/DeSmuME/metaspu/SoundTouch",
+					"$(SRCROOT)/Nitrogen/DeSmuME/utils/lightning/arm",
 				);
 				INFOPLIST_FILE = "Nitrogen/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				NDS_FLAGS = "-DHAVE_LIBZ -mfloat-abi=softfp -mfpu=neon -marm -mtune=cortex-a9 -DHAVE_NEON -DHAVE_JIT -DDESMUME_IOS -DOBJ_C";
+				NDS_FLAGS = "-DHAVE_LIBZ -mfloat-abi=softfp -mfpu=neon -marm -mtune=cortex-a9 -DHAVE_NEON -DHAVE_JIT -DDESMUME_IOS -DOBJ_C -DLIGHTNING_ARM";
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"${NDS_FLAGS}",
@@ -1405,11 +1406,12 @@
 					"$(SRCROOT)/Nitrogen/DeSmuME/ios/",
 					"$(SRCROOT)/Nitrogen/DeSmuME/utils/lightning/include",
 					"$(SRCROOT)/Nitrogen/DeSmuME/metaspu/SoundTouch",
+					"$(SRCROOT)/Nitrogen/DeSmuME/utils/lightning/arm",
 				);
 				INFOPLIST_FILE = "Nitrogen/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				NDS_FLAGS = "-DHAVE_LIBZ -mfloat-abi=softfp -mfpu=neon -marm -mtune=cortex-a9 -DHAVE_NEON -DHAVE_JIT -DDESMUME_IOS -DOBJ_C";
+				NDS_FLAGS = "-DHAVE_LIBZ -mfloat-abi=softfp -mfpu=neon -marm -mtune=cortex-a9 -DHAVE_NEON -DHAVE_JIT -DDESMUME_IOS -DOBJ_C -DLIGHTNING_ARM";
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"${NDS_FLAGS}",

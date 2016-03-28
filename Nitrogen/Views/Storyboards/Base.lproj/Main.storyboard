@@ -204,6 +204,7 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60 FPS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fll-A8-UhL">
                                 <rect key="frame" x="12" y="8" width="68" height="21"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="68" id="ZkZ-Wv-fpm"/>
                                 </constraints>
@@ -278,7 +279,7 @@
                         <outlet property="aButton" destination="7e6-py-0G2" id="twt-ve-p0u"/>
                         <outlet property="bButton" destination="YqV-FT-QTS" id="nr3-hC-78w"/>
                         <outlet property="downButton" destination="W1R-S6-lyT" id="syB-FK-Aag"/>
-                        <outlet property="fpsLabel" destination="fll-A8-UhL" id="F8F-Rb-F9X"/>
+                        <outlet property="fpsLabel" destination="fll-A8-UhL" id="ebG-NH-jRK"/>
                         <outlet property="lButton" destination="2Nh-0M-0Sb" id="5zO-OT-nb9"/>
                         <outlet property="leftButton" destination="RlI-ax-6nf" id="lCL-eT-bJZ"/>
                         <outlet property="mainView" destination="Xxz-mB-a3m" id="QM2-3U-y3e"/>

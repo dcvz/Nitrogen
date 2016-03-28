@@ -19,7 +19,10 @@
 #include "MMU.h"
 #include "armcpu.h"
 #include "debug.h"
+#ifdef DESMUME_IOS
 #include <libkern/OSCacheControl.h>
+#include <sys/mman.h>
+#endif
 #ifdef _MSC_VER
 #include <Windows.h>
 #endif
@@ -1199,7 +1202,7 @@ u32 RegisterMap::GenStateData()
 	return m_StateData++;
 }
 
-//CACHE_ALIGN u8 g_RecompileCounts[(1<<26)/16];
+CACHE_ALIGN u8 g_RecompileCounts[(1<<26)/16];
 
 void JitLutInit()
 {
@@ -1236,18 +1239,26 @@ void JitLutReset()
 #else
 	memset(g_CompiledFuncs, 0, sizeof(g_CompiledFuncs));
 #endif
-	//memset(g_RecompileCounts,0, sizeof(g_RecompileCounts));
+	memset(g_RecompileCounts,0, sizeof(g_RecompileCounts));
 }
 
-void FlushIcacheSection(void *begin, size_t length)
+void FlushIcacheSection(u8 *begin, u8 *end)
 {
-#ifdef _MSC_VER
-    FlushInstructionCache(GetCurrentProcess(), begin, end - begin);
+#ifdef __SYMBIAN32__
+	User::IMB_Range(begin), end);
+#elif defined(BLACKBERRY)
+	msync(begin, end - begin, MS_SYNC | MS_INVALIDATE_ICACHE);
+#elif defined(DESMUME_IOS)
+	// Header file says this is equivalent to: sys_icache_invalidate(start, end - start);
+	sys_cache_control(kCacheFunctionPrepareForExecution, begin, end - begin);
+#elif !defined(_WIN32)
+#if defined(ARM)
+#ifdef __clang__
+	__clear_cache(begin, end);
 #else
-    //__builtin___clear_cache(begin, end); Riley Testut
-    if (length > 0) {
-        sys_icache_invalidate(begin, length);
-    }
+	__builtin___clear_cache(begin, end);
+#endif
+#endif
 #endif
 }
 

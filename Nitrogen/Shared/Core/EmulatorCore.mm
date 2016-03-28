@@ -472,6 +472,17 @@ bool nds4droid_loadrom(const char* path) {
 }
 
 
+#pragma mark - Save States
+
+- (void)saveStateAtSlot:(NSUInteger)slot {
+    savestate_slot(slot);
+}
+
+- (void)restoreStateAtSlot:(NSUInteger)slot {
+    loadstate_slot(slot);
+}
+
+
 #pragma mark - Cheats
 
 - (NSUInteger)numberOfCheats {
@@ -703,7 +714,7 @@ static BOOL _b[] = {0,0,0,0,0,0,0,0,0,0,0,0,0};
     CommonSettings.GFX3D_LineHack = 0;
     useMmapForRomLoading = false;
     fw_config.language = 1;
-    
+
     CommonSettings.wifi.mode = 0;
     CommonSettings.wifi.infraBridgeAdapter = 0;
 }

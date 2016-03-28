@@ -1039,7 +1039,7 @@ static bool ReadStateChunks(EMUFILE* is, s32 totalsize)
 		memcpy(buf, header.gameTile, sizeof(header.gameTile));
 		printf("Savestate info:\n");
 		printf("\tGame title: %s\n", buf);
-		printf("\tGame code: %c%c%c%c\n", header.gameCode[3], header.gameCode[2], header.gameCode[1], header.gameCode[0]);
+		printf("\tGame code: %c%c%c%c\n", header.gameCode[0], header.gameCode[1], header.gameCode[2], header.gameCode[3]);
 		printf("\tMaker code: %c%c (0x%04X) - %s\n", header.makerCode & 0xFF, header.makerCode >> 8, header.makerCode, getDeveloperNameByID(header.makerCode).c_str());
 		printf("\tDevice capacity: %dMb (real size %dMb)\n", ((128 * 1024) << header.cardSize) / (1024 * 1024), romsize / (1024 * 1024));
 		printf("\tCRC16: %04Xh\n", header.CRC16);

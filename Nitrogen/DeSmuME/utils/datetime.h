@@ -364,8 +364,8 @@ private:
 		//	throw new OverflowException (Locale.GetText ("Resulting timespan is too big."));
 		//}
 		//}
+        return value;
 	}
-
 };
 
 class DateTime

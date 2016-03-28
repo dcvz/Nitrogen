@@ -152,6 +152,9 @@ class LibraryViewController: UIViewController {
         let index: NSIndexPath! = collectionView.indexPathsForSelectedItems()?.first
         let game: Game = self.games.value[index.item]
         let vc: EmulatorViewController = segue.destinationViewController as! EmulatorViewController
-        vc.startEmulator(game)
+
+        delay(0.3) {
+            vc.startEmulator(game)
+        }
     }
 }

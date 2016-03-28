@@ -13,7 +13,7 @@
 
 	You should have received a copy of the GNU General Public License
 	along with the this software.  If not, see <http://www.gnu.org/licenses/>.
- */
+*/
 
 #ifndef ARM_THREADEDINTERPRETER
 #define ARM_THREADEDINTERPRETER
@@ -31,16 +31,16 @@ typedef void (FASTCALL* OpMethod)(const struct MethodCommon* common);
 
 struct MethodCommon
 {
-    OpMethod func;
-    void* data;
-    u32 R15;
+	OpMethod func;
+	void* data;
+	u32 R15;
 };
 
 
 struct Block
 {
-    MethodCommon *ops;
-    static u32 cycles;
+	MethodCommon *ops;
+	static u32 cycles;
 };
 
 template<int PROCNUM> static Block* armcpu_compileblock(BlockInfo &blockinfo);
@@ -49,39 +49,39 @@ template<int PROCNUM> Block* armcpu_compile();
 
 template<int PROCNUM> static u32 cpuExecute()
 {
-    Block *block = (Block*)JITLUT_HANDLE(ARMPROC.instruct_adr, PROCNUM);
-    if (!block)
-        block = armcpu_compile<PROCNUM>();
+	Block *block = (Block*)JITLUT_HANDLE(ARMPROC.instruct_adr, PROCNUM);
+	if (!block)
+		block = armcpu_compile<PROCNUM>();
 
 #ifdef DUMPLOG
-    extern unsigned long long RawGetTickCount();
+	extern unsigned long long RawGetTickCount();
 
-    unsigned long long start = RawGetTickCount();
+	unsigned long long start = RawGetTickCount();
 #endif
 
-    block->cycles = 0;
-    block->ops->func(block->ops);
+	block->cycles = 0;
+	block->ops->func(block->ops);
 
 #ifdef DUMPLOG
-    u32 time = (u32)(RawGetTickCount() - start);
+	u32 time = (u32)(RawGetTickCount() - start);
 
-    std::map<u32,EInfo>::iterator itr = exec_info[PROCNUM].find(ARMPROC.instruct_adr);
-    if (itr != exec_info[PROCNUM].end())
-    {
-        itr->second.count++;
-        itr->second.time += time;
-    }
-    else
-    {
-        EInfo info;
-        info.count = 1;
-        info.time = time;
+	std::map<u32,EInfo>::iterator itr = exec_info[PROCNUM].find(ARMPROC.instruct_adr);
+	if (itr != exec_info[PROCNUM].end())
+	{
+		itr->second.count++;
+		itr->second.time += time;
+	}
+	else
+	{
+		EInfo info;
+		info.count = 1;
+		info.time = time;
 
-        exec_info[PROCNUM][ARMPROC.instruct_adr] = info;
-    }
+		exec_info[PROCNUM][ARMPROC.instruct_adr] = info;
+	}
 #endif
-    
-    return block->cycles;
+
+	return block->cycles;
 }
 
 extern CpuBase arm_threadedinterpreter;
