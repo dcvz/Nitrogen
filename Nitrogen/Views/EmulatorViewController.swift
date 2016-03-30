@@ -56,6 +56,11 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
         setupView()
         setupNotifications()
         setupGL()
+        UIApplication.sharedApplication().idleTimerDisabled = true
+    }
+
+    deinit {
+        UIApplication.sharedApplication().idleTimerDisabled = true
     }
 
 
