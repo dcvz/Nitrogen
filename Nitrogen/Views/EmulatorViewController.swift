@@ -9,8 +9,8 @@
 import UIKit
 import GLKit
 import PureLayout
-import LRNotificationObserver
 import RxSwift
+import RxCocoa
 
 class EmulatorViewController: UIViewController, GLKViewDelegate {
 
@@ -231,13 +231,15 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
     }
 
     private func setupNotifications() {
-        LRNotificationObserver.observeName(UIApplicationWillResignActiveNotification, object: nil, owner: self) { [weak self] note in
-            self?.emulator.pauseEmulation()
-        }
+        NSNotificationCenter.defaultCenter().rx_notification(UIApplicationWillResignActiveNotification)
+            .subscribeNext() { [weak self] _ in
+                self?.emulator.pauseEmulation()
+            }
 
-        LRNotificationObserver.observeName(UIApplicationDidBecomeActiveNotification, object: nil, owner: self) { [weak self] note in
-            self?.emulator.resumeEmulation()
-        }
+        NSNotificationCenter.defaultCenter().rx_notification(UIApplicationDidBecomeActiveNotification)
+            .subscribeNext() { [weak self] _ in
+                self?.emulator.resumeEmulation()
+            }
     }
 
     private func setupGL() {

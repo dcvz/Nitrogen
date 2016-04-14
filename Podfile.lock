@@ -1,48 +1,28 @@
 PODS:
-  - BlocksKit (2.2.5):
-    - BlocksKit/All (= 2.2.5)
-  - BlocksKit/All (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
-    - BlocksKit/MessageUI
-    - BlocksKit/UIKit
-  - BlocksKit/Core (2.2.5)
-  - BlocksKit/DynamicDelegate (2.2.5)
-  - BlocksKit/MessageUI (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
-  - BlocksKit/UIKit (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
-  - Kingfisher (2.1.0)
-  - LRNotificationObserver (0.1.2)
+  - Kingfisher (2.2.2)
   - PureLayout (3.0.1)
   - Realm (0.98.5):
     - Realm/Headers (= 0.98.5)
   - Realm/Headers (0.98.5)
   - RealmSwift (0.98.5):
     - Realm (= 0.98.5)
-  - RxCocoa (2.3.0):
-    - RxSwift (~> 2.3)
-  - RxSwift (2.3.0)
+  - RxCocoa (2.4):
+    - RxSwift (~> 2.4)
+  - RxSwift (2.4)
 
 DEPENDENCIES:
-  - BlocksKit (~> 2.2.5)
-  - Kingfisher (~> 2.1.0)
-  - LRNotificationObserver (~> 0.1.2)
+  - Kingfisher (~> 2.2.0)
   - PureLayout (~> 3.0.0)
-  - RealmSwift (~> 0.98.5)
-  - RxCocoa (~> 2.3.0)
-  - RxSwift (~> 2.3.0)
+  - RealmSwift (~> 0.98.0)
+  - RxCocoa (~> 2.4)
+  - RxSwift (~> 2.4)
 
 SPEC CHECKSUMS:
-  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
-  Kingfisher: 3ac09acad75a25ab22f6d7cef3de10d61dd4792d
-  LRNotificationObserver: 696c23f223a03c9b3279ca9a5437a03bb98d6866
+  Kingfisher: 7e8de5b0cf7b5dc8ec559d193029a0859df93ef1
   PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
   Realm: db08379969e45cea2edd1c3c0a090fe9e22d2d2f
   RealmSwift: cb11ad1c35e15dc982f2dbf5afe2a3124193a358
-  RxCocoa: cde4e993f496d2577bc3ba8b7dc7bf55a4ed809a
-  RxSwift: 0df59cc5edf28a31dbf83b049220b4b8e76b07c8
+  RxCocoa: 7d6cd877de99f5640306b3d6cf87f580c1d91b61
+  RxSwift: 67b9ef4e8b34fb394e200e754c6a09cc16559f94
 
 COCOAPODS: 0.39.0
