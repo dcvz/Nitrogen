@@ -1,4 +1,5 @@
 PODS:
+  - GrandSugarDispatch (1.0.0)
   - Kingfisher (2.2.2)
   - PureLayout (3.0.1)
   - Realm (0.98.5):
@@ -11,6 +12,7 @@ PODS:
   - RxSwift (2.4)
 
 DEPENDENCIES:
+  - GrandSugarDispatch (~> 1.0.0)
   - Kingfisher (~> 2.2.0)
   - PureLayout (~> 3.0.0)
   - RealmSwift (~> 0.98.0)
@@ -18,6 +20,7 @@ DEPENDENCIES:
   - RxSwift (~> 2.4)
 
 SPEC CHECKSUMS:
+  GrandSugarDispatch: 8d44fd807b3567b93568936faaf7250f312a0776
   Kingfisher: 7e8de5b0cf7b5dc8ec559d193029a0859df93ef1
   PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
   Realm: db08379969e45cea2edd1c3c0a090fe9e22d2d2f

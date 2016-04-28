@@ -2,6 +2,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'Nitrogen' do
+	pod 'GrandSugarDispatch', '~> 1.0.0'
 	pod 'Kingfisher', '~> 2.2.0'
 	pod 'PureLayout', '~> 3.0.0'
 	pod 'RealmSwift', '~> 0.98.0'

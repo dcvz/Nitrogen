@@ -7,10 +7,11 @@
 //
 
 import UIKit
-import RealmSwift
 import RxSwift
 import RxCocoa
 import Kingfisher
+import RealmSwift
+import GrandSugarDispatch
 
 class LibraryViewController: UIViewController {
 
@@ -153,7 +154,7 @@ class LibraryViewController: UIViewController {
         let game: Game = self.games.value[index.item]
         let vc: EmulatorViewController = segue.destinationViewController as! EmulatorViewController
 
-        delay(0.3) {
+        dispatch(queue: .main, execution: .delay(seconds: 0.3)) {
             vc.startEmulator(game)
         }
     }

@@ -8,9 +8,10 @@
 
 import UIKit
 import GLKit
-import PureLayout
 import RxSwift
 import RxCocoa
+import PureLayout
+import GrandSugarDispatch
 
 class EmulatorViewController: UIViewController, GLKViewDelegate {
 
@@ -97,7 +98,7 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
 
             let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .Default) { [weak self] _ in
                 self?.emulator.restoreStateAtSlot(10)
-                delay(0.3) {
+                dispatch(queue: .main, execution: .delay(seconds: 0.3)) {
                     self?.emulator.startEmulation()
                 }
             }
@@ -234,12 +235,12 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
         NSNotificationCenter.defaultCenter().rx_notification(UIApplicationWillResignActiveNotification)
             .subscribeNext() { [weak self] _ in
                 self?.emulator.pauseEmulation()
-            }
+            }.addDisposableTo(hankeyBag)
 
         NSNotificationCenter.defaultCenter().rx_notification(UIApplicationDidBecomeActiveNotification)
             .subscribeNext() { [weak self] _ in
                 self?.emulator.resumeEmulation()
-            }
+            }.addDisposableTo(hankeyBag)
     }
 
     private func setupGL() {
