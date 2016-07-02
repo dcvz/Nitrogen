@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import Kingfisher
 import RealmSwift
+import DirectoryObserver
 import GrandSugarDispatch
 
 class LibraryViewController: UIViewController {
@@ -25,7 +26,7 @@ class LibraryViewController: UIViewController {
     private var openVGDB: OESQLiteDatabase = try! OESQLiteDatabase(URL: NSBundle.mainBundle().URLForResource("openvgdb", withExtension: "sqlite"))
     private var gamesUpdateToken: NotificationToken = NotificationToken()
     private var games: Variable<[Game]> = Variable([])
-    private var listener: DirectoryWatcher!
+    private var listener: DirectoryObserver!
 
 
     // MARK: - Attributes (Reactive)
@@ -49,12 +50,13 @@ class LibraryViewController: UIViewController {
         updateStore()
         processRootDirectory()
 
-        let documentsDirectoryURL: NSURL! = try! NSFileManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
-        listener = DirectoryWatcher(pathToWatch: documentsDirectoryURL) { [weak self] in
+        let documentsDirectoryURL = try! NSFileManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
+        listener = DirectoryObserver(pathToWatch: documentsDirectoryURL) { [weak self] in
             self?.updateStore()
             self?.processRootDirectory()
         }
-        listener.startWatching()
+
+        _ = try? listener.startObserving()
 
         games
             .asObservable()

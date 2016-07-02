@@ -1,31 +1,34 @@
 PODS:
+  - DirectoryObserver (0.1.2)
   - GrandSugarDispatch (1.0.0)
-  - Kingfisher (2.2.2)
-  - PureLayout (3.0.1)
-  - Realm (0.98.5):
-    - Realm/Headers (= 0.98.5)
-  - Realm/Headers (0.98.5)
-  - RealmSwift (0.98.5):
-    - Realm (= 0.98.5)
-  - RxCocoa (2.4):
-    - RxSwift (~> 2.4)
-  - RxSwift (2.4)
+  - Kingfisher (2.4.1)
+  - PureLayout (3.0.2)
+  - Realm (0.98.8):
+    - Realm/Headers (= 0.98.8)
+  - Realm/Headers (0.98.8)
+  - RealmSwift (0.98.8):
+    - Realm (= 0.98.8)
+  - RxCocoa (2.5.0):
+    - RxSwift (~> 2.5)
+  - RxSwift (2.5.0)
 
 DEPENDENCIES:
+  - DirectoryObserver (~> 0.1.2)
   - GrandSugarDispatch (~> 1.0.0)
-  - Kingfisher (~> 2.2.0)
-  - PureLayout (~> 3.0.0)
-  - RealmSwift (~> 0.98.0)
-  - RxCocoa (~> 2.4)
-  - RxSwift (~> 2.4)
+  - Kingfisher (~> 2.4.1)
+  - PureLayout (~> 3.0.2)
+  - RealmSwift (~> 0.98.8)
+  - RxCocoa (~> 2.5.0)
+  - RxSwift (~> 2.5.0)
 
 SPEC CHECKSUMS:
+  DirectoryObserver: fc4b6664e0da2745a45e3b00ce604e72d072e17f
   GrandSugarDispatch: 8d44fd807b3567b93568936faaf7250f312a0776
-  Kingfisher: 7e8de5b0cf7b5dc8ec559d193029a0859df93ef1
-  PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
-  Realm: db08379969e45cea2edd1c3c0a090fe9e22d2d2f
-  RealmSwift: cb11ad1c35e15dc982f2dbf5afe2a3124193a358
-  RxCocoa: 7d6cd877de99f5640306b3d6cf87f580c1d91b61
-  RxSwift: 67b9ef4e8b34fb394e200e754c6a09cc16559f94
+  Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
+  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
+  Realm: 0e293bb62999730599efc3048896bbd4f2e43bcd
+  RealmSwift: 064262d38113f23ff3508fb20a0a922e696bec01
+  RxCocoa: e1b1562e57a554d0fb2aabf9d71b637f177257c7
+  RxSwift: 402b41a50e922a0368fc14cb3bc9f4427920e8ae
 
 COCOAPODS: 0.39.0

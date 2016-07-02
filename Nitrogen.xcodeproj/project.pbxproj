@@ -10,7 +10,6 @@
 		08F6B8DEC7426725A9A7F8BE /* Pods_Nitrogen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A76DA064F4E6E284CA90F69 /* Pods_Nitrogen.framework */; };
 		2EF78084DC2B5A560D216966 /* EmulatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF78A97F29993D0967B57F6 /* EmulatorViewController.swift */; };
 		9B73FAAF1CA53E6900D46908 /* UIButton+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B73FAAE1CA53E6900D46908 /* UIButton+Rx.swift */; };
-		9B73FAB21CA5448100D46908 /* DirectoryWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B73FAB11CA5448100D46908 /* DirectoryWatcher.swift */; };
 		9B73FABD1CA5962F00D46908 /* CheatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B73FABC1CA5962F00D46908 /* CheatsViewController.swift */; };
 		9B7D1AD71C9AD18700FE68AE /* math_acosf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AB11C9AD18700FE68AE /* math_acosf.c */; };
 		9B7D1AD81C9AD18700FE68AE /* math_asinf.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B7D1AB21C9AD18700FE68AE /* math_asinf.c */; };
@@ -177,7 +176,6 @@
 		3873115AC48EE23F7E7A3C1F /* Pods-Nitrogen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nitrogen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Nitrogen/Pods-Nitrogen.debug.xcconfig"; sourceTree = "<group>"; };
 		8A76DA064F4E6E284CA90F69 /* Pods_Nitrogen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nitrogen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B73FAAE1CA53E6900D46908 /* UIButton+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIButton+Rx.swift"; path = "Shared/Extensions/UIButton+Rx.swift"; sourceTree = "<group>"; };
-		9B73FAB11CA5448100D46908 /* DirectoryWatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectoryWatcher.swift; path = Shared/Utils/Directory/DirectoryWatcher.swift; sourceTree = "<group>"; };
 		9B73FABC1CA5962F00D46908 /* CheatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheatsViewController.swift; sourceTree = "<group>"; };
 		9B7D1AB11C9AD18700FE68AE /* math_acosf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_acosf.c; sourceTree = "<group>"; };
 		9B7D1AB21C9AD18700FE68AE /* math_asinf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math_asinf.c; sourceTree = "<group>"; };
@@ -455,14 +453,6 @@
 				9B73FAAE1CA53E6900D46908 /* UIButton+Rx.swift */,
 			);
 			name = Extensions;
-			sourceTree = "<group>";
-		};
-		9B73FAB01CA5446800D46908 /* Directory */ = {
-			isa = PBXGroup;
-			children = (
-				9B73FAB11CA5448100D46908 /* DirectoryWatcher.swift */,
-			);
-			name = Directory;
 			sourceTree = "<group>";
 		};
 		9B7D1AAE1C9AD18700FE68AE /* math-neon */ = {
@@ -861,7 +851,6 @@
 		9B8273BD1C9A9B0A006D8F71 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				9B73FAB01CA5446800D46908 /* Directory */,
 				9B8273C11C9A9B74006D8F71 /* Audio */,
 				9BD2017D1C9F42ED0059CEC3 /* Database */,
 				9B8273CA1C9A9B74006D8F71 /* Timing */,
@@ -999,7 +988,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9B8258911C9A03F4006D8F71 /* Build configuration list for PBXProject "NItrogen" */;
+			buildConfigurationList = 9B8258911C9A03F4006D8F71 /* Build configuration list for PBXProject "Nitrogen" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1194,7 +1183,6 @@
 				9B82636B1C9A05BE006D8F71 /* thumb_instructions.cpp in Sources */,
 				9B8264C61C9A05BE006D8F71 /* tinyxml.cpp in Sources */,
 				9B8263601C9A05BE006D8F71 /* path.cpp in Sources */,
-				9B73FAB21CA5448100D46908 /* DirectoryWatcher.swift in Sources */,
 				9B8273CF1C9A9B74006D8F71 /* OESoundInterface.mm in Sources */,
 				9B82605B1C9A05BE006D8F71 /* slot2_none.cpp in Sources */,
 				9B8260571C9A05BE006D8F71 /* slot2_expMemory.cpp in Sources */,
@@ -1424,7 +1412,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9B8258911C9A03F4006D8F71 /* Build configuration list for PBXProject "NItrogen" */ = {
+		9B8258911C9A03F4006D8F71 /* Build configuration list for PBXProject "Nitrogen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B8258A61C9A03F4006D8F71 /* Debug */,
