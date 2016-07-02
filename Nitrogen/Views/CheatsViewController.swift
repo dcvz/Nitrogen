@@ -7,16 +7,16 @@
 //
 
 import UIKit
-import PureLayout
-import RxCocoa
 import RxSwift
+import RxCocoa
+import PureLayout
 
 class CheatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
     // MARK: - Attributes
 
     var emulator: EmulatorCore!
-    var gameTitle: String = ""
+    var gameTitle = ""
     var currentEditingCheat: Int?
 
 
@@ -38,7 +38,7 @@ class CheatsViewController: UIViewController, UITableViewDataSource, UITableView
 
     // MARK: - Attributes (Reactive)
 
-    let hankeyBag: DisposeBag = DisposeBag()
+    private let hankeyBag = DisposeBag()
 
 
     // MARK: - UIView Lifecycle
@@ -142,7 +142,7 @@ class CheatsViewController: UIViewController, UITableViewDataSource, UITableView
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cheatCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("cheatCell", forIndexPath: indexPath)
         cell.textLabel?.text = emulator.cheatNameAtPosition(UInt(indexPath.item))
         cell.accessoryType = emulator.cheatEnabledAtPosition(UInt(indexPath.item)) ? .Checkmark : .None
         return cell
@@ -155,7 +155,7 @@ class CheatsViewController: UIViewController, UITableViewDataSource, UITableView
     }
 
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let delete: UITableViewRowAction = UITableViewRowAction(style: .Destructive, title: "Delete") { action, indexPath in
+        let delete = UITableViewRowAction(style: .Destructive, title: "Delete") { action, indexPath in
             self.emulator.deleteCheatAtPosition(UInt(indexPath.item))
             self.emulator.saveCheats()
 
@@ -170,7 +170,7 @@ class CheatsViewController: UIViewController, UITableViewDataSource, UITableView
             tableView.reloadData()
         }
 
-        let edit: UITableViewRowAction = UITableViewRowAction(style: .Normal, title: "Edit") { (action, indexPath) in
+        let edit = UITableViewRowAction(style: .Normal, title: "Edit") { (action, indexPath) in
             let description = self.emulator.cheatNameAtPosition(UInt(indexPath.item))
             let code = self.emulator.cheatCodeAtPosition(UInt(indexPath.item))
             tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
