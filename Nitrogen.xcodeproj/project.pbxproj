@@ -154,6 +154,7 @@
 		9BD2017C1C9F395F0059CEC3 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD2017B1C9F395F0059CEC3 /* Functions.swift */; };
 		9BD201821C9F42FA0059CEC3 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD201811C9F42FA0059CEC3 /* libsqlite3.tbd */; };
 		9BD201841C9F467E0059CEC3 /* openvgdb.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 9BD201831C9F467E0059CEC3 /* openvgdb.sqlite */; };
+		9BE010C61D291E5F0017241F /* ios.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BE010C41D291E5F0017241F /* ios.cpp */; };
 		9BECED411CA0CD2B007E8D38 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BECED401CA0CD2B007E8D38 /* Cells.swift */; };
 		9BF3E4E51C9D4239007B1565 /* SndOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3E4E21C9D4239007B1565 /* SndOut.cpp */; };
 		9BF3E4E61C9D4239007B1565 /* Timestretcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3E4E41C9D4239007B1565 /* Timestretcher.cpp */; };
@@ -397,6 +398,8 @@
 		9BD2017B1C9F395F0059CEC3 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Functions.swift; path = Shared/Utils/Functions.swift; sourceTree = "<group>"; };
 		9BD201811C9F42FA0059CEC3 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		9BD201831C9F467E0059CEC3 /* openvgdb.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = openvgdb.sqlite; sourceTree = "<group>"; };
+		9BE010C41D291E5F0017241F /* ios.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ios.cpp; sourceTree = "<group>"; };
+		9BE010C51D291E5F0017241F /* ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ios.h; sourceTree = "<group>"; };
 		9BECED401CA0CD2B007E8D38 /* Cells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cells.swift; path = Cusom/Cells.swift; sourceTree = "<group>"; };
 		9BF3E4E11C9D35A6007B1565 /* Nitrogen-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Nitrogen-Bridging-Header.h"; sourceTree = "<group>"; };
 		9BF3E4E21C9D4239007B1565 /* SndOut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SndOut.cpp; sourceTree = "<group>"; };
@@ -801,12 +804,14 @@
 		9B826C3E1C9A089F006D8F71 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				9BE010C41D291E5F0017241F /* ios.cpp */,
+				9BE010C51D291E5F0017241F /* ios.h */,
 				9B7D1AAE1C9AD18700FE68AE /* math-neon */,
 				9B8270E81C9A08A0006D8F71 /* throttle.cpp */,
 				9B8270E91C9A08A0006D8F71 /* throttle.h */,
 			);
 			name = ios;
-			path = Nitrogen/DeSmuME/ios;
+			path = Nitrogen/DeSmuME/mobile;
 			sourceTree = SOURCE_ROOT;
 		};
 		9B8273B31C9A0B93006D8F71 /* Frameworks */ = {
@@ -1152,6 +1157,7 @@
 				9B7D1AF11C9AD18700FE68AE /* math_sinhf.c in Sources */,
 				9B8263621C9A05BE006D8F71 /* readwrite.cpp in Sources */,
 				9B7D1AEB1C9AD18700FE68AE /* math_modf.c in Sources */,
+				9BE010C61D291E5F0017241F /* ios.cpp in Sources */,
 				9B7D1AF61C9AD18700FE68AE /* math_vec2.c in Sources */,
 				9B8263991C9A05BE006D8F71 /* file_allocation_table.cpp in Sources */,
 				9B8263511C9A05BE006D8F71 /* matrix.cpp in Sources */,
@@ -1332,7 +1338,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/Nitrogen/DeSmuME",
-					"$(SRCROOT)/Nitrogen/DeSmuME/ios/",
+					"$(SRCROOT)/Nitrogen/DeSmuME/mobile/",
 					"$(SRCROOT)/Nitrogen/DeSmuME/utils/lightning/include",
 					"$(SRCROOT)/Nitrogen/DeSmuME/metaspu/SoundTouch",
 					"$(SRCROOT)/Nitrogen/DeSmuME/utils/lightning/arm",
@@ -1371,7 +1377,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/Nitrogen/DeSmuME",
-					"$(SRCROOT)/Nitrogen/DeSmuME/ios/",
+					"$(SRCROOT)/Nitrogen/DeSmuME/mobile/",
 					"$(SRCROOT)/Nitrogen/DeSmuME/utils/lightning/include",
 					"$(SRCROOT)/Nitrogen/DeSmuME/metaspu/SoundTouch",
 					"$(SRCROOT)/Nitrogen/DeSmuME/utils/lightning/arm",

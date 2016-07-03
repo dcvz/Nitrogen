@@ -35,7 +35,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #define randf()	(rand() / (RAND_MAX + 1.0f))
 
 #ifdef DESMUME_IOS
-#include "../main.h"
+//#include "../main.h"
 #include "../neontest.h"
 #define printf LOGI
 #endif
