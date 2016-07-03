@@ -1,0 +1,3 @@
+[submodule "nds4ios/desmume"]
+	path = nds4ios/desmume
+	url = https://github.com/dcvz/desmume-mobile.git
