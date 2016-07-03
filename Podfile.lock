@@ -11,15 +11,17 @@ PODS:
   - RxCocoa (2.5.0):
     - RxSwift (~> 2.5)
   - RxSwift (2.5.0)
+  - SQLite.swift (0.10.1)
 
 DEPENDENCIES:
-  - DirectoryObserver (~> 0.1.2)
-  - GrandSugarDispatch (~> 1.0.0)
-  - Kingfisher (~> 2.4.1)
-  - PureLayout (~> 3.0.2)
-  - RealmSwift (~> 0.98.8)
-  - RxCocoa (~> 2.5.0)
-  - RxSwift (~> 2.5.0)
+  - DirectoryObserver (~> 0.1)
+  - GrandSugarDispatch (~> 1.0)
+  - Kingfisher (~> 2.4)
+  - PureLayout (~> 3.0)
+  - RealmSwift (~> 0.98)
+  - RxCocoa (~> 2.5)
+  - RxSwift (~> 2.5)
+  - SQLite.swift (~> 0.10)
 
 SPEC CHECKSUMS:
   DirectoryObserver: fc4b6664e0da2745a45e3b00ce604e72d072e17f
@@ -30,5 +32,6 @@ SPEC CHECKSUMS:
   RealmSwift: 064262d38113f23ff3508fb20a0a922e696bec01
   RxCocoa: e1b1562e57a554d0fb2aabf9d71b637f177257c7
   RxSwift: 402b41a50e922a0368fc14cb3bc9f4427920e8ae
+  SQLite.swift: 6a6e4b034efc317ce4e203b6af2d3024fee2b570
 
 COCOAPODS: 0.39.0

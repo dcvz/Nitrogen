@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import Kingfisher
 import RealmSwift
+import SQLite
 import DirectoryObserver
 import GrandSugarDispatch
 
@@ -23,7 +24,7 @@ class LibraryViewController: UIViewController {
 
     // MARK: - Attributes
 
-    private var openVGDB = try! OESQLiteDatabase(URL: NSBundle.mainBundle().URLForResource("openvgdb", withExtension: "sqlite"))
+    private var openVGDB = try! Connection(NSBundle.mainBundle().pathForResource("openvgdb", ofType: "sqlite")!)
     private var gamesUpdateToken = NotificationToken()
     private var games: Variable<[Game]> = Variable([])
     private var listener: DirectoryObserver!
@@ -118,13 +119,25 @@ class LibraryViewController: UIViewController {
     }
 
     private func processGame(game: Game) {
-        let query: String = "SELECT DISTINCT releaseTitleName as 'gameTitle', romSerial as 'serial', releaseCoverFront as 'boxImageURL', releaseDescription as 'gameDescription', regionName as 'region' FROM ROMs rom LEFT JOIN RELEASES release USING (romID) LEFT JOIN REGIONS region on (regionLocalizedID=region.regionID) WHERE serial = '\(game.serial.uppercaseString)'"
-        let results = try! openVGDB.executeQuery(query) as! [[String: String]]
         let realm = try! Realm()
-        if results.count > 0 {
+
+        let roms = Table("ROMs")
+        let releases = Table("RELEASES")
+
+        let gameTitle = Expression<String>("releaseTitleName")
+        let serial = Expression<String>("romSerial")
+        let boxImageURL = Expression<String>("releaseCoverFront")
+        let romID = Expression<String>("romID")
+
+        let query = roms.select(distinct: [gameTitle, serial, boxImageURL])
+                        .join(.LeftOuter, releases, on: roms[romID] == releases[romID])
+                        .filter(serial == game.serial.uppercaseString)
+
+        let results = try! openVGDB.prepare(query)
+        if let result = results.generate().next() {
             try! realm.write() {
-                game.title = results.last?["gameTitle"] ?? game.title
-                game.artworkURL = results.last?["boxImageURL"]
+                game.title = result[gameTitle] ?? game.title
+                game.artworkURL = result[boxImageURL]
                 game.processed = true
             }
         } else {

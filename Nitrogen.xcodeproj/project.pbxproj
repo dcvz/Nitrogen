@@ -152,7 +152,6 @@
 		9BD201761C9F36770059CEC3 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD201751C9F36770059CEC3 /* LibraryViewController.swift */; };
 		9BD201791C9F38D30059CEC3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD201781C9F38D30059CEC3 /* Game.swift */; };
 		9BD2017C1C9F395F0059CEC3 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD2017B1C9F395F0059CEC3 /* Functions.swift */; };
-		9BD201801C9F42ED0059CEC3 /* OESQLiteDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD2017F1C9F42ED0059CEC3 /* OESQLiteDatabase.m */; };
 		9BD201821C9F42FA0059CEC3 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD201811C9F42FA0059CEC3 /* libsqlite3.tbd */; };
 		9BD201841C9F467E0059CEC3 /* openvgdb.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 9BD201831C9F467E0059CEC3 /* openvgdb.sqlite */; };
 		9BECED411CA0CD2B007E8D38 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BECED401CA0CD2B007E8D38 /* Cells.swift */; };
@@ -396,8 +395,6 @@
 		9BD201751C9F36770059CEC3 /* LibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		9BD201781C9F38D30059CEC3 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Game.swift; path = Shared/Models/Game.swift; sourceTree = "<group>"; };
 		9BD2017B1C9F395F0059CEC3 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Functions.swift; path = Shared/Utils/Functions.swift; sourceTree = "<group>"; };
-		9BD2017E1C9F42ED0059CEC3 /* OESQLiteDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OESQLiteDatabase.h; sourceTree = "<group>"; };
-		9BD2017F1C9F42ED0059CEC3 /* OESQLiteDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OESQLiteDatabase.m; sourceTree = "<group>"; };
 		9BD201811C9F42FA0059CEC3 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		9BD201831C9F467E0059CEC3 /* openvgdb.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = openvgdb.sqlite; sourceTree = "<group>"; };
 		9BECED401CA0CD2B007E8D38 /* Cells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cells.swift; path = Cusom/Cells.swift; sourceTree = "<group>"; };
@@ -852,7 +849,6 @@
 			isa = PBXGroup;
 			children = (
 				9B8273C11C9A9B74006D8F71 /* Audio */,
-				9BD2017D1C9F42ED0059CEC3 /* Database */,
 				9B8273CA1C9A9B74006D8F71 /* Timing */,
 				9BD2017B1C9F395F0059CEC3 /* Functions.swift */,
 			);
@@ -891,16 +887,6 @@
 				9BD201781C9F38D30059CEC3 /* Game.swift */,
 			);
 			name = Models;
-			sourceTree = "<group>";
-		};
-		9BD2017D1C9F42ED0059CEC3 /* Database */ = {
-			isa = PBXGroup;
-			children = (
-				9BD2017E1C9F42ED0059CEC3 /* OESQLiteDatabase.h */,
-				9BD2017F1C9F42ED0059CEC3 /* OESQLiteDatabase.m */,
-			);
-			name = Database;
-			path = Shared/Utils/Database;
 			sourceTree = "<group>";
 		};
 		9BECED3F1CA0CD1C007E8D38 /* Custom */ = {
@@ -1073,7 +1059,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BD201801C9F42ED0059CEC3 /* OESQLiteDatabase.m in Sources */,
 				9B82605A1C9A05BE006D8F71 /* slot2_mpcf.cpp in Sources */,
 				9B82638D1C9A05BE006D8F71 /* crc.cpp in Sources */,
 				9B82639D1C9A05BE006D8F71 /* lock.cpp in Sources */,
