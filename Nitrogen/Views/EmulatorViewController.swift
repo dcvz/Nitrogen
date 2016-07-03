@@ -36,16 +36,16 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
 
     // MARK: - Attributes (Instance)
 
-    private var emulator: EmulatorCore = EmulatorCore()
+    private var emulator = EmulatorCore()
     private var currentGame: Game!
     private var audioCore: OEGameAudio!
-    private let effect: GLKBaseEffect = GLKBaseEffect()
+    private let effect = GLKBaseEffect()
     private var texture: GLuint = 0
 
 
     // MARK: - Attributes (Reactive)
 
-    let hankeyBag: DisposeBag = DisposeBag()
+    private let hankeyBag = DisposeBag()
 
 
     // MARK: - View Lifecycle
@@ -68,9 +68,9 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
     // MARK: - Public Interface
 
     func startEmulator(game: Game) {
-        let fm: NSFileManager = NSFileManager.defaultManager()
-        let documentsDirectoryURL: NSURL! =  try! NSFileManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
-        let ndsFile: NSURL! = documentsDirectoryURL.URLByAppendingPathComponent(game.path)
+        let fileManager = NSFileManager.defaultManager()
+        let documentsDirectoryURL = try! fileManager.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
+        let ndsFile = documentsDirectoryURL.URLByAppendingPathComponent(game.path)
 
         currentGame = game
 
@@ -92,18 +92,18 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
             }
         }
 
-        let autoSaveFile: NSURL! = ndsFile.URLByDeletingPathExtension?.URLByAppendingPathExtension("ds10")
-        if fm.fileExistsAtPath(autoSaveFile.path!) {
-            let alert: UIAlertController = UIAlertController(title: "Quick Restore?", message: nil, preferredStyle: .Alert)
+        let autoSaveFile = ndsFile.URLByDeletingPathExtension?.URLByAppendingPathExtension("ds10")
+        if fileManager.fileExistsAtPath(autoSaveFile!.path!) {
+            let alert = UIAlertController(title: "Quick Restore?", message: nil, preferredStyle: .Alert)
 
-            let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .Default) { [weak self] _ in
+            let okAction = UIAlertAction(title: "OK", style: .Default) { [weak self] _ in
                 self?.emulator.restoreStateAtSlot(10)
                 dispatch(queue: .main, execution: .delay(seconds: 0.3)) {
                     self?.emulator.startEmulation()
                 }
             }
 
-            let cancelAction: UIAlertAction = UIAlertAction(title: "No", style: .Cancel) { [weak self] _ in
+            let cancelAction = UIAlertAction(title: "No", style: .Cancel) { [weak self] _ in
                 self?.emulator.startEmulation()
             }
 
@@ -244,7 +244,7 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
     }
 
     private func setupGL() {
-        let glContext: EAGLContext = EAGLContext(API: .OpenGLES2)
+        let glContext = EAGLContext(API: .OpenGLES2)
         EAGLContext.setCurrentContext(glContext)
         mainView.context = glContext
         setupTexture()
@@ -267,31 +267,31 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
         glClearColor(1.0, 1.0, 1.0, 1.0)
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
 
-        let screenSize: CGSize = emulator.screenRect().size
-        let bufferSize: CGSize = emulator.bufferSize()
+        let screenSize = emulator.screenRect().size
+        let bufferSize = emulator.bufferSize()
 
-        let texWidth: Float = Float(screenSize.width / bufferSize.width)
-        let texHeight: Float = Float(screenSize.height / bufferSize.height)
+        let texWidth = Float(screenSize.width / bufferSize.width)
+        let texHeight = Float(screenSize.height / bufferSize.height)
 
-        var vertices: [GLKVector3] = Array<GLKVector3>(count: 8, repeatedValue: GLKVector3())
+        var vertices = Array<GLKVector3>(count: 8, repeatedValue: GLKVector3())
         vertices[0] = GLKVector3(v: (-1.0, -1.0,  1.0)) // Left  bottom
         vertices[1] = GLKVector3(v: ( 1.0, -1.0,  1.0)) // Right  bottom
         vertices[2] = GLKVector3(v: ( 1.0,  1.0,  1.0)) // Right  top
         vertices[3] = GLKVector3(v: (-1.0,  1.0,  1.0)) // Left  top
 
-        var textureCoordinates: [GLKVector2] = Array<GLKVector2>(count: 8, repeatedValue: GLKVector2())
+        var textureCoordinates = Array<GLKVector2>(count: 8, repeatedValue: GLKVector2())
         textureCoordinates[0] = GLKVector2(v: (0.0, texHeight)) // Left bottom
         textureCoordinates[1] = GLKVector2(v: (texWidth, texHeight)) // Right bottom
         textureCoordinates[2] = GLKVector2(v: (texWidth, 0.0)) // Right top
         textureCoordinates[3] = GLKVector2(v: (0.0, 0.0)) // Left top
 
-        let vertexIndices: [Int] = [
+        let vertexIndices = [
             0, 1, 2,
             0, 2, 3
         ]
 
-        var triangleVertices: [GLKVector3] = Array<GLKVector3>(count: 6, repeatedValue: GLKVector3())
-        var triangleTexCoords: [GLKVector2] = Array<GLKVector2>(count: 6, repeatedValue: GLKVector2())
+        var triangleVertices = Array<GLKVector3>(count: 6, repeatedValue: GLKVector3())
+        var triangleTexCoords = Array<GLKVector2>(count: 6, repeatedValue: GLKVector2())
         for i in 0..<vertexIndices.count {
             triangleVertices[i] = vertices[vertexIndices[i]]
             triangleTexCoords[i] = textureCoordinates[vertexIndices[i]]
@@ -343,10 +343,10 @@ class EmulatorViewController: UIViewController, GLKViewDelegate {
     // MARK: - UIView Methods
 
     private func transmitTouch(touch: UITouch) {
-        let touchLocation: CGPoint = touch.locationInView(mainView)
+        let touchLocation = touch.locationInView(mainView)
         if touchLocation.y < (mainView.bounds.height / 2) || touchLocation.y > mainView.bounds.height { return }
-        let adjustedTouchLocation: CGPoint = CGPoint(x: touchLocation.x, y: touchLocation.y - (mainView.bounds.height / 2))
-        let mappedTouchLocation: CGPoint = CGPointApplyAffineTransform(
+        let adjustedTouchLocation = CGPoint(x: touchLocation.x, y: touchLocation.y - (mainView.bounds.height / 2))
+        let mappedTouchLocation = CGPointApplyAffineTransform(
             adjustedTouchLocation,
             CGAffineTransformMakeScale(emulator.screenRect().width / mainView.bounds.width, (emulator.screenRect().height / 2) / (mainView.bounds.height / 2))
         )
